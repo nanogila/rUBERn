@@ -1,6 +1,1 @@
-# prueba
-estamos probando github
-sesfseff
-pito
-caca
-teta
+#proyecto de rUBERn para programacion 2
