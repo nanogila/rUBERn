@@ -35,6 +35,7 @@ public class UserList extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			scrollPane = new JScrollPane();
+			scrollPane.setEnabled(false);
 		}
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(

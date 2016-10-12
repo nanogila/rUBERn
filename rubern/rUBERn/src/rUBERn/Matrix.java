@@ -8,6 +8,7 @@ public class Matrix {
 		base = database;
 	}
 	public void addUser(User aUser) {
+		
 		base.addUser(aUser);
 	}
 	public void seeUsers() {

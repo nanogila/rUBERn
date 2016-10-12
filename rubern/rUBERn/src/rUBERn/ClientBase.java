@@ -9,8 +9,14 @@ public ClientBase() {
 }
 public void addUser (User aUser) {
 	if (checkName(aUser)) {
-		Error dialog = new Error(aUser.getName()+" ya esta registrado");
-	}else users.add(aUser);
+		new Error(aUser.getName()+" is already registered");
+	}else if(aUser.getName().equals("")){
+		new Error("name is empty");
+	}else {
+		users.add(aUser);
+		new Error("User successfully added");
+	}
+	
 }
 public boolean checkName(User aUser) {
 	User[] arrayUsers = new User[users.size()];

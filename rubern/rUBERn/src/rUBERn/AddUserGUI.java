@@ -149,11 +149,14 @@ public class AddUserGUI extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				Integer cardNumber=0;
-				if (userCard.getText().length() < 11 && userCard.getText().length() > 2 && userCard.getText().matches("[0-9]+")) {
-					cardNumber=	Integer.parseInt(userCard.getText());
-					User someone = new User(userName.getText(), cardNumber);
+				String card = userCard.getText().trim();
+				String name = userName.getText().trim();
+				if (name.equals("")) new NullPointerException();
+				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
+					
+					cardNumber=	Integer.parseInt(card);
+					User someone = new User(name, cardNumber);
 					theMatrix.addUser(someone);
-					new Error("User successfully added");
 					dispose();
 				}else new Error("Invalid credit card number");
 				
