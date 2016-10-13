@@ -14,6 +14,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import javax.swing.JRadioButton;
 
 public class MatrixGUI {
 private Matrix theMatrix;
@@ -64,7 +65,7 @@ private Matrix theMatrix;
 		btnAddUser.setAction(action);
 		
 		JLabel lblChooseAnAction = new JLabel("Choose an action:");
-		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		JButton seeUsers = new JButton("New button");
 		seeUsers.setAction(action_1);
@@ -91,7 +92,7 @@ private Matrix theMatrix;
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAddUser)
 						.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(148, Short.MAX_VALUE))
+					.addContainerGap(156, Short.MAX_VALUE))
 		);
 		Main.getContentPane().setLayout(groupLayout);
 	}
