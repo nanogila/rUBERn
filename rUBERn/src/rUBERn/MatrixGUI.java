@@ -54,7 +54,7 @@ private Matrix theMatrix;
 	 */
 	private void initialize() {
 		Main = new JFrame();
-		Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
+		Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("Uber-icon2.png")));
 		Main.setTitle("rUBERn - Grupo 3");
 		Main.setBounds(100, 100, 450, 300);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
