@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.Toolkit;
 
 public class Error extends JDialog {
 
@@ -26,6 +27,7 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Error.class.getResource("/Uber-icon2.png")));
 		setBounds(100, 100, 264, 204);
 		setVisible(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
