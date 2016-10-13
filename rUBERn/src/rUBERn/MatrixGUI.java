@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
+
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -34,6 +36,7 @@ private Matrix theMatrix;
 					Matrix theMatrix = new Matrix(base);
 					MatrixGUI window = new MatrixGUI(theMatrix);
 					window.Main.setVisible(true);
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,7 +57,7 @@ private Matrix theMatrix;
 	 */
 	private void initialize() {
 		Main = new JFrame();
-		Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("Uber-icon2.png")));
+		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		Main.setTitle("rUBERn - Grupo 3");
 		Main.setBounds(100, 100, 450, 300);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
