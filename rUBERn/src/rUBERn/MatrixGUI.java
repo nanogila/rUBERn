@@ -57,7 +57,7 @@ EventQueue.invokeLater(new Runnable() {
 	 */
 	private void initialize() {
 		Main = new JFrame();
-		Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
+		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		Main.setResizable(false);
 		Main.setTitle("rUBERn - Grupo 3");
 		Main.setBounds(100, 100, 360, 179);

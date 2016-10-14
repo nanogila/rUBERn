@@ -1,7 +1,7 @@
 import org.junit.Test;
 import rUBERn.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * Created by AlumnosFI on 14/10/2016.

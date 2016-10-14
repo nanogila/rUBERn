@@ -23,4 +23,5 @@ public class Matrix {
 	public User getUser(String aName) {
 		return base.getUser(aName);
 	}
+
 }
