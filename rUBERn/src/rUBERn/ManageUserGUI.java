@@ -24,8 +24,12 @@ import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import java.awt.Dialog.ModalityType;
 import java.awt.Dialog.ModalExclusionType;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
-public class AddUserGUI extends JDialog {
+public class ManageUserGUI extends JDialog {
 	private Matrix theMatrix;
 	private final JPanel contentPanel = new JPanel();
 	private JLabel lblNombreYApellido;
@@ -55,7 +59,7 @@ public class AddUserGUI extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public AddUserGUI(Matrix aMatrix) {
+	public ManageUserGUI(Matrix aMatrix) {
 		setTitle("rUBERn - Grupo 3");
 		
 		theMatrix = aMatrix;
@@ -76,8 +80,6 @@ public class AddUserGUI extends JDialog {
 		userName = new JTextField();
 		userName.setColumns(10);
 		userCard = new JTextField();
-		
-		
 		addUser = new JRadioButton("Add user");
 		addUser.setAction(action_2);
 		buttonGroup.add(addUser);

@@ -110,7 +110,7 @@ EventQueue.invokeLater(new Runnable() {
 			putValue(SHORT_DESCRIPTION, "Add a user to the database");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new AddUserGUI(theMatrix);
+			new ManageUserGUI(theMatrix);
 		}
 	}
 	private class SeeUsers extends AbstractAction {
