@@ -56,15 +56,16 @@ EventQueue.invokeLater(new Runnable() {
 	 */
 	private void initialize() {
 		Main = new JFrame();
+		Main.setResizable(false);
 		Main.setTitle("rUBERn - Grupo 3");
-		Main.setBounds(100, 100, 450, 300);
+		Main.setBounds(100, 100, 302, 179);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblBienvenidoARubern = new JLabel("Welcome to rUBERn");
 		lblBienvenidoARubern.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		lblBienvenidoARubern.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnAddUser = new JButton("Add User");
+		JButton btnAddUser = new JButton("Manage Users");
 		btnAddUser.setAction(action);
 		
 		JLabel lblChooseAnAction = new JLabel("Choose an action:");
@@ -75,21 +76,27 @@ EventQueue.invokeLater(new Runnable() {
 		GroupLayout groupLayout = new GroupLayout(Main.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 434, GroupLayout.PREFERRED_SIZE)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblChooseAnAction))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnAddUser)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(seeUsers))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblChooseAnAction))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnAddUser)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(seeUsers))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(11, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addComponent(lblBienvenidoARubern)
-					.addGap(39)
+					.addGap(28)
 					.addComponent(lblChooseAnAction)
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -101,7 +108,7 @@ EventQueue.invokeLater(new Runnable() {
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
-			putValue(NAME, "Add user");
+			putValue(NAME, "Manage Users");
 			putValue(SHORT_DESCRIPTION, "Add a user to the database");
 		}
 		public void actionPerformed(ActionEvent e) {
