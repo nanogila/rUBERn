@@ -1,6 +1,7 @@
 package rUBERn;
 
 import java.awt.BorderLayout;
+import java.awt.Dialog;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -21,6 +22,8 @@ import javax.swing.Action;
 import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import java.awt.Dialog.ModalityType;
+import java.awt.Dialog.ModalExclusionType;
 
 public class AddUserGUI extends JDialog {
 	private Matrix theMatrix;
@@ -53,10 +56,10 @@ public class AddUserGUI extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddUserGUI(Matrix aMatrix) {
+		
 		theMatrix = aMatrix;
 		action_1  = new AddAUser(theMatrix);
 		setVisible(true);
-		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 328, 173);
 		getContentPane().setLayout(new BorderLayout());
