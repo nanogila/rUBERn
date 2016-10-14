@@ -6,8 +6,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
-
 import java.awt.Font;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -16,8 +14,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
-import javax.swing.JRadioButton;
-import java.awt.Toolkit;
 
 public class MatrixGUI {
 private Matrix theMatrix;
@@ -36,7 +32,6 @@ private Matrix theMatrix;
 					Matrix theMatrix = new Matrix(base);
 					MatrixGUI window = new MatrixGUI(theMatrix);
 					window.Main.setVisible(true);
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,7 +52,6 @@ private Matrix theMatrix;
 	 */
 	private void initialize() {
 		Main = new JFrame();
-		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		Main.setTitle("rUBERn - Grupo 3");
 		Main.setBounds(100, 100, 450, 300);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +64,7 @@ private Matrix theMatrix;
 		btnAddUser.setAction(action);
 		
 		JLabel lblChooseAnAction = new JLabel("Choose an action:");
-		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		
 		JButton seeUsers = new JButton("New button");
 		seeUsers.setAction(action_1);
@@ -97,7 +91,7 @@ private Matrix theMatrix;
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAddUser)
 						.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(156, Short.MAX_VALUE))
+					.addContainerGap(148, Short.MAX_VALUE))
 		);
 		Main.getContentPane().setLayout(groupLayout);
 	}

@@ -7,9 +7,10 @@ public class Matrix {
 	public Matrix (ClientBase database) {
 		base = database;
 	}
-	public void addUser(User aUser) {
+	public boolean addUser(User aUser) {
 		
-		base.addUser(aUser);
+		return base.addUser(aUser);
+		
 	}
 	public void seeUsers() {
 		base.seeUsers();

@@ -7,17 +7,17 @@ private List<User> users;
 public ClientBase() {
 	users= new ArrayList<User>();
 }
-public void addUser (User aUser) {
+public boolean addUser (User aUser) {
 	if (checkName(aUser)) {
 		new Error(aUser.getName()+" is already registered");
+		return false;
 	}else if(aUser.getName().equals("")){
 		new Error("name is empty");
-	} else if (checkCard(aUser)) {
-		new Error("credit card number "+aUser.getCard()+" is already registered");
-	}
-	else {
+		return false;
+	}else {
 		users.add(aUser);
 		new Error("User successfully added");
+		return true;
 	}
 	
 }
@@ -26,16 +26,6 @@ public boolean checkName(User aUser) {
 	 users.toArray(arrayUsers);
 	for (int i=0; i<arrayUsers.length; i++) {
 	if (aUser.getName().equals(arrayUsers[i].getName())) {
-return true;
-	}
-	}
-	return false;
-}
-public boolean checkCard(User aUser) {
-	User[] arrayUsers = new User[users.size()];
-	 users.toArray(arrayUsers);
-	for (int i=0; i<arrayUsers.length; i++) {
-	if (aUser.getCard().equals(arrayUsers[i].getCard())) {
 return true;
 	}
 	}
