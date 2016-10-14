@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.Toolkit;
 
 public class MatrixGUI {
 private Matrix theMatrix;
@@ -56,9 +57,10 @@ EventQueue.invokeLater(new Runnable() {
 	 */
 	private void initialize() {
 		Main = new JFrame();
+		Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		Main.setResizable(false);
 		Main.setTitle("rUBERn - Grupo 3");
-		Main.setBounds(100, 100, 302, 179);
+		Main.setBounds(100, 100, 360, 179);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblBienvenidoARubern = new JLabel("Welcome to rUBERn");

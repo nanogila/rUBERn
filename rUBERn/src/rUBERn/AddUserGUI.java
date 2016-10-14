@@ -56,12 +56,13 @@ public class AddUserGUI extends JDialog {
 	 * Create the dialog.
 	 */
 	public AddUserGUI(Matrix aMatrix) {
+		setTitle("rUBERn - Grupo 3");
 		
 		theMatrix = aMatrix;
 		action_1  = new AddAUser(theMatrix);
 		setVisible(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 328, 173);
+		setBounds(100, 100, 378, 173);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
