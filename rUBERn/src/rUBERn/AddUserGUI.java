@@ -19,6 +19,8 @@ import java.text.*;
 
 import javax.swing.Action;
 import javax.swing.JFormattedTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class AddUserGUI extends JDialog {
 	private Matrix theMatrix;
@@ -30,6 +32,11 @@ public class AddUserGUI extends JDialog {
 	private JButton cancelButton;
 	private final Action action = new Close();
 	private Action action_1;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private final Action action_2 = new addUserRadioBtn();
+	private final Action action_3 = new RemoveUserRadioBtn();
+	private JRadioButton addUser;
+	private JRadioButton removeUser;
 
 	/**
 	 * Launch the application.
@@ -66,6 +73,16 @@ public class AddUserGUI extends JDialog {
 		userName.setColumns(10);
 		userCard = new JTextField();
 		
+		
+		addUser = new JRadioButton("Add user");
+		addUser.setAction(action_2);
+		buttonGroup.add(addUser);
+		addUser.setSelected(true);
+		
+		removeUser = new JRadioButton("Remove user");
+		removeUser.setAction(action_3);
+		buttonGroup.add(removeUser);
+		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -76,6 +93,10 @@ public class AddUserGUI extends JDialog {
 						.addComponent(lblCreditCardNumber))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
+							.addComponent(addUser)
+							.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+							.addComponent(removeUser))
 						.addComponent(userCard, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
 						.addComponent(userName, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
 					.addContainerGap())
@@ -83,7 +104,11 @@ public class AddUserGUI extends JDialog {
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(40)
+					.addContainerGap()
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(removeUser)
+						.addComponent(addUser))
+					.addGap(10)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNombreYApellido)
 						.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -148,6 +173,7 @@ public class AddUserGUI extends JDialog {
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
+				if(addUser.isSelected()) {
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
 				String name = userName.getText().trim();
@@ -159,13 +185,39 @@ public class AddUserGUI extends JDialog {
 					//theMatrix.addUser(someone);
 					if (theMatrix.addUser(someone)) dispose();
 				}else new Error("Invalid credit card number");
-				
+				}else if (removeUser.isSelected()) {
+					String name = userName.getText().trim();
+					if (name.equals("")) new NullPointerException();
+					if (theMatrix.getUser(name)!=null) {
+					User someone = theMatrix.getUser(name);
+					if(theMatrix.removeUser(someone)) dispose(); 
+					
+				}
+					}
 			}catch(NullPointerException a) {
 				new Error("Name or credit card number are empty");
 
 			}
+			}
 
-
+		
+	}
+	private class addUserRadioBtn extends AbstractAction {
+		public addUserRadioBtn() {
+			putValue(NAME, "Add user");
+			putValue(SHORT_DESCRIPTION, "Add user to the database");
+		}
+		public void actionPerformed(ActionEvent e) {
+			userCard.setEnabled(true);
+		}
+	}
+	private class RemoveUserRadioBtn extends AbstractAction {
+		public RemoveUserRadioBtn() {
+			putValue(NAME, "Remove user");
+			putValue(SHORT_DESCRIPTION, "Remove user from the database");
+		}
+		public void actionPerformed(ActionEvent e) {
+			userCard.setEnabled(false);
 		}
 	}
 }

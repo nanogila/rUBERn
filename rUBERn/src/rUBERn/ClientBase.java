@@ -47,4 +47,31 @@ public void seeUsers() {
 		 }
 	 new UserList(columns, data);
 }
+public boolean removeUser(User aUser) {
+	if(aUser.getName().equals("")){
+		new Error("name is empty");
+		
+		return false;
+	}else if (!checkName(aUser)) {
+		new Error(aUser.getName()+" is not registered");
+		return false;
+	}else {
+		users.remove(aUser);
+		new Error("User successfully removed");
+		return true;
+	}
+}
+public User getUser(String aName) {
+	User[] arrayUsers = new User[users.size()];
+	 users.toArray(arrayUsers);
+	for (int i=0; i<arrayUsers.length; i++) {
+	if (aName.equals(arrayUsers[i].getName())) {
+		return arrayUsers[i];
+	}
+	}
+	new Error(aName+" is not registered");
+	return null;
+}
+	
+
 }
