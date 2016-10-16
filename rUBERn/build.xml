@@ -43,7 +43,10 @@
     </target>
                 <target name="compileTest" depends="build" description="compile jUnit Test cases ">
     <javac debug="true" debuglevel="${debuglevel}" destdir="rUBERn/bin" includeantruntime="false" source="rUBERn/test" target="${target}">
-  </target>
+              <src path="rUBERn/test"/>
+            <classpath refid="rUBERn.classpath"/>
+                  </javac>
+      </target>
                 <target name="test" depends="compileTest">
   <junit>
     <classpath>
