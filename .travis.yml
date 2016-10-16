@@ -1,2 +1,2 @@
 language: java
-script: ant main
+script: ant -Dbasedir=`pwd` -f rUBERn/build.xml
