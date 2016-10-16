@@ -72,6 +72,5 @@ public User getUser(String aName) {
 	new Error(aName+" is not registered");
 	return null;
 }
-	
 
 }

@@ -81,11 +81,23 @@ public class ManageUserGUI extends JDialog {
 		userName.setColumns(10);
 		userCard = new JTextField();
 		addUser = new JRadioButton("Add user");
+		addUser.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				addUser.doClick();
+			}
+		});
 		addUser.setAction(action_2);
 		buttonGroup.add(addUser);
 		addUser.setSelected(true);
 		
 		removeUser = new JRadioButton("Remove user");
+		removeUser.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent arg0) {
+				removeUser.doClick();
+			}
+		});
 		removeUser.setAction(action_3);
 		buttonGroup.add(removeUser);
 		
