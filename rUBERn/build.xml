@@ -41,6 +41,23 @@
             <classpath refid="rUBERn.classpath"/>
         </javac>
     </target>
+                <target name="compileTest" depends="build" description="compile jUnit Test cases ">
+    <javac srcdir="rUBERn/test" destdir="rUBERn/bin" includeantruntime="true" nowarn="yes" debug="true" />
+</target>
+                <target name="test" depends="compileTest">
+  <junit>
+    <classpath>
+      <pathelement location="rUBERn/bin" />    
+      <pathelement location="rUBERn/lib/junit-4.12.jar"/>
+    </classpath>    
+    <batchtest>
+       <fileset dir="rUBERn/test">
+            <include name="**/*Test*" />
+       </fileset>
+    </batchtest>
+    <formatter type="brief" usefile="false"/>
+  </junit>
+</target>   
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target name="AddUserGUI">
         <java classname="rUBERn.AddUserGUI" failonerror="true" fork="yes">
@@ -67,4 +84,5 @@
             <classpath refid="rUBERn.classpath"/>
         </java>
     </target>
+                
 </project>
