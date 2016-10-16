@@ -35,12 +35,12 @@
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>
                                                 <target name="test" depends="build">
-<junit haltonfailure="yes" haltonerror="yes">
+<junit haltonfailure="yes">
     <classpath>
       <pathelement location="rUBERn/bin" />    
       <pathelement location="rUBERn/lib/junit-4.12.jar"/>
     </classpath>    
-    <batchtest>
+    <batchtest fork="yes" haltonfailure="yes">
        <fileset dir="rUBERn/test">
             <include name="**/*Test*" />
        </fileset>
