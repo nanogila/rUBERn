@@ -47,19 +47,18 @@
             <classpath refid="rUBERn.classpath"/>
                   </javac>
       </target>
-                <target name="test" depends="compileTest">
-  <junit>
+                <target name="test" depends="compile">
+  <junit printsummary="yes" haltonfailure="yes">
     <classpath>
       <pathelement location="rUBERn/bin" />    
       <pathelement location="rUBERn/lib/junit-4.12.jar"/>
-    </classpath>    
+    </classpath>
+     <formatter type="plain" usefile="false" />
     <batchtest>
-              <formatter type="plain" usefile="false" />
        <fileset dir="rUBERn/test">
             <include name="**/*Test*" />
        </fileset>
     </batchtest>
-    <formatter type="brief" usefile="false"/>
   </junit>
 </target>   
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
