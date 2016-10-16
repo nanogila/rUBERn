@@ -35,7 +35,7 @@
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>
                                                 <target name="test" depends="build">
-<junit haltonfailure="no" failureproperty="test.failed">
+<junit haltonfailure="no" failureproperty="test.failed" errorproperty="test.failed">
     <classpath>
       <pathelement location="rUBERn/bin" />    
       <pathelement location="rUBERn/lib/junit-4.12.jar"/>
