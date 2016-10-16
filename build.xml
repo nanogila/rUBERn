@@ -10,8 +10,8 @@
     <property name="source" value="1.8"/>
     <path id="rUBERn.classpath">
         <pathelement location="bin"/>
-        <pathelement location="../../../Downloads/junit-4.12.jar"/>
-        <pathelement location="../../../Downloads/hamcrest-core-1.3.jar"/>
+        <pathelement location="junit-4.12.jar"/>
+        <pathelement location="hamcrest-core-1.3.jar"/>
         <pathelement location="jgoodies-forms-1.8.0.jar"/>
     </path>
     <target name="init">
