@@ -14,6 +14,12 @@
         <pathelement location="rUBERn/lib/hamcrest-core-1.3.jar"/>
         <pathelement location="rUBERn/jgoodies-forms-1.8.0.jar"/>
     </path>
+                    <path id="ClassPath">
+        <pathelement location="rUBERn/bin"/>
+        <pathelement location="rUBERn/lib/junit-4.12.jar"/>
+        <pathelement location="rUBERn/lib/hamcrest-core-1.3.jar"/>
+        <pathelement location="rUBERn/jgoodies-forms-1.8.0.jar"/>
+    </path>
     <target name="init">
         <mkdir dir="rUBERn/bin"/>
         <copy includeemptydirs="false" todir="bin">
