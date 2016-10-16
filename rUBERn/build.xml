@@ -51,6 +51,7 @@
       <pathelement location="rUBERn/lib/junit-4.12.jar"/>
     </classpath>    
     <batchtest>
+              <formatter type="plain" usefile="false" />
        <fileset dir="rUBERn/test">
             <include name="**/*Test*" />
        </fileset>
