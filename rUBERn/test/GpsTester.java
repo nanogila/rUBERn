@@ -24,6 +24,6 @@ public class GpsTester {
         Gps prueba2 = new Gps(20,10);
         long[] location = {10,20};
         double distance = prueba.getDistance(prueba2.getLocation());
-        assertEquals(16.14 , distance , 0.1);
+        assertEquals(14.14 , distance , 0.1);
     }
 }
