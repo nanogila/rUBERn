@@ -47,7 +47,7 @@
             <classpath refid="rUBERn.classpath"/>
                   </javac>
       </target>
-                <target name="test" depends="compile">
+                <target name="test" depends="build">
   <junit printsummary="yes" haltonfailure="yes">
     <classpath>
       <pathelement location="rUBERn/bin" />    
