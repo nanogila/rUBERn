@@ -34,21 +34,6 @@
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project" name="build"/>
     <target name="build-subprojects"/>
-                                                <target name="test" depends="build">
-<junit haltonfailure="no" failureproperty="test.failed" errorproperty="test.failed">
-    <classpath>
-      <pathelement location="rUBERn/bin" />    
-      <pathelement location="rUBERn/lib/junit-4.12.jar"/>
-    </classpath>    
-    <batchtest fork="yes" haltonfailure="yes">
-       <fileset dir="rUBERn/test">
-            <include name="**/*Test*" />
-       </fileset>
-    </batchtest>
-    <formatter type="brief" usefile="false"/>
-  </junit>
-  <fail message="Test failure detected, check test results." if="test.failed" />                                                
-</target>   
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="rUBERn/bin" includeantruntime="false" source="${source}" target="${target}">
@@ -56,7 +41,7 @@
             <src path="rUBERn/test"/>
             <classpath refid="rUBERn.classpath"/>
         </javac>
-      <junit>
+<junit haltonfailure="no" failureproperty="test.failed" errorproperty="test.failed">
     <classpath refid="rUBERn.classpath"/>    
     <batchtest>
        <fileset dir="rUBERn/test">
@@ -65,6 +50,7 @@
     </batchtest>
     <formatter type="brief" usefile="false"/>
   </junit>
+      <fail message="Test failure detected, check test results." if="test.failed" />
     </target>
 
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
