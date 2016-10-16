@@ -42,8 +42,8 @@
         </javac>
     </target>
                 <target name="compileTest" depends="build" description="compile jUnit Test cases ">
-    <javac srcdir="rUBERn/test" destdir="rUBERn/bin" includeantruntime="true" nowarn="yes" debug="true" />
-</target>
+    <javac debug="true" debuglevel="${debuglevel}" destdir="rUBERn/bin" includeantruntime="false" source="rUBERn/test" target="${target}">
+  </target>
                 <target name="test" depends="compileTest">
   <junit>
     <classpath>
