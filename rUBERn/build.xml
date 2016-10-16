@@ -56,7 +56,7 @@
             <classpath refid="rUBERn.classpath"/>
         </javac>
       <junit>
-    <classpath>
+    <classpath refid="rUBERn.classpath">
       <pathelement location="rUBERn/bin" />    
       <pathelement location="lib/junit-4.12.jar"/>
     </classpath>    
