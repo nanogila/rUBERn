@@ -27,6 +27,20 @@
             </fileset>
         </copy>
     </target>
+                                <target name="test" depends="build">
+<junit>
+    <classpath>
+      <pathelement location="rUBERn/bin" />    
+      <pathelement location="lib/junit-4.12.jar"/>
+    </classpath>    
+    <batchtest>
+       <fileset dir="rUBERn/test">
+            <include name="**/*Test*" />
+       </fileset>
+    </batchtest>
+    <formatter type="brief" usefile="false"/>
+  </junit>
+</target>   
     <target name="clean">
         <delete dir="rUBERn/bin"/>
     </target>
@@ -41,21 +55,7 @@
             <classpath refid="rUBERn.classpath"/>
         </javac>
     </target>
-                <target name="test" depends="build">
-  <junit printsummary="yes" haltonfailure="yes">
-    <classpath>
-      <pathelement location="rUBERn/bin" />    
-      <pathelement location="rUBERn/lib/junit-4.12.jar"/>
-            <pathelement location="rUBERn/test" /> 
-    </classpath>
-     <formatter type="plain" usefile="false" />
-    <batchtest>
-       <fileset dir="rUBERn/test">
-            <include name="**/*Test*" />
-       </fileset>
-    </batchtest>
-  </junit>
-</target>   
+
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
     <target name="AddUserGUI">
         <java classname="rUBERn.AddUserGUI" failonerror="true" fork="yes">
