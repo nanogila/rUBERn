@@ -27,7 +27,14 @@
             </fileset>
         </copy>
     </target>
-                                <target name="test" depends="build">
+
+    <target name="clean">
+        <delete dir="rUBERn/bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+                                                <target name="test" depends="build">
 <junit>
     <classpath>
       <pathelement location="rUBERn/bin" />    
@@ -41,12 +48,6 @@
     <formatter type="brief" usefile="false"/>
   </junit>
 </target>   
-    <target name="clean">
-        <delete dir="rUBERn/bin"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="rUBERn/bin" includeantruntime="false" source="${source}" target="${target}">
