@@ -16,7 +16,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
-public class UserList extends JDialog {
+public class UserListGUI extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JScrollPane scrollPane;
@@ -27,7 +27,7 @@ public class UserList extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public UserList(String[] columnNames, Object[][] data) {
+	public UserListGUI(String[] columnNames, Object[][] data) {
 		setVisible(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());

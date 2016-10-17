@@ -45,7 +45,7 @@ public void seeUsers() {
 			 }
 	 }
 		 }
-	 new UserList(columns, data);
+	 new UserListGUI(columns, data);
 }
 public boolean removeUser(User aUser) {
 	if(aUser.getName().equals("")){
