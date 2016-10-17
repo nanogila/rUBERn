@@ -15,8 +15,6 @@ public class GpsTester {
         long[] location2 = prueba.getLocation();
         assertEquals(location[0],location2[0] );
         assertEquals(location[1],location2[1] );
-
-
     }
     @Test
     public void distanceTester(){
@@ -25,5 +23,14 @@ public class GpsTester {
         long[] location = {10,20};
         double distance = prueba.getDistance(prueba2.getLocation());
         assertEquals(14.14 , distance , 0.1);
+    }
+    @Test
+    public void updateLocationTester(){
+        Gps prueba = new Gps(10,20);
+        long[] location = {34,20};
+        prueba.updateLocation(34, 20);
+        long[] newLocation = prueba.getLocation();
+        assertEquals(location[0],newLocation[0] );
+        assertEquals(location[1],newLocation[1] );
     }
 }
