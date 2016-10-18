@@ -23,5 +23,8 @@ public class Matrix {
 	public User getUser(String aName) {
 		return base.getUser(aName);
 	}
+	public boolean updateUserLocation (long x, long y, String aName) {
+		return base.updateUserLocation(x, y, aName);
+	}
 
 }

@@ -18,12 +18,14 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
 
 public class MatrixGUI {
 private Matrix theMatrix;
 	private JFrame Main;
 	private final Action action = new SwingAction();
 	private final Action action_1 = new SeeUsers();
+	private final Action action_2 = new ChangeUserLocation();
 
 	/**
 	 * Launch the application.
@@ -75,6 +77,13 @@ EventQueue.invokeLater(new Runnable() {
 		
 		JButton seeUsers = new JButton("New button");
 		seeUsers.setAction(action_1);
+		
+		JButton btnUpdateUserLocation = new JButton("Update user location");
+		btnUpdateUserLocation.setAction(action_2);
+		btnUpdateUserLocation.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(Main.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -83,11 +92,15 @@ EventQueue.invokeLater(new Runnable() {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblChooseAnAction)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+							.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
 						.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
 					.addGap(20))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(106)
+					.addComponent(btnUpdateUserLocation)
+					.addContainerGap(117, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -100,7 +113,9 @@ EventQueue.invokeLater(new Runnable() {
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAddUser)
 						.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(34, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnUpdateUserLocation)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		Main.getContentPane().setLayout(groupLayout);
 	}
@@ -120,6 +135,15 @@ EventQueue.invokeLater(new Runnable() {
 		}
 		public void actionPerformed(ActionEvent e) {
 			theMatrix.seeUsers();
+		}
+	}
+	private class ChangeUserLocation extends AbstractAction {
+		public ChangeUserLocation() {
+			putValue(NAME, "Update user location");
+			putValue(SHORT_DESCRIPTION, "The button is pretty explicit");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new UpdateUserLocationGUI(theMatrix);
 		}
 	}
 }

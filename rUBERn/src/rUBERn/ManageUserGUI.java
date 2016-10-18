@@ -195,7 +195,7 @@ public class ManageUserGUI extends JDialog {
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
 				String name = userName.getText().trim();
-				if (name.equals("")) new NullPointerException();
+				if (name.equals("")) throw new NullPointerException();
 				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
 					
 					cardNumber=	Integer.parseInt(card);

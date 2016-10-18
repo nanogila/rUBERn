@@ -34,14 +34,16 @@ return true;
 public void seeUsers() {
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
-	 String[] columns = {"name", "credit card number"};
-	 Object[][] data = new Object[users.size()][2];
+	 String[] columns = {"Name", "Credit card number", "Location"};
+	 Object[][] data = new Object[users.size()][3];
 	 for (int i=0; i<arrayUsers.length; i++) {
-		 for (int j=0; j<2; j++) {
+		 for (int j=0; j<3; j++) {
 			 if(j==0) {
 	 data[i][j] = arrayUsers[i].getName();
-			 }else {
+			 }else if (j==1){
 				 data[i][j] = arrayUsers[i].getCard();
+			 }else {
+				 data[i][j] = arrayUsers[i].getLocation();
 			 }
 	 }
 		 }
@@ -72,5 +74,18 @@ public User getUser(String aName) {
 	new Error(aName+" is not registered");
 	return null;
 }
-
+public boolean updateUserLocation (long X, long Y, String aName){
+	if(aName.equals("")){
+		new Error("name is empty");
+		
+		return false;
+	}else if (!checkName(getUser(aName))) {
+		return false;
+	}else {
+		User aUser = getUser(aName);
+		aUser.updateLocation(X, Y);
+		new Error("Location successfully updated");
+		return true;
+	}
+}
 }

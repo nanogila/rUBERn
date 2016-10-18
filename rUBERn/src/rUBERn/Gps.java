@@ -13,6 +13,9 @@ public Gps(){
 		long[] location = {coordinateX, coordinateY};
 		return location;
 	}
+	public String toString() {
+		return "["+coordinateX+", "+coordinateY+"]";
+	}
 	public void updateLocation(long x, long y) {
 		coordinateX = x;
 		coordinateY = y;

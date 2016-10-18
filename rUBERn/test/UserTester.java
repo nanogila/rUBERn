@@ -15,5 +15,11 @@ public class UserTester {
 		assertEquals((Integer)2134, Juan.getCard());
 
 	}
+	@Test
+	public void testGetLocation() {
+		User Juan = new User("Juan", 2134);
+		Juan.updateLocation(123, 456);
+		assertEquals("[123, 456]", Juan.getLocation());
 
+	}
 }
