@@ -30,26 +30,6 @@ private Matrix theMatrix;
 	private final Action action = new SwingAction();
 	private final Action action_1 = new SeeUsers();
 	private final Action action_2 = new ChangeUserLocation();
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					ClientBase base=new ClientBase();
-					Matrix theMatrix = new Matrix(base);
-					MatrixGUI window = new MatrixGUI(theMatrix);
-					window.Main.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
@@ -65,7 +45,7 @@ EventQueue.invokeLater(new Runnable() {
 		Main = new JFrame();
 		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		Main.setResizable(false);
-		Main.setTitle("rUBERn - Grupo 3");
+		Main.setTitle("rUBERn - Group 3");
 		Main.setBounds(100, 100, 360, 179);
 		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
