@@ -38,7 +38,7 @@ private Matrix theMatrix;
 		theMatrix = aMatrix;
 	}
 
-	/**
+	/*
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
