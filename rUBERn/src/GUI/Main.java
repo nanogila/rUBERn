@@ -14,11 +14,15 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.AbstractAction;
+import java.awt.event.ActionEvent;
+import javax.swing.Action;
 
 public class Main {
 
 	private JFrame frmRubern;
 	private Matrix theMatrix;
+	private final Action action = new SwingAction();
 	/**
 	 * Launch the application.
 	 */
@@ -51,6 +55,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frmRubern = new JFrame();
+		frmRubern.setResizable(false);
 		frmRubern.setTitle("rUBERn - Group 3");
 		frmRubern.setBounds(100, 100, 231, 160);
 		frmRubern.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,6 +72,7 @@ public class Main {
 		JButton btnDriver = new JButton("Driver");
 		
 		JButton btnAdmin = new JButton("Admin");
+		btnAdmin.setAction(action);
 		GroupLayout groupLayout = new GroupLayout(frmRubern.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -103,5 +109,15 @@ public class Main {
 					.addContainerGap(52, Short.MAX_VALUE))
 		);
 		frmRubern.getContentPane().setLayout(groupLayout);
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Admin");
+			putValue(SHORT_DESCRIPTION, "Enter rUBERn as admin");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new MatrixGUI(theMatrix);
+			frmRubern.setVisible(false);
+		}
 	}
 }

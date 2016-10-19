@@ -26,7 +26,7 @@ import java.awt.event.ActionListener;
 
 public class MatrixGUI {
 private Matrix theMatrix;
-	private JFrame Main;
+	private JFrame frame;
 	private final Action action = new SwingAction();
 	private final Action action_1 = new SeeUsers();
 	private final Action action_2 = new ChangeUserLocation();
@@ -42,12 +42,13 @@ private Matrix theMatrix;
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		Main = new JFrame();
+		frame = new JFrame();
+		frame.setVisible(true);
 		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
-		Main.setResizable(false);
-		Main.setTitle("rUBERn - Group 3");
-		Main.setBounds(100, 100, 360, 179);
-		Main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.setTitle("rUBERn - Group 3");
+		frame.setBounds(100, 100, 360, 179);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblBienvenidoARubern = new JLabel("Welcome to rUBERn");
 		lblBienvenidoARubern.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -68,7 +69,7 @@ private Matrix theMatrix;
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		GroupLayout groupLayout = new GroupLayout(Main.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -101,7 +102,7 @@ private Matrix theMatrix;
 					.addComponent(btnUpdateUserLocation)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		Main.getContentPane().setLayout(groupLayout);
+		frame.getContentPane().setLayout(groupLayout);
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
