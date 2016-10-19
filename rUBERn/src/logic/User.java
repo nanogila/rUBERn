@@ -1,4 +1,4 @@
-package rUBERn;
+package logic;
 
 public class User {
 private String name;

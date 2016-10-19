@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-import rUBERn.*;
+
+import logic.*;
 
 public class UserTester {
 	@Test
@@ -12,7 +13,7 @@ public class UserTester {
 	@Test
 	public void testGetCard() {
 		User Juan = new User("Juan", 2134);
-		assertEquals((Integer)22134, Juan.getCard());
+		assertEquals((Integer)2134, Juan.getCard());
 
 	}
 	@Test

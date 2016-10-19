@@ -1,4 +1,4 @@
-package rUBERn;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.Dialog;
@@ -25,6 +25,11 @@ import javax.swing.ButtonGroup;
 import java.awt.Dialog.ModalityType;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.event.ChangeListener;
+
+import logic.Error;
+import logic.Matrix;
+import logic.User;
+
 import javax.swing.event.ChangeEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;

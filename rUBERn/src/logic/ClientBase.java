@@ -1,6 +1,8 @@
-package rUBERn;
+package logic;
 
 import java.util.*;
+
+import GUI.UserListGUI;
 
 public class ClientBase {
 private List<User> users;

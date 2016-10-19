@@ -1,4 +1,4 @@
-package rUBERn;
+package logic;
 
 //import java.util.Scanner;
 

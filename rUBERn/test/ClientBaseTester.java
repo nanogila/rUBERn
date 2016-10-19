@@ -1,6 +1,8 @@
 import org.junit.*;
 import org.junit.rules.*;
-import rUBERn.*;
+
+import logic.*;
+
 import static org.junit.Assert.*;
 
 /**

@@ -1,4 +1,4 @@
-package rUBERn;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -7,6 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logic.Error;
+import logic.Matrix;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -148,10 +152,8 @@ public class UpdateUserLocationGUI extends JDialog {
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");
 			if (rawLocationX.length() >0 && rawLocationX.length() > 0 && rawLocationX.length() < 11 && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
-				if (rawLocationX.length()==1)rawLocationX="00"+rawLocationX;
-				if (rawLocationY.length()==1)rawLocationY="00"+rawLocationY;
-				if (rawLocationX.length()==2)rawLocationX="0"+rawLocationX;
-				if (rawLocationY.length()==1)rawLocationY="0"+rawLocationY;
+				rawLocationX="00"+rawLocationX;
+				rawLocationY="00"+rawLocationY;
 				aLocationX=	Long.parseLong(rawLocationX);
 				aLocationY=	Long.parseLong(rawLocationY);
 				if (theMatrix.updateUserLocation(aLocationX, aLocationY, name)) dispose();

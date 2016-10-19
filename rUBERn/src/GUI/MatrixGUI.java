@@ -1,4 +1,4 @@
-package rUBERn;
+package GUI;
 
 import java.awt.EventQueue;
 
@@ -14,6 +14,10 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import logic.ClientBase;
+import logic.Matrix;
+
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;

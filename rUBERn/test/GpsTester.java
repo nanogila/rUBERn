@@ -1,5 +1,6 @@
 import org.junit.Test;
-import rUBERn.*;
+
+import logic.*;
 
 import static org.junit.Assert.assertEquals;
 
