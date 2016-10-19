@@ -1,5 +1,5 @@
 package logic;
-//algo
+//algo2
 import java.util.*;
 
 import GUI.UserListGUI;
