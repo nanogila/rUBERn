@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-//algo
+//prueba
 public class MatrixGUI {
 private Matrix theMatrix;
 	private JFrame frame;
