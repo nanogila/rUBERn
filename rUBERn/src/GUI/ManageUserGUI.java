@@ -26,7 +26,6 @@ import java.awt.Dialog.ModalityType;
 import java.awt.Dialog.ModalExclusionType;
 import javax.swing.event.ChangeListener;
 
-import logic.Error;
 import logic.Matrix;
 import logic.User;
 
@@ -200,7 +199,7 @@ public class ManageUserGUI extends JDialog {
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
 				String name = userName.getText().trim();
-				if (name.equals("")) throw new NullPointerException();
+				if (name.equals("")) new Error("Name can't be empty");
 				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
 					
 					cardNumber=	Integer.parseInt(card);

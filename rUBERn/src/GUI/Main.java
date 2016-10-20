@@ -23,6 +23,7 @@ public class Main {
 	private JFrame frmRubern;
 	private Matrix theMatrix;
 	private final Action action = new SwingAction();
+	private final Action action_1 = new ShowClientGUI();
 	/**
 	 * Launch the application.
 	 */
@@ -34,7 +35,7 @@ public class Main {
 					ClientBase base=new ClientBase();
 					Matrix theMatrix = new Matrix(base);
 					Main window = new Main(theMatrix);
-					window.frmRubern.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,7 +60,7 @@ public class Main {
 		frmRubern.setTitle("rUBERn - Group 3");
 		frmRubern.setBounds(100, 100, 231, 160);
 		frmRubern.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frmRubern.setVisible(true);
 		JLabel label = new JLabel("Welcome to rUBERn");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -68,6 +69,7 @@ public class Main {
 		lblEnterRubernAs.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		
 		JButton btnClient = new JButton("Client");
+		btnClient.setAction(action_1);
 		
 		JButton btnDriver = new JButton("Driver");
 		
@@ -117,7 +119,17 @@ public class Main {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new MatrixGUI(theMatrix);
-			frmRubern.setVisible(false);
+			frmRubern.dispose();
+		}
+	}
+	private class ShowClientGUI extends AbstractAction {
+		public ShowClientGUI() {
+			putValue(NAME, "Client");
+			putValue(SHORT_DESCRIPTION, "Enter rUBERn as a client");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new ClientGUI(theMatrix);
+			frmRubern.dispose();
 		}
 	}
 }

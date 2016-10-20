@@ -2,6 +2,7 @@ package logic;
 //pruebz
 import java.util.*;
 
+import GUI.Error;
 import GUI.UserListGUI;
 
 public class ClientBase {

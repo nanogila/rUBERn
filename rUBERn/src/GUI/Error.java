@@ -1,4 +1,4 @@
-package logic;
+package GUI;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -27,6 +27,7 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
+		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(100, 100, 264, 204);
 		setVisible(true);
