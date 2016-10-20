@@ -159,7 +159,7 @@ public class UpdateUserLocationGUI extends JDialog {
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");
 			 if(!rawLocationY.matches("[0-9]+")&&!rawLocationY.equals("")) new Error("Location Y field can't contain letters");}
 		}catch(NullPointerException a) {
-			new Error("Name or location fields are empty");
+			new Error("Unknown error");
 		}
 		}
 		}

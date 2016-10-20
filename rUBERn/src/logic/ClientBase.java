@@ -82,7 +82,8 @@ public boolean updateUserLocation (long X, long Y, String aName){
 		new Error("name is empty");
 		
 		return false;
-	}else if (!checkName(getUser(aName))) {
+	}else if (getUser(aName)==null) return false;
+	else if (!checkName(getUser(aName))) {
 		return false;
 	}else {
 		User aUser = getUser(aName);
