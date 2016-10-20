@@ -26,5 +26,8 @@ public class Matrix {
 	public boolean updateUserLocation (long x, long y, String aName) {
 		return base.updateUserLocation(x, y, aName);
 	}
+	public boolean checkPassword(String aUser , String aPassword){
+		return base.checkPassword(aUser , aPassword);
+	}
 
 }
