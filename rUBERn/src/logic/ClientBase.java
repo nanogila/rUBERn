@@ -92,4 +92,23 @@ public boolean updateUserLocation (long X, long Y, String aName){
 		return true;
 	}
 }
+public boolean checkPassword(String aUser , String aPassword){
+	if(aUser.equals("")){
+		new Error("Name can't be empty");
+		return false;
+	}
+	User theUser = getUser(aUser);
+	if(theUser== null){
+		return false;
+	}
+	if(aPassword.equals("")){
+		new Error("Password can't be empty");
+		return false;
+	}
+	else if(aPassword.equals(theUser.getPassword())){
+		return true;
+	}
+
+	return false;
+}
 }
