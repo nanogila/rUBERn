@@ -172,7 +172,7 @@ private JPasswordField userPassword2;
 				if (!(rawUserPassword.equals(rawConfirmPassword))){
 					new Error("Passwords don't match");
 				}else {
-					String password = userPassword.getPassword().toString().trim();
+					String password = rawUserPassword;
 				if (name.equals("")) new Error("Name can't be empty");
 				else if(password.length()<6) {
 					new Error("Password must be 5 characters long");
