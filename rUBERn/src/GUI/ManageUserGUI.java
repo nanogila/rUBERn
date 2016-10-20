@@ -32,6 +32,7 @@ import logic.User;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JPasswordField;
 
 public class ManageUserGUI extends JDialog {
 	private Matrix theMatrix;
@@ -48,6 +49,8 @@ public class ManageUserGUI extends JDialog {
 	private final Action action_3 = new RemoveUserRadioBtn();
 	private JRadioButton addUser;
 	private JRadioButton removeUser;
+	private JLabel lblPassword;
+	private JPasswordField userPassword;
 
 	/**
 	 * Launch the application.
@@ -70,7 +73,7 @@ public class ManageUserGUI extends JDialog {
 		action_1  = new AddAUser(theMatrix);
 		setVisible(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 378, 173);
+		setBounds(100, 100, 378, 242);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -105,22 +108,29 @@ public class ManageUserGUI extends JDialog {
 		removeUser.setAction(action_3);
 		buttonGroup.add(removeUser);
 		
+		lblPassword = new JLabel("Password: ");
+		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		userPassword = new JPasswordField();
+		
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblPassword)
 						.addComponent(lblNombreYApellido)
 						.addComponent(lblCreditCardNumber))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
 							.addComponent(addUser)
-							.addPreferredGap(ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
 							.addComponent(removeUser))
-						.addComponent(userCard, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-						.addComponent(userName, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
+						.addComponent(userCard, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+						.addComponent(userName, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+						.addComponent(userPassword, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		gl_contentPanel.setVerticalGroup(
@@ -138,7 +148,11 @@ public class ManageUserGUI extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCreditCardNumber)
 						.addComponent(userCard, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(userPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(51, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
@@ -198,12 +212,13 @@ public class ManageUserGUI extends JDialog {
 				if(addUser.isSelected()) {
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
+				String password = userPassword.getPassword().toString().trim();
 				String name = userName.getText().trim();
 				if (name.equals("")) new Error("Name can't be empty");
-				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
-					
+				if (password.length()<6) new Error("Password must be 5 characters long");
+				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+") && password.length()>5 && !(name.equals(""))) {
 					cardNumber=	Integer.parseInt(card);
-					User someone = new User(name, cardNumber);
+					User someone = new User(name, cardNumber, password);
 					//theMatrix.addUser(someone);
 					if (theMatrix.addUser(someone)) dispose();
 				}else new Error("Invalid credit card number");
@@ -231,6 +246,7 @@ public class ManageUserGUI extends JDialog {
 		}
 		public void actionPerformed(ActionEvent e) {
 			userCard.setEnabled(true);
+			userPassword.setEnabled(true);
 		}
 	}
 	private class RemoveUserRadioBtn extends AbstractAction {
@@ -240,6 +256,7 @@ public class ManageUserGUI extends JDialog {
 		}
 		public void actionPerformed(ActionEvent e) {
 			userCard.setEnabled(false);
+			userPassword.setEnabled(false);
 		}
 	}
 }

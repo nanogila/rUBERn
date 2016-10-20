@@ -15,7 +15,7 @@ public class ClientBaseTester {
     public void addUserTester(){
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos);
-        User Tomas = new User("Tomas" , 12345);
+        User Tomas = new User("Tomas" , 12345, "hola");
         sistema.addUser(Tomas);
         
     }
@@ -23,7 +23,7 @@ public class ClientBaseTester {
     public void addUserFailTester(){
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos);
-        User Tomas = new User("" , 12345);
+        User Tomas = new User("" , 12345, "gola");
         boolean result = !sistema.addUser(Tomas);
         assertTrue(result);
     }
@@ -31,7 +31,7 @@ public class ClientBaseTester {
     public void removeUserTester(){
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos);
-        User Tomas = new User("Tomas" , 12345);
+        User Tomas = new User("Tomas" , 12345, "hola");
         sistema.addUser(Tomas);
         sistema.removeUser(Tomas);
         assertNull(sistema.getUser(Tomas.getName()));
@@ -41,8 +41,8 @@ public class ClientBaseTester {
     public void removeUserFailTester(){
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos);
-        User Tomas = new User("Tomas" , 12345);
-        User Mario = new User("Mario" , 12345);
+        User Tomas = new User("Tomas" , 12345, "dsfgv");
+        User Mario = new User("Mario" , 12345, "sdsdf");
         sistema.addUser(Tomas);
         sistema.removeUser(Mario);
         assertEquals(Tomas, sistema.getUser(Tomas.getName()));
