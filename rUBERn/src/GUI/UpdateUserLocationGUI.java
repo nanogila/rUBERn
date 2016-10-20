@@ -237,7 +237,7 @@ public class UpdateUserLocationGUI extends JDialog {
 			String rawLocationX = locationX.getText().trim();
 			String rawLocationY = locationY.getText().trim();
 			String name;
-			if (theUser!=null) name = userName.getText().trim();
+			if (theUser==null) name = userName.getText().trim();
 			else name = theUser.getName();
 			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
