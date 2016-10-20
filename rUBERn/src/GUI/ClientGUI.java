@@ -35,7 +35,7 @@ public class ClientGUI extends JDialog {
 		setVisible(true);
 		setTitle("rUBERn - Group 3");
 		setResizable(false);
-		setBounds(100, 100, 176, 160);
+		setBounds(100, 100, 230, 160);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);

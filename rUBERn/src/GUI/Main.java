@@ -58,7 +58,7 @@ public class Main {
 		frmRubern = new JFrame();
 		frmRubern.setResizable(false);
 		frmRubern.setTitle("rUBERn - Group 3");
-		frmRubern.setBounds(100, 100, 231, 160);
+		frmRubern.setBounds(100, 100, 299, 160);
 		frmRubern.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRubern.setVisible(true);
 		JLabel label = new JLabel("Welcome to rUBERn");
