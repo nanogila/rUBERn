@@ -78,7 +78,7 @@ public class ManageUserGUI extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
-			lblNombreYApellido = new JLabel("First and last name: ");
+			lblNombreYApellido = new JLabel("Username: ");
 			lblNombreYApellido.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		}
 		JLabel lblCreditCardNumber = new JLabel("Credit card number: ");
@@ -212,7 +212,7 @@ public class ManageUserGUI extends JDialog {
 				if(addUser.isSelected()) {
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
-				String password = userPassword.getPassword().toString().trim();
+				String password = String.valueOf(userPassword.getPassword()).trim();
 				String name = userName.getText().trim();
 				if (name.equals("")) new Error("Name can't be empty");
 				if (password.length()<6) new Error("Password must be 5 characters long");

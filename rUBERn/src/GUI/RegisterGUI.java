@@ -49,8 +49,8 @@ private JPasswordField userPassword2;
 		JLabel lblRegister = new JLabel("Register:");
 		lblRegister.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
-		JLabel label = new JLabel("First and last name: ");
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userName = new JTextField();
 		userName.setColumns(10);
@@ -82,7 +82,7 @@ private JPasswordField userPassword2;
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
 							.addGap(3)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
 							.addComponent(userName, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
 						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
@@ -112,7 +112,7 @@ private JPasswordField userPassword2;
 					.addComponent(lblRegister)
 					.addGap(19)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(label, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
 						.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(8)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
@@ -167,7 +167,9 @@ private JPasswordField userPassword2;
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
 				String name = userName.getText().trim();
-				if (!(userPassword.getPassword().toString().equals(userPassword2.getPassword().toString()))) {
+				String rawUserPassword=String.valueOf(userPassword.getPassword()).trim();
+				String rawConfirmPassword=String.valueOf(userPassword2.getPassword()).trim();
+				if (!(rawUserPassword.equals(rawConfirmPassword))){
 					new Error("Passwords don't match");
 				}else {
 					String password = userPassword.getPassword().toString().trim();
