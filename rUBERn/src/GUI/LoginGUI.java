@@ -18,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import javax.swing.JPasswordField;
 
 public class LoginGUI extends JDialog {
 
@@ -25,6 +26,7 @@ public class LoginGUI extends JDialog {
 	private Matrix theMatrix;
 	private JTextField userName;
 	private final Action action = new Close();
+	private JPasswordField userPassword;
 	/**
 	 * Create the dialog.
 	 */
@@ -34,7 +36,7 @@ public class LoginGUI extends JDialog {
 		theMatrix = aMatrix;
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setBounds(100, 100, 337, 162);
+		setBounds(100, 100, 337, 214);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -42,11 +44,16 @@ public class LoginGUI extends JDialog {
 		JLabel lblLogIn = new JLabel("Log in:");
 		lblLogIn.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
-		JLabel label = new JLabel("First and last name: ");
-		label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userName = new JTextField();
 		userName.setColumns(10);
+		
+		JLabel label_1 = new JLabel("Password: ");
+		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		userPassword = new JPasswordField();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -55,10 +62,15 @@ public class LoginGUI extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblLogIn)
 						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
+							.addGap(41)
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(userName, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(78, Short.MAX_VALUE))
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(userPassword)
+								.addComponent(userName, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))))
+					.addContainerGap(16, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -66,13 +78,17 @@ public class LoginGUI extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(lblLogIn)
-							.addGap(19)
-							.addComponent(label, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+							.addComponent(lblLogIn))
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGap(49)
-							.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(178, Short.MAX_VALUE))
+							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+								.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(userPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(42, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
