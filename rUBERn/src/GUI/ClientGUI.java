@@ -27,6 +27,7 @@ public class ClientGUI extends JDialog {
 	private final Action action = new CancelAction();
 	Matrix theMatrix;
 	private final Action action_1 = new SwingAction();
+	private final Action action_2 = new Login();
 	/**
 	 * Create the dialog.
 	 */
@@ -47,6 +48,7 @@ public class ClientGUI extends JDialog {
 		JButton btnRegister = new JButton("Register");
 		btnRegister.setAction(action_1);
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setAction(action_2);
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -93,6 +95,7 @@ public class ClientGUI extends JDialog {
 			putValue(SHORT_DESCRIPTION, "Return to home");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new Main(theMatrix);
 			dispose();
 			
 		}
@@ -104,6 +107,16 @@ public class ClientGUI extends JDialog {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new RegisterGUI(theMatrix);
+			dispose();
+		}
+	}
+	private class Login extends AbstractAction {
+		public Login() {
+			putValue(NAME, "Log in");
+			putValue(SHORT_DESCRIPTION, "Log in as user");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new LoginGUI(theMatrix);
 			dispose();
 		}
 	}
