@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import GUI.Error;
 import logic.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -27,6 +28,7 @@ public class LoginGUI extends JDialog {
 	private JTextField userName;
 	private final Action action = new Close();
 	private JPasswordField userPassword;
+	private final Action action_1 = new SwingAction();
 	/**
 	 * Create the dialog.
 	 */
@@ -97,6 +99,7 @@ public class LoginGUI extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.setAction(action_1);
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -117,6 +120,31 @@ public class LoginGUI extends JDialog {
 		public void actionPerformed(ActionEvent e) {
 			new ClientGUI(theMatrix);
 			dispose();
+		}
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Ok");
+			putValue(SHORT_DESCRIPTION, "Attempt to log in");
+		}
+		public void actionPerformed(ActionEvent e) {
+			try {
+				String name = userName.getText().trim();
+				String password=String.valueOf(userPassword.getPassword()).trim();
+				if (name.equals("")) new Error("Name can't be empty");
+				else if(password.length()<5) {
+					new Error("Password must be 5 characters long");
+				}
+				else if (theMatrix.checkPassword(name, password)) {
+					User someone = theMatrix.getUser(name);
+						new PostLogin(theMatrix, someone);
+						dispose();
+				}else new Error("Invalid username or password");
+					
+			}catch(NullPointerException a) {
+				new Error("Unknown error");
+
+			}
 		}
 	}
 }

@@ -174,7 +174,7 @@ private JPasswordField userPassword2;
 				}else {
 					String password = rawUserPassword;
 				if (name.equals("")) new Error("Name can't be empty");
-				else if(password.length()<6) {
+				else if(password.length()<5) {
 					new Error("Password must be 5 characters long");
 				}
 				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
@@ -182,7 +182,7 @@ private JPasswordField userPassword2;
 					User someone = new User(name, cardNumber, password);
 					//theMatrix.addUser(someone);
 					if (theMatrix.addUser(someone)) {
-						new Main(theMatrix);
+						new PostLogin(theMatrix, someone);
 						dispose();
 					}
 				}else new Error("Invalid credit card number");

@@ -8,7 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import logic.Matrix;
+import logic.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -24,16 +24,106 @@ import javax.swing.Action;
 public class UpdateUserLocationGUI extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField userName;
-	private JLabel label;
 	private JTextField locationX;
 	private JTextField locationY;
 	private final Action action = new Ok();
 	private Matrix theMatrix;
+	private User theUser;
+	private JLabel label;
+	private JTextField userName;
 	/**
 	 * Create the dialog.
 	 */
+	public UpdateUserLocationGUI(Matrix aMatrix, User aUser) {
+		theUser=aUser;
+		theMatrix = aMatrix;
+		setTitle("rUBERn - Grupo 3");
+		setResizable(false);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setVisible(true);
+		setBounds(100, 100, 321, 229);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		
+		JLabel lblUpdateUserLocation = new JLabel("Update user location:");
+		lblUpdateUserLocation.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		
+		JLabel newLocationX = new JLabel("New location X:");
+		newLocationX.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		JLabel newLocationY = new JLabel("New location Y:");
+		newLocationY.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		locationX = new JTextField();
+		locationX.setColumns(10);
+		
+		locationY = new JTextField();
+		locationY.setColumns(10);
+		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
+		gl_contentPanel.setHorizontalGroup(
+			gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(21)
+							.addComponent(lblUpdateUserLocation))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(newLocationY)
+							.addGap(18)
+							.addComponent(locationY, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(newLocationX)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
+		gl_contentPanel.setVerticalGroup(
+			gl_contentPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(27)
+					.addComponent(lblUpdateUserLocation)
+					.addGap(18)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(newLocationX)
+						.addComponent(locationX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(locationY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(newLocationY))
+					.addGap(24))
+		);
+		contentPanel.setLayout(gl_contentPanel);
+		{
+			JPanel buttonPane = new JPanel();
+			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			{
+				JButton okButton = new JButton("OK");
+				okButton.setAction(action);
+				okButton.setActionCommand("OK");
+				buttonPane.add(okButton);
+				getRootPane().setDefaultButton(okButton);
+			}
+			{
+				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
+				cancelButton.setActionCommand("Cancel");
+				buttonPane.add(cancelButton);
+			}
+		}
+	}
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public UpdateUserLocationGUI(Matrix aMatrix) {
+		theUser = null;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");
 		setResizable(false);
@@ -146,7 +236,9 @@ public class UpdateUserLocationGUI extends JDialog {
 			long aLocationY=0;
 			String rawLocationX = locationX.getText().trim();
 			String rawLocationY = locationY.getText().trim();
-			String name = userName.getText().trim();
+			String name;
+			if (theUser!=null) name = userName.getText().trim();
+			else name = theUser.getName();
 			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");

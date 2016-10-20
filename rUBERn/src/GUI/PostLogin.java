@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class PostLogin extends JDialog {
 
@@ -83,17 +84,6 @@ public class PostLogin extends JDialog {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
 		}
 	}
 	private class UpdateLocation extends AbstractAction {
@@ -118,6 +108,8 @@ public class PostLogin extends JDialog {
 			putValue(SHORT_DESCRIPTION, "Log out of the system");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new Main(theMatrix);
+			dispose();
 		}
 	}
 }

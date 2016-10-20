@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -20,8 +21,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
-public class ClientGUI extends JDialog {
-
+public class ClientGUI extends JFrame {
 	private final JPanel contentPanel = new JPanel();
 	private JLabel lblChooseAnOption;
 	private final Action action = new CancelAction();

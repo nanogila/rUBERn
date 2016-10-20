@@ -23,13 +23,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
-//prueba
+
 public class MatrixGUI {
 private Matrix theMatrix;
 	private JFrame frame;
 	private final Action action = new SwingAction();
 	private final Action action_1 = new SeeUsers();
 	private final Action action_2 = new ChangeUserLocation();
+	private final Action action_3 = new SwingAction_1();
 	/**
 	 * Create the application.
 	 */
@@ -47,7 +48,7 @@ private Matrix theMatrix;
 		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		frame.setResizable(false);
 		frame.setTitle("rUBERn - Group 3");
-		frame.setBounds(100, 100, 360, 179);
+		frame.setBounds(100, 100, 423, 206);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblBienvenidoARubern = new JLabel("Welcome to rUBERn");
@@ -58,7 +59,7 @@ private Matrix theMatrix;
 		btnAddUser.setAction(action);
 		
 		JLabel lblChooseAnAction = new JLabel("Choose an action:");
-		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+		lblChooseAnAction.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		
 		JButton seeUsers = new JButton("New button");
 		seeUsers.setAction(action_1);
@@ -69,23 +70,36 @@ private Matrix theMatrix;
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
+		
+		JButton button = new JButton("Return to main window");
+		button.setAction(action_3);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		button.setActionCommand("Cancel");
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblChooseAnAction)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblChooseAnAction)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED))
+								.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
+							.addGap(20))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnUpdateUserLocation)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE))
-						.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
-					.addGap(20))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(106)
-					.addComponent(btnUpdateUserLocation)
-					.addContainerGap(117, Short.MAX_VALUE))
+							.addComponent(button, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(22, Short.MAX_VALUE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -98,9 +112,11 @@ private Matrix theMatrix;
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnAddUser)
 						.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnUpdateUserLocation)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnUpdateUserLocation)
+						.addComponent(button))
+					.addContainerGap(24, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
@@ -129,6 +145,16 @@ private Matrix theMatrix;
 		}
 		public void actionPerformed(ActionEvent e) {
 			new UpdateUserLocationGUI(theMatrix);
+		}
+	}
+	private class SwingAction_1 extends AbstractAction {
+		public SwingAction_1() {
+			putValue(NAME, "Return to main window");
+			putValue(SHORT_DESCRIPTION, "etc");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new Main(theMatrix);
+			frame.dispose();
 		}
 	}
 }

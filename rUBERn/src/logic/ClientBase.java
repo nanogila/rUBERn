@@ -74,7 +74,6 @@ public User getUser(String aName) {
 		return arrayUsers[i];
 	}
 	}
-	new Error(aName+" is not registered");
 	return null;
 }
 public boolean updateUserLocation (long X, long Y, String aName){
@@ -83,6 +82,7 @@ public boolean updateUserLocation (long X, long Y, String aName){
 		
 		return false;
 	}else if (getUser(aName)==null) {
+		new Error(aName+" is not registered");
 		return false;
 	}
 	else {

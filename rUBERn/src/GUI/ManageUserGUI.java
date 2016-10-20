@@ -215,11 +215,11 @@ public class ManageUserGUI extends JDialog {
 				String password = String.valueOf(userPassword.getPassword()).trim();
 				String name = userName.getText().trim();
 				if (name.equals("")) new Error("Name can't be empty");
-				if (password.length()<6) new Error("Password must be 5 characters long");
-				if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+") && password.length()>5 && !(name.equals(""))) {
+				if (password.length()<5) new Error("Password must be 5 characters long");
+				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+") && !(name.equals(""))) {
 					cardNumber=	Integer.parseInt(card);
 					User someone = new User(name, cardNumber, password);
-					//theMatrix.addUser(someone);
+					
 					if (theMatrix.addUser(someone)) dispose();
 				}else new Error("Invalid credit card number");
 				}else if (removeUser.isSelected()) {
@@ -229,7 +229,7 @@ public class ManageUserGUI extends JDialog {
 					User someone = theMatrix.getUser(name);
 					if(theMatrix.removeUser(someone)) dispose(); 
 					
-				}
+				}else new Error(name+" is not registered");
 					}
 			}catch(NullPointerException a) {
 				new Error("Name or credit card number are empty");
