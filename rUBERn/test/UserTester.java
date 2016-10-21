@@ -13,7 +13,7 @@ public class UserTester {
 	@Test
 	public void testGetCard() {
 		User Juan = new User("Juan", 2134, "gol");
-		assertEquals((Integer)2134, Juan.getCard());
+		assertEquals((Integer)2134, Juan.getCardNumber());
 
 	}
 	@Test

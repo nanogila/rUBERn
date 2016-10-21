@@ -1,7 +1,5 @@
 package logic;
 
-import javax.smartcardio.Card;
-
 public class User {
 private String name;
 private CreditCard card;
