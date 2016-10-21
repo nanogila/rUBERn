@@ -216,6 +216,7 @@ public class UpdateUserLocationGUI extends JDialog {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if (theUser!=null) new PostLogin(theMatrix, theUser);
 						dispose();
 					}
 				});

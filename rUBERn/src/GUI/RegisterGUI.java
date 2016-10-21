@@ -33,6 +33,7 @@ private Matrix theMatrix;
 private JPasswordField userPassword;
 private JPasswordField passwordField_1;
 private JPasswordField userPassword2;
+private final Action action_1 = new Cancel();
 
 	/**
 	 * Create the dialog.
@@ -158,6 +159,7 @@ private JPasswordField userPassword2;
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.setAction(action_1);
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
@@ -202,5 +204,15 @@ private JPasswordField userPassword2;
 			}
 
 		
+	}
+	private class Cancel extends AbstractAction {
+		public Cancel() {
+			putValue(NAME, "Cancel");
+			putValue(SHORT_DESCRIPTION, "Return to previous screen");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new ClientGUI(theMatrix);
+			dispose();
+		}
 	}
 }
