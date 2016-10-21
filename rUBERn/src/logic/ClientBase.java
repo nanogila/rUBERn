@@ -28,7 +28,7 @@ public boolean checkName(User aUser) {
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
 	for (int i=0; i<arrayUsers.length; i++) {
-	if (aUser.getName().equals(arrayUsers[i].getName())) {
+	if (aUser.getName().toLowerCase().equals(arrayUsers[i].getName().toLowerCase())) {
 return true;
 	}
 	}
@@ -70,7 +70,7 @@ public User getUser(String aName) {
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
 	for (int i=0; i<arrayUsers.length; i++) {
-	if (aName.equals(arrayUsers[i].getName())) {
+	if (aName.toLowerCase().equals(arrayUsers[i].getName().toLowerCase())) {
 		return arrayUsers[i];
 	}
 	}
