@@ -35,7 +35,6 @@ public class UserListGUI extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
 			scrollPane = new JScrollPane();
-			scrollPane.setEnabled(false);
 		}
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
@@ -49,10 +48,16 @@ public class UserListGUI extends JDialog {
 					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
 		);
 		
-		table = new JTable(data, columnNames);
+		table = new JTable(data, columnNames){
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+	    };
 		table.setColumnSelectionAllowed(true);
 		table.setCellSelectionEnabled(true);
-		table.setEnabled(false);
+		table.getTableHeader().setReorderingAllowed(false);
 		scrollPane.setViewportView(table);
 		contentPanel.setLayout(gl_contentPanel);
 		{
