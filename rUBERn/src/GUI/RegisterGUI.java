@@ -21,6 +21,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 
 public class RegisterGUI extends JDialog {
 
@@ -42,7 +43,7 @@ private JPasswordField userPassword2;
 		setTitle("rUBERn - Group 3");
 		setResizable(false);
 		action = new AddAUser(theMatrix);
-		setBounds(100, 100, 403, 227);
+		setBounds(100, 100, 395, 241);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -50,18 +51,21 @@ private JPasswordField userPassword2;
 		lblRegister.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
 		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userName = new JTextField();
 		userName.setColumns(10);
 		
 		JLabel label_1 = new JLabel("Credit card number: ");
+		label_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userCard = new JTextField();
 		
-		JLabel label_2 = new JLabel("Password: ");
-		label_2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userPassword = new JPasswordField();
 		
@@ -70,7 +74,8 @@ private JPasswordField userPassword2;
 		
 		passwordField_1 = new JPasswordField();
 		
-		JLabel lblConfirmPassword = new JLabel("Confirm password: ");
+		JLabel lblConfirmPassword = new JLabel("Confirm password:");
+		lblConfirmPassword.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblConfirmPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userPassword2 = new JPasswordField();
@@ -78,33 +83,36 @@ private JPasswordField userPassword2;
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
-							.addGap(3)
-							.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 114, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-							.addComponent(userName, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
-							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-							.addGap(58)
-							.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_contentPanel.createSequentialGroup()
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-									.addComponent(lblConfirmPassword, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(label_1, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)))
-							.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
-									.addGroup(gl_contentPanel.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(userCard, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE))
-									.addComponent(userPassword))
-								.addComponent(userPassword2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)))
-						.addComponent(lblRegister))
-					.addContainerGap())
+								.addGroup(gl_contentPanel.createSequentialGroup()
+									.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+									.addGap(58)
+									.addComponent(passwordField_1, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+								.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
+									.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+										.addGroup(gl_contentPanel.createSequentialGroup()
+											.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+											.addGap(6))
+										.addGroup(gl_contentPanel.createSequentialGroup()
+											.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
+												.addComponent(lblConfirmPassword)
+												.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+											.addPreferredGap(ComponentPlacement.RELATED))
+										.addGroup(gl_contentPanel.createSequentialGroup()
+											.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)))
+									.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(userPassword2, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+										.addComponent(userCard)
+										.addComponent(userName, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+										.addComponent(userPassword)))))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(42)
+							.addComponent(lblRegister)))
+					.addContainerGap(98, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -112,8 +120,8 @@ private JPasswordField userPassword2;
 					.addComponent(lblRegister)
 					.addGap(19)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
-						.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
 					.addGap(8)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
@@ -121,7 +129,7 @@ private JPasswordField userPassword2;
 					.addGap(14)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(userPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(userPassword2, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)

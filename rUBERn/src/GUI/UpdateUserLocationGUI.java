@@ -29,7 +29,7 @@ public class UpdateUserLocationGUI extends JDialog {
 	private final Action action = new Ok();
 	private Matrix theMatrix;
 	private User theUser;
-	private JLabel label;
+	private JLabel lblUsername;
 	private JTextField userName;
 	/**
 	 * Create the dialog.
@@ -134,8 +134,8 @@ public class UpdateUserLocationGUI extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		{
-			label = new JLabel("First and last name: ");
-			label.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+			lblUsername = new JLabel("Username:");
+			lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		}
 		{
 			userName = new JTextField();
@@ -164,22 +164,22 @@ public class UpdateUserLocationGUI extends JDialog {
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGap(21)
 							.addComponent(lblUpdateUserLocation))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(newLocationY)
+							.addGap(18)
+							.addComponent(locationY, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
 							.addGroup(gl_contentPanel.createSequentialGroup()
 								.addContainerGap()
-								.addComponent(newLocationY)
-								.addGap(18)
-								.addComponent(locationY, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-							.addGroup(gl_contentPanel.createSequentialGroup()
+								.addComponent(lblUsername)
+								.addPreferredGap(ComponentPlacement.UNRELATED)
+								.addComponent(userName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+							.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
 								.addContainerGap()
 								.addComponent(newLocationX)
 								.addGap(18)
-								.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-							.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
-								.addGap(2)
-								.addComponent(label)
-								.addGap(18)
-								.addComponent(userName, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))))
+								.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))))
 					.addGap(17))
 		);
 		gl_contentPanel.setVerticalGroup(
@@ -190,7 +190,7 @@ public class UpdateUserLocationGUI extends JDialog {
 					.addGap(7)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(userName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label))
+						.addComponent(lblUsername))
 					.addGap(11)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(locationX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)

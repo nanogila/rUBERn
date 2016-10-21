@@ -37,7 +37,7 @@ return true;
 public void seeUsers() {
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
-	 String[] columns = {"Name", "Credit card number", "Location"};
+	 String[] columns = {"Username", "Credit card number", "Location"};
 	 Object[][] data = new Object[users.size()][3];
 	 for (int i=0; i<arrayUsers.length; i++) {
 		 for (int j=0; j<3; j++) {

@@ -20,6 +20,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import javax.swing.JPasswordField;
+import javax.swing.SwingConstants;
 
 public class LoginGUI extends JDialog {
 
@@ -47,13 +48,15 @@ public class LoginGUI extends JDialog {
 		lblLogIn.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
 		JLabel lblUsername = new JLabel("Username:");
+		lblUsername.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userName = new JTextField();
 		userName.setColumns(10);
 		
-		JLabel label_1 = new JLabel("Password: ");
-		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userPassword = new JPasswordField();
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
@@ -64,11 +67,11 @@ public class LoginGUI extends JDialog {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblLogIn)
 						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addGap(41)
+							.addGap(35)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(lblUsername, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
 								.addComponent(userPassword)
 								.addComponent(userName, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))))
@@ -89,7 +92,7 @@ public class LoginGUI extends JDialog {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(userPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
+						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(42, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
