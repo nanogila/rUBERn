@@ -44,7 +44,7 @@ public void seeUsers() {
 			 if(j==0) {
 	 data[i][j] = arrayUsers[i].getName();
 			 }else if (j==1){
-				 data[i][j] = arrayUsers[i].getCard();
+				 data[i][j] = arrayUsers[i].getCardNumber();
 			 }else {
 				 data[i][j] = arrayUsers[i].getLocation();
 			 }

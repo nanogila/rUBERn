@@ -1,14 +1,16 @@
 package logic;
 
+import javax.smartcardio.Card;
+
 public class User {
 private String name;
-private Integer card;
+private CreditCard card;
 private Gps location;
 private String password;
 
-public User(String aName, Integer aCard, String aPassword) {
+public User(String aName, Integer aCardNumber, String aPassword) {
 	name = aName;
-	card = aCard;
+	card = new CreditCard(aName, aCardNumber);
 	location = new Gps();
 	password = aPassword;
 
@@ -16,8 +18,8 @@ public User(String aName, Integer aCard, String aPassword) {
 public String getName() {
 	return name;
 }
-public Integer getCard() {
-	return card;
+public Integer getCardNumber() {
+	return card.getCardNumber();
 }
 public void updateLocation(long x, long y) {
 	location.updateLocation(x, y);
