@@ -23,7 +23,7 @@ public class PostLogin extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private Matrix theMatrix;
-	private User aUser;
+	private User theUser;
 	private final Action updateLocation = new UpdateLocation();
 	private final Action askForCar = new AskForCar();
 	private final Action logOut = new LogOut();
@@ -35,6 +35,7 @@ public class PostLogin extends JDialog {
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		theMatrix = aMatrix;
+		theUser = aUser;
 		setBounds(100, 100, 387, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -92,6 +93,8 @@ public class PostLogin extends JDialog {
 			putValue(SHORT_DESCRIPTION, "Update your location");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new UpdateUserLocationGUI(theMatrix, theUser);
+			dispose();
 		}
 	}
 	private class AskForCar extends AbstractAction {

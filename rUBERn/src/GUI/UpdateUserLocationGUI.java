@@ -33,6 +33,7 @@ public class UpdateUserLocationGUI extends JDialog {
 	private JTextField userName;
 	/**
 	 * Create the dialog.
+	 * @wbp.parser.constructor
 	 */
 	public UpdateUserLocationGUI(Matrix aMatrix, User aUser) {
 		theUser=aUser;
@@ -119,9 +120,7 @@ public class UpdateUserLocationGUI extends JDialog {
 			}
 		}
 	}
-	/**
-	 * @wbp.parser.constructor
-	 */
+
 	public UpdateUserLocationGUI(Matrix aMatrix) {
 		theUser = null;
 		theMatrix = aMatrix;
@@ -237,17 +236,20 @@ public class UpdateUserLocationGUI extends JDialog {
 			String rawLocationX = locationX.getText().trim();
 			String rawLocationY = locationY.getText().trim();
 			String name;
-			if (theUser==null) name = userName.getText().trim();
-			else name = theUser.getName();
+			if (theUser==null) { name = userName.getText().trim();}
+			else {name = theUser.getName();}
 			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");
-			if (rawLocationX.length() >0 && rawLocationX.length() > 0 && rawLocationX.length() < 11 && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
+			if (rawLocationX.length() >0 && rawLocationY.length() > 0 && rawLocationX.length() < 11 && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
 				rawLocationX="00"+rawLocationX;
 				rawLocationY="00"+rawLocationY;
 				aLocationX=	Long.parseLong(rawLocationX);
 				aLocationY=	Long.parseLong(rawLocationY);
-				if (theMatrix.updateUserLocation(aLocationX, aLocationY, name)) dispose();
+				if (theMatrix.updateUserLocation(aLocationX, aLocationY, name)) {
+					if (theUser!=null) new PostLogin(theMatrix, theUser);
+					dispose();
+				}
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");
 			 if(!rawLocationY.matches("[0-9]+")&&!rawLocationY.equals("")) new Error("Location Y field can't contain letters");}
 		}catch(NullPointerException a) {
