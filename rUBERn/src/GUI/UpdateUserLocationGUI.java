@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -21,7 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
-public class UpdateUserLocationGUI extends JDialog {
+public class UpdateUserLocationGUI extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField locationX;

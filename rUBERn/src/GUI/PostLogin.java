@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import logic.*;
@@ -19,7 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
 
-public class PostLogin extends JDialog {
+public class PostLogin extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
 	private Matrix theMatrix;

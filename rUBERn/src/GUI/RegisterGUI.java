@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -23,7 +24,7 @@ import javax.swing.Action;
 import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 
-public class RegisterGUI extends JDialog {
+public class RegisterGUI extends JFrame {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField userName;
