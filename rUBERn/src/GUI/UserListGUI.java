@@ -50,6 +50,7 @@ public class UserListGUI extends JDialog {
 		);
 		
 		table = new JTable(data, columnNames);
+		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		contentPanel.setLayout(gl_contentPanel);
 		{
