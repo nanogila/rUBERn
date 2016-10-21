@@ -1,17 +1,9 @@
 package logic;
 
-public class Fiat600 implements Car {
-
-	@Override
-	public String getModel() {
-		// TODO Auto-generated method stub
-		return null;
+public class Fiat600 extends Car {
+	public Fiat600 (){
+	qualityTag=QualityTag.LOW;
+	model = "Fiat 600";
+	capacity = 3;
 	}
-
-	@Override
-	public QualityTag getQuailityTag() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
