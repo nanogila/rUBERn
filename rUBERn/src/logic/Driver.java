@@ -16,21 +16,21 @@ public class Driver extends Person {
     	return theCar.getModel();
     }
     public boolean goOnline() {
-    	if(status.equals(status.ONLINE)) return false;
+    	if(status.equals(Status.ONLINE)) return false;
     	else {
-    		status=status.ONLINE; 
+    		status=Status.ONLINE; 
     		return true;
     	}
     }
     public boolean goOffline() {
-    	if(status.equals(status.OFFLINE)) return false;
+    	if(status.equals(Status.OFFLINE)) return false;
     	else {
-    		status=status.OFFLINE; 
+    		status=Status.OFFLINE; 
     		return true;
     	}
     }
     public Boolean isAvailable() {
-    	if (status.equals(status.ONLINE)) return true;
+    	if (status.equals(Status.ONLINE)) return true;
     	return false;
     }
 }

@@ -34,7 +34,7 @@ public class Main {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					ClientBase base=new ClientBase();
 					Matrix theMatrix = new Matrix(base);
-					Main window = new Main(theMatrix);
+					new Main(theMatrix);
 					
 				} catch (Exception e) {
 					e.printStackTrace();

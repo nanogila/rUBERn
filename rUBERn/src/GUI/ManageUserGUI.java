@@ -1,9 +1,6 @@
 package GUI;
 
 import java.awt.BorderLayout;
-import java.awt.Dialog;
-import java.awt.FlowLayout;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -16,20 +13,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
-import java.text.*;
-
 import javax.swing.Action;
-import javax.swing.JFormattedTextField;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
-import java.awt.Dialog.ModalityType;
-import java.awt.Dialog.ModalExclusionType;
-import javax.swing.event.ChangeListener;
-
 import logic.Matrix;
 import logic.User;
 
-import javax.swing.event.ChangeEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JPasswordField;
@@ -52,16 +41,6 @@ public class ManageUserGUI extends JDialog {
 	private JLabel lblPassword;
 	private JPasswordField userPassword;
 
-	/**
-	 * Launch the application.
-	 */
-/*	public static void main(String[] args) {
-		try {
-			AddUserGUI dialog = new AddUserGUI();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
 
 	/**
 	 * Create the dialog.
