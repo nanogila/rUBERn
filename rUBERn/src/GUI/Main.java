@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import logic.ClientBase;
+import logic.DriverBase;
 import logic.Matrix;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -17,6 +18,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class Main {
 
@@ -32,8 +34,9 @@ public class Main {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					ClientBase base=new ClientBase();
-					Matrix theMatrix = new Matrix(base);
+			    	DriverBase baseDeChoferes = new DriverBase();
+			        ClientBase basededatos = new ClientBase();
+			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
 					new Main(theMatrix);
 					
 				} catch (Exception e) {
@@ -72,6 +75,12 @@ public class Main {
 		btnClient.setAction(action_1);
 		
 		JButton btnDriver = new JButton("Driver");
+		btnDriver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new DriverGUI(theMatrix);
+				frmRubern.dispose();
+			}
+		});
 		
 		JButton btnAdmin = new JButton("Admin");
 		btnAdmin.setAction(action);

@@ -4,7 +4,9 @@ package logic;
 
 public class Matrix {
 	ClientBase base;
-	public Matrix (ClientBase database) {
+	DriverBase driverBase;
+	public Matrix (ClientBase database, DriverBase aDriverBase) {
+		driverBase = aDriverBase;
 		base = database;
 	}
 	public boolean addUser(User aUser) {
@@ -29,5 +31,22 @@ public class Matrix {
 	public boolean checkPassword(String aUser , String aPassword){
 		return base.checkPassword(aUser , aPassword);
 	}
-
+	public boolean addDriver(Driver aDriver) {
+		return driverBase.addDriver(aDriver);
+	}
+	public boolean removeDriver(Driver aDriver) {
+		return driverBase.removeDriver(aDriver);
+	}
+	public void seeDrivers() {
+		driverBase.seeDrivers();
+	}
+	public Driver getDriver(String aName) {
+		return driverBase.getDriver(aName);
+	}
+	public boolean updateDriverLocation(long x, long y, String aName) {
+		return driverBase.updateDriverLocation(x, y, aName);
+	}
+	public boolean checkDriverPassword(String aDriver, String aPassword) {
+		return driverBase.checkPassword(aDriver, aPassword);
+	}
 }

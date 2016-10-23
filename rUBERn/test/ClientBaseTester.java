@@ -13,24 +13,27 @@ public class ClientBaseTester {
 	public ExpectedException exception = ExpectedException.none();
     @Test
     public void addUserTester(){
+    	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
-        Matrix sistema = new Matrix(basededatos);
+        Matrix sistema = new Matrix(basededatos, baseDeChoferes);
         User Tomas = new User("Tomas" , 12345, "hola");
         sistema.addUser(Tomas);
         
     }
     @Test
     public void addUserFailTester(){
+    	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
-        Matrix sistema = new Matrix(basededatos);
+        Matrix sistema = new Matrix(basededatos, baseDeChoferes);
         User Tomas = new User("" , 12345, "gola");
         boolean result = !sistema.addUser(Tomas);
         assertTrue(result);
     }
     @Test
     public void removeUserTester(){
+    	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
-        Matrix sistema = new Matrix(basededatos);
+        Matrix sistema = new Matrix(basededatos, baseDeChoferes);
         User Tomas = new User("Tomas" , 12345, "hola");
         sistema.addUser(Tomas);
         sistema.removeUser(Tomas);
@@ -39,8 +42,9 @@ public class ClientBaseTester {
     }
     @Test
     public void removeUserFailTester(){
+    	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
-        Matrix sistema = new Matrix(basededatos);
+        Matrix sistema = new Matrix(basededatos, baseDeChoferes);
         User Tomas = new User("Tomas" , 12345, "dsfgv");
         User Mario = new User("Mario" , 12345, "sdsdf");
         sistema.addUser(Tomas);
