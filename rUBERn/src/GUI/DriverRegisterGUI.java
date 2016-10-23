@@ -39,6 +39,7 @@ private JPasswordField passwordField_1;
 private JPasswordField userPassword2;
 private final Action action_1 = new Cancel();
 private int carModel;
+private JComboBox comboBox;
 	/**
 	 * Create the dialog.
 	 */
@@ -90,7 +91,7 @@ private int carModel;
 		lblCarModel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCarModel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				carModel=comboBox.getSelectedIndex();
