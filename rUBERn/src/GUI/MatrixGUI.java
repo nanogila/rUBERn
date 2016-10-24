@@ -77,21 +77,21 @@ private Matrix theMatrix;
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
+						.addComponent(lblChooseAnAction)
+						.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(lblChooseAnAction)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnAddUser, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED))
-								.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE))
-							.addGap(20))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnUpdateUserLocation)
+								.addComponent(btnUpdateUserLocation, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+								.addComponent(btnAddUser, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 198, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(22, Short.MAX_VALUE))))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+									.addGap(1))
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+									.addPreferredGap(ComponentPlacement.RELATED)))))
+					.addGap(20))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -108,7 +108,7 @@ private Matrix theMatrix;
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnUpdateUserLocation)
 						.addComponent(button))
-					.addContainerGap(24, Short.MAX_VALUE))
+					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
@@ -128,6 +128,7 @@ private Matrix theMatrix;
 		}
 		public void actionPerformed(ActionEvent e) {
 			theMatrix.seeUsers();
+			theMatrix.seeDrivers();
 		}
 	}
 	private class ChangeUserLocation extends AbstractAction {

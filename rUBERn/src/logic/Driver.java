@@ -33,4 +33,7 @@ public class Driver extends Person {
     	if (status.equals(Status.ONLINE)) return true;
     	return false;
     }
+    public String getStatus() {
+    	return status.toString();
+    }
 }
