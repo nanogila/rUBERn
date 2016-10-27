@@ -11,7 +11,7 @@ public Accountant(Matrix aMatrix) {
 public double imageCost(Trip aTrip) {
 	Appraiser anAppraiser = new Appraiser();
 	double appraisal = anAppraiser.appraiseCar(aTrip.getDriver().getCar());
-	return (aTrip.getDistance()/500)*2/appraisal;
+	return (aTrip.getDistanceFromDriver()/500)*2/appraisal;
 	
 }
 public double tripCost(Trip aTrip) {

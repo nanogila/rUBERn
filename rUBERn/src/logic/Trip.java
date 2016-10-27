@@ -11,6 +11,9 @@ public Trip (Driver aDriver, User aClient, long[] aDestination) {
 	distance = theClient.getDistance(aDestination);
 	destination = aDestination;
 }
+public Double getDistanceFromDriver() {
+	return theClient.getDistance(theDriver);
+}
 public Double getDistance() {
 	return distance;
 }
