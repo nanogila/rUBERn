@@ -72,7 +72,24 @@ public class Matrix {
 			selectedTrip = aTrip;
 		}
 	}
+	boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip?");
+	if (accepted) {
+		if (aUser.removeMoney(theAccountant.tripCost(selectedTrip))) {
+			selectedTrip.getDriver().addMoney(theAccountant.tripCost(selectedTrip));
+			return true;
+		}else {
+			return false;
+			//aca hay que ver que hacer si el cliente no tiene biyuya
+		}
+		
+	}else {
+		new Error ("The driver didn't accept");
+		//aca deberiamos eliminar a ese driver y correr de vuelta el metodo para que otro driver se gane el viaje
+		return false;
 	}
-	return new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip?");
+	}else {
+		new Error ("No drivers are available at this time");
+	return false;
+	}
 	}
 }

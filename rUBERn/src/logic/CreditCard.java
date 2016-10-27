@@ -16,12 +16,14 @@ public class CreditCard {
     public void addMoney(double money){
         balance += money;
     }
-    public void removeMoney(double money){
+    public boolean removeMoney(double money){
         if (balance < money){
             new Error("Not enough money");
+            return false;
         }
         else{
             balance -= money;
+            return true;
         }
     }
     public double getBalance(){
