@@ -39,7 +39,7 @@ private JPasswordField passwordField_1;
 private JPasswordField userPassword2;
 private final Action action_1 = new Cancel();
 private int carModel;
-private JComboBox comboBox;
+private JComboBox<String> comboBox;
 	/**
 	 * Create the dialog.
 	 */
@@ -91,13 +91,13 @@ private JComboBox comboBox;
 		lblCarModel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCarModel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				carModel=comboBox.getSelectedIndex();
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select a car model...", "Fiat 600", "Volkswagen Gol", "Renault Fluence","Hyundai H1"}));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Select a car model...", "Fiat 600", "Volkswagen Gol", "Renault Fluence","Hyundai H1"}));
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)

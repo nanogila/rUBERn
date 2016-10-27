@@ -128,7 +128,7 @@ public class DriverPostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Adds money to your wallet");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new AddMoneyGUI(theMatrix, theDriver);
+			new AddMoneyDriverGUI(theMatrix, theDriver);
 			dispose();
 		}
 	}

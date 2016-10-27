@@ -19,8 +19,8 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 
-public class AddMoneyGUI extends JFrame {
-private User theUser;
+public class AddMoneyDriverGUI extends JFrame {
+private Driver theDriver;
 private Matrix theMatrix;
 	private JPanel contentPane;
 	private JTextField moneyAmount;
@@ -29,9 +29,9 @@ private Matrix theMatrix;
 	/**
 	 * Create the frame.
 	 */
-	public AddMoneyGUI(Matrix aMatrix, User aUser) {
+	public AddMoneyDriverGUI(Matrix aMatrix, Driver aDriver) {
 		setResizable(false);
-		theUser = aUser;
+		theDriver = aDriver;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 270, 204);
 		setVisible(true);
@@ -100,12 +100,12 @@ private Matrix theMatrix;
 			if (rawMoney.length() < 11 && rawMoney.length() > 0 && rawMoney.matches("[0-9]+")) {
 				money =	Double.parseDouble(rawMoney);
 				if (money > 0) {
-					theMatrix.addMoney(theUser, money);
-						new PostLogin(theMatrix, theUser);
+					theMatrix.addMoney(theDriver, money);
+						new DriverPostLogin(theMatrix, theDriver);
 						dispose();
+					}
 				}
 				else new Error ("Invalid money amount");
-		}else new Error ("Invalid money amount");
 			}catch(NullPointerException ouch) {
 				new Error("Unknown error");
 			}
@@ -117,9 +117,8 @@ private Matrix theMatrix;
 			putValue(SHORT_DESCRIPTION, "Quit without doing nothing");
 		}
 		public void actionPerformed(ActionEvent e) {
-				new PostLogin(theMatrix, theUser);
+				new DriverPostLogin(theMatrix, theDriver);
 				dispose();
-
+			}
 		}
-	}
 }

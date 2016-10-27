@@ -22,6 +22,12 @@ public class Matrix {
 		return base.addUser(aUser);
 
 	}
+	public void addMoney(User aUser, double amount) {
+		base.addMoney(aUser.getName(), amount);
+	}
+	public void addMoney (Driver aDriver, double amount) {
+		driverBase.addMoney(aDriver.getName(), amount);
+	}
 	public boolean removeUser(User aUser) {
 
 		return base.removeUser(aUser);
