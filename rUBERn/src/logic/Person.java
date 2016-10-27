@@ -19,10 +19,16 @@ public abstract class Person {
     public void updateLocation(long x, long y) {
         location.updateLocation(x, y);
     }
-    public String getLocation() {
+    public String getLocationToString() {
         return location.toString();
     }
     public String getPassword(){
         return password;
+    }
+    public long[] getLocation(){
+        return location.getLocation();
+    }
+    public double getDistance(Person aPerson){
+        return location.getDistance(aPerson.getLocation());
     }
 }

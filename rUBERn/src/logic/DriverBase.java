@@ -47,7 +47,7 @@ public class DriverBase {
 				 }else if (j==1){
 					 data[i][j] = arrayDrivers[i].getCardNumber();
 				 }else if (j==2){
-					 data[i][j] = arrayDrivers[i].getLocation();
+					 data[i][j] = arrayDrivers[i].getLocationToString();
 				 }else if (j==3){
 					 data[i][j] = arrayDrivers[i].getCarModel();
 				 }else {
