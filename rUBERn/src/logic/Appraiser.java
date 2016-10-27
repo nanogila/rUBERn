@@ -5,10 +5,10 @@ import java.util.HashMap;
 /**
  * Created by tomasvarela on 10/27/16.
  */
-public class appraiser {
+public class Appraiser {
     HashMap < QualityTag , Double > QualityTagsValues;
 
-    public appraiser(){
+    public Appraiser(){
         QualityTagsValues = new HashMap<>();
         QualityTagsValues.put(QualityTag.HIGH, 0.7);
         QualityTagsValues.put(QualityTag.VIP, 0.9);
