@@ -18,7 +18,7 @@ public class DriverTest {
 		Car fiat = new Fiat600();
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.updateLocation(324, 432);
-		assertEquals("[324, 432]", aDriver.getLocation());
+		assertEquals("[324, 432]", aDriver.getLocationToString());
 	}
 	@Test
 	public void onlineTest() {
