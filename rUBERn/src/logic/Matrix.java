@@ -5,6 +5,8 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import GUI.YesOrNoGUI;
+
 public class Matrix {
 	ClientBase base;
 	DriverBase driverBase;
@@ -62,19 +64,15 @@ public class Matrix {
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}
-
-	Trip selectedTrip = possibleTrips.get(0);
+	Trip selectedTrip;
+	if (possibleTrips.size()>0) {
+		selectedTrip = possibleTrips.get(0);	
 	for(Trip aTrip : possibleTrips){
 		if(theAccountant.imageCost(aTrip)< theAccountant.imageCost(selectedTrip)){
 			selectedTrip = aTrip;
 		}
-
 	}
-	if(selectedTrip.getDriver().decideTrip()){
-		return true;
 	}
-	else return false;
-
-
+	return new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip?");
 	}
 }

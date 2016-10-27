@@ -102,7 +102,7 @@ public class DriverPostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Ask for a car");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new Error("Esto por ahora no hace nada");
+			if (theDriver.goOnline()) new Error("You are now online");
 		}
 	}
 	private class LogOut extends AbstractAction {

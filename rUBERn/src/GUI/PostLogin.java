@@ -102,6 +102,8 @@ public class PostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Ask for a car");
 		}
 		public void actionPerformed(ActionEvent e) {
+			long[] aDestination = {2, 3};
+			theMatrix.askForCar(theUser, aDestination);
 		}
 	}
 	private class LogOut extends AbstractAction {
