@@ -97,7 +97,7 @@ private JComboBox comboBox;
 				carModel=comboBox.getSelectedIndex();
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select a car model...", "Fiat 600", "Volkswagen Gol", "Renault Fluence"}));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Select a car model...", "Fiat 600", "Volkswagen Gol", "Renault Fluence","Hyundai H1"}));
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -206,6 +206,8 @@ private JComboBox comboBox;
 				break;
 				case 3: aCar=new RenaultFluence();
 				break;
+                    case 4: aCar = new HyundaiH1();
+                        break;
 				default: aCar=null;
 				break;
 				}
