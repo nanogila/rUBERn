@@ -5,6 +5,7 @@ public class Trip {
 	private User theClient;
 	private Double distance;
 	private long[] destination;
+
 public Trip (Driver aDriver, User aClient, long[] aDestination) {
 	theDriver = aDriver;
 	theClient = aClient;

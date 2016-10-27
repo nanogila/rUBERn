@@ -39,4 +39,7 @@ public class Driver extends Person {
     public String getStatus() {
     	return status.toString();
     }
+    public boolean decideTrip(){
+return true;
+    }
 }

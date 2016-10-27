@@ -8,4 +8,5 @@ public class User extends Person {
 		location = new Gps();
 		password = aPassword;
 	}
+
 }
