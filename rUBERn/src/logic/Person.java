@@ -31,4 +31,7 @@ public abstract class Person {
     public double getDistance(Person aPerson){
         return location.getDistance(aPerson.getLocation());
     }
+    public double getDistance(long [] aLocation){
+        return location.getDistance(aLocation);
+    }
 }

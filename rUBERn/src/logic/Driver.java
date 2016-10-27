@@ -12,6 +12,9 @@ public class Driver extends Person {
         theCar = aCar;
         status=Status.OFFLINE;
     }
+    public Car getCar() {
+    	return theCar;
+    }
     public String getCarModel() {
     	return theCar.getModel();
     }
