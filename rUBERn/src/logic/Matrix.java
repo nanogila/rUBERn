@@ -54,6 +54,9 @@ public class Matrix {
 	public boolean updateDriverLocation(long x, long y, String aName) {
 		return driverBase.updateDriverLocation(x, y, aName);
 	}
+	public void addMoney(Person aPerson, double someMoney) {
+		aPerson.addMoney(someMoney);
+	}
 	public boolean checkDriverPassword(String aDriver, String aPassword) {
 		return driverBase.checkPassword(aDriver, aPassword);
 	}

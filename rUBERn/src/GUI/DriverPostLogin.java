@@ -26,6 +26,7 @@ public class DriverPostLogin extends JFrame {
 	private final Action updateLocation = new UpdateLocation();
 	private final Action goOnline = new GoOnline();
 	private final Action logOut = new LogOut();
+	private final Action action = new SwingAction();
 	/**
 	 * Create the dialog.
 	 */
@@ -35,7 +36,7 @@ public class DriverPostLogin extends JFrame {
 		setVisible(true);
 		theMatrix = aMatrix;
 		theDriver = aDriver;
-		setBounds(100, 100, 387, 177);
+		setBounds(100, 100, 404, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -52,12 +53,15 @@ public class DriverPostLogin extends JFrame {
 		
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.setAction(logOut);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setAction(action);
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+					.addComponent(label, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
 					.addGap(161))
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addComponent(btnUpdateLocation)
@@ -65,7 +69,9 @@ public class DriverPostLogin extends JFrame {
 					.addComponent(btnAskForCar)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnLogOut)
-					.addContainerGap(47, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -76,8 +82,9 @@ public class DriverPostLogin extends JFrame {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnUpdateLocation)
 						.addComponent(btnLogOut)
-						.addComponent(btnAskForCar))
-					.addContainerGap(170, Short.MAX_VALUE))
+						.addComponent(btnAskForCar)
+						.addComponent(btnNewButton))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
@@ -112,6 +119,16 @@ public class DriverPostLogin extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new Main(theMatrix);
+			dispose();
+		}
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Add money");
+			putValue(SHORT_DESCRIPTION, "Adds money to your wallet");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new AddMoneyGUI(theMatrix, theDriver);
 			dispose();
 		}
 	}

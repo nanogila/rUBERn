@@ -38,7 +38,7 @@ public class DriverBase {
 	public void seeDrivers() {
 		Driver[] arrayDrivers = new Driver[drivers.size()];
 		 drivers.toArray(arrayDrivers);
-		 String[] columns = {"Driver name", "Credit card number", "Location", "Car", "status"};
+		 String[] columns = {"Driver name", "Credit card number", "Location", "Car", "status", "money"};
 		 Object[][] data = new Object[drivers.size()][columns.length];
 		 for (int i=0; i<arrayDrivers.length; i++) {
 			 for (int j=0; j<columns.length; j++) {
@@ -50,8 +50,10 @@ public class DriverBase {
 					 data[i][j] = arrayDrivers[i].getLocationToString();
 				 }else if (j==3){
 					 data[i][j] = arrayDrivers[i].getCarModel();
-				 }else {
+				 }else if (j==4){
 					 data[i][j] = arrayDrivers[i].getStatus();
+				 }else {
+					 data[i][j] = arrayDrivers[i].getBalance();
 				 }
 		 }
 			 }

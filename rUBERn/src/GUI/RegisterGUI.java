@@ -190,7 +190,6 @@ private final Action action_1 = new Cancel();
 				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
 					cardNumber=	Integer.parseInt(card);
 					User someone = new User(name, cardNumber, password);
-					//theMatrix.addUser(someone);
 					if (theMatrix.addUser(someone)) {
 						new PostLogin(theMatrix, someone);
 						dispose();

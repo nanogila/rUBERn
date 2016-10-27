@@ -40,4 +40,7 @@ public abstract class Person {
     public boolean removeMoney(double someMoney) {
     	return card.removeMoney(someMoney);
     }
+    public double getBalance() {
+    	return card.getBalance();
+    }
 }

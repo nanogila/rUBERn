@@ -65,4 +65,27 @@ public class DriverTest {
 		aDriver.goOnline();
 		assertTrue(aDriver.isAvailable());
 	}
+	@Test
+	public void addMoneyTest() {
+		Car fiat = new Fiat600();
+		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
+		aDriver.addMoney(20.0);
+		assertEquals(20.0, aDriver.getBalance(), 0.00001);
+	}
+	@Test
+	public void removeMoneyTest() {
+		Car fiat = new Fiat600();
+		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
+		aDriver.addMoney(20.0);
+		aDriver.removeMoney(5.5);
+		assertEquals(14.5, aDriver.getBalance(), 0.00001);
+	}
+	@Test
+	public void removeMoneyFailTest() {
+		Car fiat = new Fiat600();
+		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
+		aDriver.addMoney(20.0);
+		aDriver.removeMoney(40.5);
+		assertEquals(20.0, aDriver.getBalance(), 0.00001);
+	}
 }
