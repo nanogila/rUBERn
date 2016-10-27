@@ -52,4 +52,13 @@ public class ClientBaseTester {
         assertEquals(Tomas, sistema.getUser(Tomas.getName()));
 
     }
+    @Test
+    public void testCheckPassword(){
+        ClientBase basededatos = new ClientBase();
+        DriverBase baseDeChoferes = new DriverBase();
+        Matrix sistema = new Matrix(basededatos,baseDeChoferes);
+        User Tomas = new User("Tomas" , 12345, "macarena");
+        sistema.addUser(Tomas);
+        assertTrue(sistema.checkPassword("tomas","macarena"));
+    }
 }
