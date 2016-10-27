@@ -6,16 +6,13 @@ public class AccountantTester {
 
 	@Test
 	public void imageCostTest() {
-		ClientBase aBase= new ClientBase();
-		DriverBase anotherBase = new DriverBase();
-		Matrix aMatrix = new Matrix(aBase, anotherBase);
 		Fiat600 aCar = new Fiat600();
 		User aClient = new User("pablo", 233223, "holaaa");
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		aDriver.updateLocation(3323, 2323);
 		long[] aDestination = {45, 43};
 		Trip aTrip = new Trip(aDriver, aClient, aDestination);
-		Accountant anAccountant = new Accountant(aMatrix);
+		Accountant anAccountant = new Accountant();
 		assertEquals(81.089, anAccountant.imageCost(aTrip), 0.001);
 	}
 	@Test
