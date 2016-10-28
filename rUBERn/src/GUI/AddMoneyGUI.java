@@ -95,7 +95,7 @@ private Matrix theMatrix;
 		}
 		public void actionPerformed(ActionEvent e) {
 			
-			Double money;
+			Double money = 0.0;
 			String rawMoney = "00"+moneyAmount.getText().trim();
 			if (rawMoney.length() < 11 && rawMoney.length() > 0 && rawMoney.matches("[0-9]+")) {
 				money =	Double.parseDouble(rawMoney);

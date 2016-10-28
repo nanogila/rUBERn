@@ -73,10 +73,10 @@ public class Matrix {
 	public boolean checkDriverPassword(String aDriver, String aPassword) {
 		return driverBase.checkPassword(aDriver, aPassword);
 	}
-	public boolean askForCar(User aUser, long[] aDestination){
+	public boolean askForCar(User aUser, long[] aDestination, int people){
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
-		if(aDriver.isAvailable()){
+		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}

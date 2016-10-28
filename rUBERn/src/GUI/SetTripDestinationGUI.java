@@ -20,6 +20,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import logic.*;
 import GUI.Error;
+import javax.swing.SwingConstants;
 
 public class SetTripDestinationGUI extends JFrame {
 
@@ -30,6 +31,7 @@ public class SetTripDestinationGUI extends JFrame {
 	private Matrix theMatrix;
 	private User theUser;
 	private JTextField userName;
+	private JTextField people;
 	/**
 	 * Create the dialog.
 	 * @wbp.parser.constructor
@@ -41,7 +43,7 @@ public class SetTripDestinationGUI extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setBounds(100, 100, 285, 209);
+		setBounds(100, 100, 285, 239);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -60,6 +62,13 @@ public class SetTripDestinationGUI extends JFrame {
 		
 		locationY = new JTextField();
 		locationY.setColumns(10);
+		
+		JLabel lblPeople = new JLabel("People:");
+		lblPeople.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblPeople.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		people = new JTextField();
+		people.setColumns(10);
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -77,8 +86,13 @@ public class SetTripDestinationGUI extends JFrame {
 							.addContainerGap()
 							.addComponent(newLocationX)
 							.addGap(18)
-							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(59, Short.MAX_VALUE))
+							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblPeople, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(people, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -93,7 +107,11 @@ public class SetTripDestinationGUI extends JFrame {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(locationY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(newLocationY))
-					.addGap(24))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblPeople, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE)
+						.addComponent(people, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(26))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
@@ -128,20 +146,24 @@ public class SetTripDestinationGUI extends JFrame {
 			try {
 			long aLocationX=0;
 			long aLocationY=0;
+			int somePeople=0;
 			String rawLocationX = locationX.getText().trim();
 			String rawLocationY = locationY.getText().trim();
+			String rawPeople = people.getText().trim();
 			String name;
 			name = theUser.getName();
 			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");
-			if (rawLocationX.length() >0 && rawLocationY.length() > 0 && rawLocationX.length() < 11 && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
+			if (rawPeople.equals("")) new Error("Location Y field can't be empty");
+			if (rawPeople.length() >0 && rawLocationX.length() >0 && rawLocationY.length() > 0 && rawLocationX.length() < 11 && rawPeople.length() < 11 && rawPeople.matches("[0-9]+") && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
 				rawLocationX="00"+rawLocationX;
 				rawLocationY="00"+rawLocationY;
+				somePeople=Integer.parseInt(rawPeople);
 				aLocationX=	Long.parseLong(rawLocationX);
 				aLocationY=	Long.parseLong(rawLocationY);
 				long[] destination = {aLocationX, aLocationY};
-				if (theMatrix.askForCar(theUser, destination)) {
+				if (theMatrix.askForCar(theUser, destination, somePeople)) {
 					new PostLogin(theMatrix, theUser);
 					dispose();
 				}
