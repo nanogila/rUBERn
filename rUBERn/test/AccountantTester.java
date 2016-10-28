@@ -71,7 +71,7 @@ public class AccountantTester {
 		User aClient = new User("pablo", 233223, "holaaa");
 		aBase.addUser(aClient);
 		anAccountant.addMoney(aClient, 77);
-		anAccountant.removeMoney(aClient, 10);
+		anAccountant.removeMoney(aClient, 10, " testing the method");
 		assertEquals(67, aClient.getBalance(), 0.001);
 	}
 }

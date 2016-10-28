@@ -29,8 +29,8 @@ public class Matrix {
 	public boolean addMoney (Driver aDriver, double amount) {
 		return theAccountant.addMoney(aDriver, amount);
 	}
-	public boolean removeMoney(User aUser, double amount) {
-		return theAccountant.removeMoney(aUser, amount);
+	public boolean removeMoney(User aUser, double amount, String aDescription) {
+		return theAccountant.removeMoney(aUser, amount, aDescription);
 	}
 	public boolean removeMoney (Driver aDriver, double amount) {
 		return theAccountant.removeMoney(aDriver, amount);
@@ -92,8 +92,8 @@ public class Matrix {
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
-		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip))) {
-			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip));
+		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip")) {
+			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip");
 			return true;
 		}
 		}else {

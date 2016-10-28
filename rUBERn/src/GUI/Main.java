@@ -41,15 +41,6 @@ public class Main {
 			        ClientBase basededatos = new ClientBase();
 			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
 					new Main(theMatrix);
-					
-					   DateTimeFormatter formatter =
-			                      DateTimeFormatter.ofPattern("yyyy/MM/dd");
-					   String hola = ZonedDateTime.now().format(formatter);
-					new Error(hola);
-					   DateTimeFormatter formatter2 =
-			                      DateTimeFormatter.ofPattern("HH:mm");
-					   String hola2 = ZonedDateTime.now().format(formatter2);
-					new Error(hola2);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
