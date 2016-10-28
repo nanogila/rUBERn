@@ -3,7 +3,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
 
-
 public class Accountant {
 private ArrayList<String> movimientos;
 private ClientBase base;

@@ -89,7 +89,7 @@ public class Matrix {
 		}
 	}
 	
-	if (!(aUser.getBalance()<theAccountant.tripCost(selectedTrip))) {
+	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip))) {
@@ -103,6 +103,7 @@ public class Matrix {
 		}
 	}
 	else {
+		new Error ("Not enough money");
 			return false;
 			//aca hay que ver que hacer si el cliente no tiene biyuya
 		}
