@@ -76,7 +76,7 @@ public class Matrix {
 	public boolean askForCar(User aUser, long[] aDestination, int people){
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
-		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people){
+		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<5000){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}
