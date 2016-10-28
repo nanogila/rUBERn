@@ -88,7 +88,7 @@ public class Matrix {
 			selectedTrip = aTrip;
 		}
 	}
-	boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip?");
+	boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 	if (accepted) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip))) {
 			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip));

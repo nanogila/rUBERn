@@ -91,7 +91,7 @@ public class DriverPostLogin extends JFrame {
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-		}
+		}pack();
 	}
 	private class UpdateLocation extends AbstractAction {
 		public UpdateLocation() {
@@ -106,7 +106,7 @@ public class DriverPostLogin extends JFrame {
 	private class GoOnline extends AbstractAction {
 		public GoOnline() {
 			putValue(NAME, "Go online");
-			putValue(SHORT_DESCRIPTION, "Ask for a car");
+			putValue(SHORT_DESCRIPTION, "Go online");
 		}
 		public void actionPerformed(ActionEvent e) {
 			if (theDriver.goOnline()) new Error("You are now online");
@@ -114,8 +114,8 @@ public class DriverPostLogin extends JFrame {
 	}
 	private class LogOut extends AbstractAction {
 		public LogOut() {
-			putValue(NAME, "Log out");
-			putValue(SHORT_DESCRIPTION, "Log out of the system");
+			putValue(NAME, "Return to main screen");
+			putValue(SHORT_DESCRIPTION, "return to main screen without logging out");
 		}
 		public void actionPerformed(ActionEvent e) {
 			new Main(theMatrix);
