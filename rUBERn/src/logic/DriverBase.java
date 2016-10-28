@@ -100,9 +100,10 @@ public class DriverBase {
 		}
 		else {
 			Driver aDriver = getDriver(aName);
-			aDriver.removeMoney(amount);
+			if(aDriver.removeMoney(amount)) {
 			new Error ("$"+amount+" debited from "+aName+" successfully");
 			return true;
+			}else return false;
 		}
 	}
 	public Driver getDriver(String aName) {
