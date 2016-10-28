@@ -85,7 +85,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			aDriver.addMoney(amount);
-			new Error ("Added $"+amount+" successfully");
+			new Error ("Added $"+amount+" to "+aName+" successfully");
 			return true;
 		}
 	}
@@ -101,7 +101,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			aDriver.removeMoney(amount);
-			new Error ("Added $"+amount+" successfully");
+			new Error ("$"+amount+" debited from "+aName+" successfully");
 			return true;
 		}
 	}

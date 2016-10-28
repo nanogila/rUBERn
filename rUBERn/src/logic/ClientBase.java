@@ -90,7 +90,7 @@ public boolean addMoney(String aName, double amount) {
 	else {
 		User aUser = getUser(aName);
 		aUser.addMoney(amount);
-		new Error ("Added $"+amount+" successfully");
+		new Error ("Added $"+amount+" to "+aName+" successfully");
 		return true;
 	}
 }
@@ -106,7 +106,7 @@ public boolean removeMoney(String aName, double amount) {
 	else {
 		User aUser = getUser(aName);
 		aUser.removeMoney(amount);
-		new Error ("Added $"+amount+" successfully");
+		new Error ("$"+amount+" debited from "+aName+" successfully");
 		return true;
 	}
 }

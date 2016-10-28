@@ -32,6 +32,7 @@ private Matrix theMatrix;
 	public AddMoneyGUI(Matrix aMatrix, User aUser) {
 		setResizable(false);
 		theUser = aUser;
+		theMatrix = aMatrix;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 270, 204);
 		setVisible(true);
@@ -94,23 +95,23 @@ private Matrix theMatrix;
 			putValue(SHORT_DESCRIPTION, "Add money");
 		}
 		public void actionPerformed(ActionEvent e) {
-			
+			try {
 			Double money = 0.0;
 			String rawMoney = moneyAmount.getText().trim();
 			if (rawMoney.length() < 11 && rawMoney.length() > 0 && rawMoney.matches("[0-9]+")) {
 				money =	Double.parseDouble(rawMoney);
 				if (money > 0) {
-					try {
+					
 					theMatrix.addMoney(theUser, money);
-					}catch(NullPointerException ouch) {
-						new Error("Unknown error");
-					}
+					
 						new PostLogin(theMatrix, theUser);
 						dispose();
 				}
 				else new Error ("Invalid money amount");
 		}else new Error ("Invalid money amount");
-
+			}catch(NullPointerException ouch) {
+				new Error("Unknown error");
+			}
 			}
 	}
 	private class SwingAction_1 extends AbstractAction {

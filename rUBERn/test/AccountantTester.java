@@ -15,7 +15,7 @@ public class AccountantTester {
 		aDriver.updateLocation(3323, 2323);
 		long[] aDestination = {45, 43};
 		Trip aTrip = new Trip(aDriver, aClient, aDestination);
-		assertEquals(81.089, anAccountant.imageCost(aTrip), 0.001);
+		assertEquals(81.09, anAccountant.imageCost(aTrip), 0.01);
 	}
 	@Test
 	public void tripCostTest() {
@@ -28,7 +28,7 @@ public class AccountantTester {
 		aDriver.updateLocation(3323, 2323);
 		long[] aDestination = {4500, 4300};
 		Trip aTrip = new Trip(aDriver, aClient, aDestination);
-		assertEquals(77.241, anAccountant.tripCost(aTrip), 0.001);
+		assertEquals(77.24, anAccountant.tripCost(aTrip), 0.001);
 	}
 	@Test
 	public void addMoneyTest() {

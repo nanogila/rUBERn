@@ -32,6 +32,7 @@ private Matrix theMatrix;
 	public AddMoneyDriverGUI(Matrix aMatrix, Driver aDriver) {
 		setResizable(false);
 		theDriver = aDriver;
+		theMatrix = aMatrix;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 270, 204);
 		setVisible(true);
@@ -96,7 +97,7 @@ private Matrix theMatrix;
 		public void actionPerformed(ActionEvent e) {
 			try {
 			Double money;
-			String rawMoney = "00"+moneyAmount.getText().trim();
+			String rawMoney = moneyAmount.getText().trim();
 			if (rawMoney.length() < 11 && rawMoney.length() > 0 && rawMoney.matches("[0-9]+")) {
 				money =	Double.parseDouble(rawMoney);
 				if (money > 0) {
