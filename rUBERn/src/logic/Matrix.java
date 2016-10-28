@@ -14,7 +14,7 @@ public class Matrix {
 	public Matrix (ClientBase database, DriverBase aDriverBase) {
 		driverBase = aDriverBase;
 		base = database;
-		theAccountant = new Accountant();
+		theAccountant = new Accountant(base, driverBase);
 
 	}
 	public boolean addUser(User aUser) {
@@ -22,11 +22,17 @@ public class Matrix {
 		return base.addUser(aUser);
 
 	}
-	public void addMoney(User aUser, double amount) {
-		base.addMoney(aUser.getName(), amount);
+	public boolean addMoney(User aUser, double amount) {
+		return theAccountant.addMoney(aUser, amount);
 	}
-	public void addMoney (Driver aDriver, double amount) {
-		driverBase.addMoney(aDriver.getName(), amount);
+	public boolean addMoney (Driver aDriver, double amount) {
+		return theAccountant.addMoney(aDriver, amount);
+	}
+	public boolean removeMoney(User aUser, double amount) {
+		return theAccountant.removeMoney(aUser, amount);
+	}
+	public boolean removeMoney (Driver aDriver, double amount) {
+		return theAccountant.removeMoney(aDriver, amount);
 	}
 	public boolean removeUser(User aUser) {
 

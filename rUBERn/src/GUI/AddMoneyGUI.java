@@ -94,21 +94,23 @@ private Matrix theMatrix;
 			putValue(SHORT_DESCRIPTION, "Add money");
 		}
 		public void actionPerformed(ActionEvent e) {
-			try {
+			
 			Double money;
 			String rawMoney = "00"+moneyAmount.getText().trim();
 			if (rawMoney.length() < 11 && rawMoney.length() > 0 && rawMoney.matches("[0-9]+")) {
 				money =	Double.parseDouble(rawMoney);
 				if (money > 0) {
+					try {
 					theMatrix.addMoney(theUser, money);
+					}catch(NullPointerException ouch) {
+						new Error("Unknown error");
+					}
 						new PostLogin(theMatrix, theUser);
 						dispose();
 				}
 				else new Error ("Invalid money amount");
 		}else new Error ("Invalid money amount");
-			}catch(NullPointerException ouch) {
-				new Error("Unknown error");
-			}
+
 			}
 	}
 	private class SwingAction_1 extends AbstractAction {

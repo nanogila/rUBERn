@@ -89,6 +89,22 @@ public class DriverBase {
 			return true;
 		}
 	}
+	public boolean removeMoney(String aName, double amount) {
+		if(aName.equals("")){
+			new Error("name is empty");
+			
+			return false;
+		}else if (getDriver(aName)==null) {
+			new Error(aName+" is not registered");
+			return false;
+		}
+		else {
+			Driver aDriver = getDriver(aName);
+			aDriver.removeMoney(amount);
+			new Error ("Added $"+amount+" successfully");
+			return true;
+		}
+	}
 	public Driver getDriver(String aName) {
 		Driver[] arrayDrivers = new Driver[drivers.size()];
 		 drivers.toArray(arrayDrivers);

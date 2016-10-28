@@ -94,6 +94,22 @@ public boolean addMoney(String aName, double amount) {
 		return true;
 	}
 }
+public boolean removeMoney(String aName, double amount) {
+	if(aName.equals("")){
+		new Error("name is empty");
+		
+		return false;
+	}else if (getUser(aName)==null) {
+		new Error(aName+" is not registered");
+		return false;
+	}
+	else {
+		User aUser = getUser(aName);
+		aUser.removeMoney(amount);
+		new Error ("Added $"+amount+" successfully");
+		return true;
+	}
+}
 public boolean updateUserLocation (long X, long Y, String aName){
 	if(aName.equals("")){
 		new Error("name is empty");
