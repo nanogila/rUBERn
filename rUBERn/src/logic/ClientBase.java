@@ -105,9 +105,10 @@ public boolean removeMoney(String aName, double amount) {
 	}
 	else {
 		User aUser = getUser(aName);
-		aUser.removeMoney(amount);
+		if(aUser.removeMoney(amount)) {
 		new Error ("$"+amount+" debited from "+aName+" successfully");
 		return true;
+		}else return false;
 	}
 }
 public boolean updateUserLocation (long X, long Y, String aName){

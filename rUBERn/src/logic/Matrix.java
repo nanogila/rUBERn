@@ -94,7 +94,6 @@ public class Matrix {
 			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip));
 			return true;
 		}else {
-			new Error ("You ain't got enough money pal");
 			return false;
 			//aca hay que ver que hacer si el cliente no tiene biyuya
 		}

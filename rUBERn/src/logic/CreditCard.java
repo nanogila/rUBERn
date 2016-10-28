@@ -1,5 +1,5 @@
 package logic;
-
+import GUI.Error;
 /**
  * Created by tomasvarela on 10/21/16.
  */

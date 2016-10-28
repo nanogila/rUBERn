@@ -6,6 +6,9 @@ public class AccountantTester {
 
 	@Test
 	public void imageCostTest() {
+		ClientBase aBase = new ClientBase();
+		DriverBase anotherBase = new DriverBase();
+		Accountant anAccountant = new Accountant(aBase, anotherBase);
 		Fiat600 aCar = new Fiat600();
 		User aClient = new User("pablo", 233223, "holaaa");
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
@@ -16,24 +19,16 @@ public class AccountantTester {
 	}
 	@Test
 	public void tripCostTest() {
-<<<<<<< HEAD
-=======
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
->>>>>>> branch 'master' of https://github.com/nanogila/rubern
 		Fiat600 aCar = new Fiat600();
 		User aClient = new User("pablo", 233223, "holaaa");
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		aDriver.updateLocation(3323, 2323);
 		long[] aDestination = {4500, 4300};
 		Trip aTrip = new Trip(aDriver, aClient, aDestination);
-<<<<<<< HEAD
-		Accountant anAccountant = new Accountant();
-		assertEquals(77.241, anAccountant.tripCost(aTrip), 0.001);
-=======
 		assertEquals(77.24, anAccountant.tripCost(aTrip), 0.001);
->>>>>>> branch 'master' of https://github.com/nanogila/rubern
 	}
 	@Test
 	public void addMoneyTest() {
