@@ -74,7 +74,7 @@ public class Error extends JDialog {
 						.addContainerGap())
 			);
 			buttonPane.setLayout(gl_buttonPane);
-		}
+		}pack();
 	}
 	class OkButton extends AbstractAction {
 		public OkButton() {

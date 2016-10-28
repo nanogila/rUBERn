@@ -11,4 +11,7 @@ public abstract class Car {
     public QualityTag getQuailityTag() {
     	return qualityTag;
     }
+    public int getCapacity() {
+    	return capacity;
+    }
 }

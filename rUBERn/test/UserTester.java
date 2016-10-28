@@ -23,4 +23,27 @@ public class UserTester {
 		assertEquals("[123, 456]", Juan.getLocationToString());
 
 	}
+	@Test
+	public void testAddMoney() {
+		User Juan = new User("Juan", 2134, "sregth");
+		Juan.addMoney(23.0);
+		assertEquals(23.0, Juan.getBalance(), 0.0001);
+
+	}
+	@Test
+	public void testRemoveMoney() {
+		User Juan = new User("Juan", 2134, "sregth");
+		Juan.addMoney(23.0);
+		Juan.removeMoney(20.5);
+		assertEquals(2.5, Juan.getBalance(), 0.0001);
+
+	}
+	@Test
+	public void testRemoveMoneyFail() {
+		User Juan = new User("Juan", 2134, "sregth");
+		Juan.addMoney(2.0);
+		Juan.removeMoney(23.0);
+		assertEquals(2.0, Juan.getBalance(), 0.0001);
+
+	}
 }

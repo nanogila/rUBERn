@@ -37,7 +37,7 @@ return true;
 public void seeUsers() {
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
-	 String[] columns = {"Username", "Credit card number", "Location"};
+	 String[] columns = {"Username", "Credit card number", "Location", "money"};
 	 Object[][] data = new Object[users.size()][columns.length];
 	 for (int i=0; i<arrayUsers.length; i++) {
 		 for (int j=0; j<columns.length; j++) {
@@ -45,8 +45,10 @@ public void seeUsers() {
 	 data[i][j] = arrayUsers[i].getName();
 			 }else if (j==1){
 				 data[i][j] = arrayUsers[i].getCardNumber();
-			 }else {
+			 }else if (j==2){
 				 data[i][j] = arrayUsers[i].getLocationToString();
+			 }else {
+				 data[i][j] = arrayUsers[i].getBalance();
 			 }
 	 }
 		 }
@@ -75,6 +77,38 @@ public User getUser(String aName) {
 	}
 	}
 	return null;
+}
+public boolean addMoney(String aName, double amount) {
+	if(aName.equals("")){
+		new Error("name is empty");
+		
+		return false;
+	}else if (getUser(aName)==null) {
+		new Error(aName+" is not registered");
+		return false;
+	}
+	else {
+		User aUser = getUser(aName);
+		aUser.addMoney(amount);
+		new Error ("Added $"+amount+" to "+aName+" successfully");
+		return true;
+	}
+}
+public boolean removeMoney(String aName, double amount) {
+	if(aName.equals("")){
+		new Error("name is empty");
+		
+		return false;
+	}else if (getUser(aName)==null) {
+		new Error(aName+" is not registered");
+		return false;
+	}
+	else {
+		User aUser = getUser(aName);
+		aUser.removeMoney(amount);
+		new Error ("$"+amount+" debited from "+aName+" successfully");
+		return true;
+	}
 }
 public boolean updateUserLocation (long X, long Y, String aName){
 	if(aName.equals("")){

@@ -38,7 +38,7 @@ public class DriverBase {
 	public void seeDrivers() {
 		Driver[] arrayDrivers = new Driver[drivers.size()];
 		 drivers.toArray(arrayDrivers);
-		 String[] columns = {"Driver name", "Credit card number", "Location", "Car", "status"};
+		 String[] columns = {"Driver name", "Credit card number", "Location", "Car", "status", "money"};
 		 Object[][] data = new Object[drivers.size()][columns.length];
 		 for (int i=0; i<arrayDrivers.length; i++) {
 			 for (int j=0; j<columns.length; j++) {
@@ -50,8 +50,10 @@ public class DriverBase {
 					 data[i][j] = arrayDrivers[i].getLocationToString();
 				 }else if (j==3){
 					 data[i][j] = arrayDrivers[i].getCarModel();
-				 }else {
+				 }else if (j==4){
 					 data[i][j] = arrayDrivers[i].getStatus();
+				 }else {
+					 data[i][j] = arrayDrivers[i].getBalance();
 				 }
 		 }
 			 }
@@ -68,6 +70,38 @@ public class DriverBase {
 		}else {
 			drivers.remove(aDriver);
 			new Error("Driver successfully removed");
+			return true;
+		}
+	}
+	public boolean addMoney(String aName, double amount) {
+		if(aName.equals("")){
+			new Error("name is empty");
+			
+			return false;
+		}else if (getDriver(aName)==null) {
+			new Error(aName+" is not registered");
+			return false;
+		}
+		else {
+			Driver aDriver = getDriver(aName);
+			aDriver.addMoney(amount);
+			new Error ("Added $"+amount+" to "+aName+" successfully");
+			return true;
+		}
+	}
+	public boolean removeMoney(String aName, double amount) {
+		if(aName.equals("")){
+			new Error("name is empty");
+			
+			return false;
+		}else if (getDriver(aName)==null) {
+			new Error(aName+" is not registered");
+			return false;
+		}
+		else {
+			Driver aDriver = getDriver(aName);
+			aDriver.removeMoney(amount);
+			new Error ("$"+amount+" debited from "+aName+" successfully");
 			return true;
 		}
 	}

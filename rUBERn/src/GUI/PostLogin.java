@@ -26,20 +26,21 @@ public class PostLogin extends JFrame {
 	private final Action updateLocation = new UpdateLocation();
 	private final Action askForCar = new AskForCar();
 	private final Action logOut = new LogOut();
+	private final Action action = new SwingAction();
 	/**
 	 * Create the dialog.
 	 */
 	public PostLogin(Matrix aMatrix, User aUser) {
+		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
 		theMatrix = aMatrix;
 		theUser = aUser;
-		setBounds(100, 100, 387, 177);
+		setBounds(100, 100, 499, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		
 		JLabel label = new JLabel("Welcome to rUBERn");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 16));
@@ -52,12 +53,15 @@ public class PostLogin extends JFrame {
 		
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.setAction(logOut);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setAction(action);
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+					.addComponent(label, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
 					.addGap(161))
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addComponent(btnUpdateLocation)
@@ -65,7 +69,9 @@ public class PostLogin extends JFrame {
 					.addComponent(btnAskForCar)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnLogOut)
-					.addContainerGap(47, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -76,8 +82,9 @@ public class PostLogin extends JFrame {
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnUpdateLocation)
 						.addComponent(btnLogOut)
-						.addComponent(btnAskForCar))
-					.addContainerGap(170, Short.MAX_VALUE))
+						.addComponent(btnAskForCar)
+						.addComponent(btnNewButton))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
@@ -85,6 +92,7 @@ public class PostLogin extends JFrame {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 		}
+		pack();
 	}
 	private class UpdateLocation extends AbstractAction {
 		public UpdateLocation() {
@@ -102,6 +110,8 @@ public class PostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Ask for a car");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new SetTripDestinationGUI(theMatrix, theUser);
+			dispose();
 		}
 	}
 	private class LogOut extends AbstractAction {
@@ -111,6 +121,16 @@ public class PostLogin extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new Main(theMatrix);
+			dispose();
+		}
+	}
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Add money");
+			putValue(SHORT_DESCRIPTION, "Adds money to your wallet");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new AddMoneyGUI(theMatrix, theUser);
 			dispose();
 		}
 	}

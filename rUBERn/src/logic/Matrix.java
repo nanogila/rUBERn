@@ -5,6 +5,9 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
+import GUI.*;
+import GUI.Error;
+
 public class Matrix {
 	ClientBase base;
 	DriverBase driverBase;
@@ -12,13 +15,25 @@ public class Matrix {
 	public Matrix (ClientBase database, DriverBase aDriverBase) {
 		driverBase = aDriverBase;
 		base = database;
-		theAccountant = new Accountant();
+		theAccountant = new Accountant(base, driverBase);
 
 	}
 	public boolean addUser(User aUser) {
 
 		return base.addUser(aUser);
 
+	}
+	public boolean addMoney(User aUser, double amount) {
+		return theAccountant.addMoney(aUser, amount);
+	}
+	public boolean addMoney (Driver aDriver, double amount) {
+		return theAccountant.addMoney(aDriver, amount);
+	}
+	public boolean removeMoney(User aUser, double amount) {
+		return theAccountant.removeMoney(aUser, amount);
+	}
+	public boolean removeMoney (Driver aDriver, double amount) {
+		return theAccountant.removeMoney(aDriver, amount);
 	}
 	public boolean removeUser(User aUser) {
 
@@ -52,29 +67,46 @@ public class Matrix {
 	public boolean updateDriverLocation(long x, long y, String aName) {
 		return driverBase.updateDriverLocation(x, y, aName);
 	}
+	public void addMoney(Person aPerson, double someMoney) {
+		aPerson.addMoney(someMoney);
+	}
 	public boolean checkDriverPassword(String aDriver, String aPassword) {
 		return driverBase.checkPassword(aDriver, aPassword);
 	}
-	public boolean askForCar(User aUser, long[] aDestination){
+	public boolean askForCar(User aUser, long[] aDestination, int people){
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
-		if(aDriver.isAvailable()){
+		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}
-
-	Trip selectedTrip = possibleTrips.get(0);
+	Trip selectedTrip;
+	if (possibleTrips.size()>0) {
+		selectedTrip = possibleTrips.get(0);	
 	for(Trip aTrip : possibleTrips){
 		if(theAccountant.imageCost(aTrip)< theAccountant.imageCost(selectedTrip)){
 			selectedTrip = aTrip;
 		}
-
 	}
-	if(selectedTrip.getDriver().decideTrip()){
-		return true;
+	boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip?");
+	if (accepted) {
+		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip))) {
+			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip));
+			return true;
+		}else {
+			new Error ("You ain't got enough money pal");
+			return false;
+			//aca hay que ver que hacer si el cliente no tiene biyuya
+		}
+		
+	}else {
+		new Error ("The driver didn't accept");
+		//aca deberiamos eliminar a ese driver y correr de vuelta el metodo para que otro driver se gane el viaje
+		return false;
 	}
-	else return false;
-
-
+	}else {
+		new Error ("No drivers are available at this time");
+	return false;
+	}
 	}
 }
