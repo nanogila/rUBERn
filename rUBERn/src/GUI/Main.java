@@ -19,6 +19,8 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -39,6 +41,14 @@ public class Main {
 			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
 					new Main(theMatrix);
 					
+					   DateTimeFormatter formatter =
+			                      DateTimeFormatter.ofPattern("yyyy/MM/dd");
+					   String hola = LocalDateTime.now().format(formatter);
+					new Error(hola);
+					   DateTimeFormatter formatter2 =
+			                      DateTimeFormatter.ofPattern("HH:mm");
+					   String hola2 = LocalDateTime.now().format(formatter2);
+					new Error(hola2);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

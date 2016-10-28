@@ -1,6 +1,7 @@
 package logic;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class Accountant {
@@ -11,6 +12,13 @@ public Accountant(ClientBase aBase, DriverBase aDriverBase) {
 movimientos = new ArrayList<>();
 base = aBase;
 driverBase = aDriverBase;
+}
+public boolean logAddMoney(Trip aTrip) {
+	LocalDateTime log = LocalDateTime.now();
+	return true;
+}
+public boolean logRemoveMoney() {
+	return true;
 }
 public double imageCost(Trip aTrip) {
 	Appraiser anAppraiser = new Appraiser();
