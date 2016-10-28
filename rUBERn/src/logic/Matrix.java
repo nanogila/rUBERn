@@ -5,7 +5,8 @@ package logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import GUI.YesOrNoGUI;
+import GUI.*;
+import GUI.Error;
 
 public class Matrix {
 	ClientBase base;
@@ -93,6 +94,7 @@ public class Matrix {
 			selectedTrip.getDriver().addMoney(theAccountant.tripCost(selectedTrip));
 			return true;
 		}else {
+			new Error ("You ain't got enough money pal");
 			return false;
 			//aca hay que ver que hacer si el cliente no tiene biyuya
 		}

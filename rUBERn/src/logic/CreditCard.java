@@ -11,7 +11,7 @@ public class CreditCard {
     public CreditCard(String aName, Integer aCardNumber){
         name = aName;
         cardNumber = aCardNumber;
-        balance = 0.0;
+        balance = 100.0;
     }
     public void addMoney(double money){
         balance += money;
