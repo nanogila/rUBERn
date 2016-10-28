@@ -129,6 +129,7 @@ public class SetTripDestinationGUI extends JFrame {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						new PostLogin(theMatrix, theUser);
 						dispose();
 					}
 				});
