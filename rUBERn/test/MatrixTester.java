@@ -14,8 +14,8 @@ public class MatrixTester {
 	ClientBase aBase = new ClientBase();
 	DriverBase anotherBase = new DriverBase();
 	Fiat600 aCar = new Fiat600();
-	Driver aDriver = new Driver("mario", 23423, "holass", aCar);
-	User aUser = new User("Mario", 1231, "hola");
+	Driver aDriver = new Driver("Maria", 23423, "holass", aCar);
+	User aUser = new User("Jose", 1231, "hola");
 	Thread ok = new Thread () {
 		  public void run () {
 			  try{Thread.sleep(50);}catch(InterruptedException e){}

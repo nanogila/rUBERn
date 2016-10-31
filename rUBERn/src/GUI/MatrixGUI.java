@@ -15,6 +15,7 @@ import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
+import javax.swing.JPanel;
 
 public class MatrixGUI {
 private Matrix theMatrix;
@@ -23,6 +24,7 @@ private Matrix theMatrix;
 	private final Action action_1 = new SeeUsers();
 	private final Action action_2 = new ChangeUserLocation();
 	private final Action action_3 = new SwingAction_1();
+	private final Action action_4 = new SwingAction_2();
 	/**
 	 * Create the application.
 	 */
@@ -40,7 +42,7 @@ private Matrix theMatrix;
 		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		frame.setResizable(false);
 		frame.setTitle("rUBERn - Group 3");
-		frame.setBounds(100, 100, 423, 206);
+		frame.setBounds(100, 100, 423, 242);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel lblBienvenidoARubern = new JLabel("Welcome to rUBERn");
@@ -71,27 +73,35 @@ private Matrix theMatrix;
 			}
 		});
 		button.setActionCommand("Cancel");
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setAction(action_4);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblChooseAnAction)
-						.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnUpdateUserLocation, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-								.addComponent(btnAddUser, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addComponent(lblChooseAnAction)
+								.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-									.addGap(1))
-								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-									.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-									.addPreferredGap(ComponentPlacement.RELATED)))))
-					.addGap(20))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addComponent(btnUpdateUserLocation, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+										.addComponent(btnAddUser, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+											.addGap(1))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED)))))
+							.addGap(20))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnNewButton)
+							.addContainerGap(318, Short.MAX_VALUE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -108,7 +118,8 @@ private Matrix theMatrix;
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnUpdateUserLocation)
 						.addComponent(button))
-					.addContainerGap(25, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(btnNewButton))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setLocationRelativeTo(null);
@@ -150,6 +161,15 @@ private Matrix theMatrix;
 		public void actionPerformed(ActionEvent e) {
 			new Main(theMatrix);
 			frame.dispose();
+		}
+	}
+	private class SwingAction_2 extends AbstractAction {
+		public SwingAction_2() {
+			putValue(NAME, "See log file location");
+			putValue(SHORT_DESCRIPTION, "See rUBERn's log file location");
+		}
+		public void actionPerformed(ActionEvent e) {
+			new Error(theMatrix.getLogFileLocation());
 		}
 	}
 }

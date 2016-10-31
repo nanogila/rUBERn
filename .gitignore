@@ -3,6 +3,7 @@
 bin/
 tmp/
 *.tmp
+rUBERnLog.txt
 *.bak
 *.swp
 *~.nib

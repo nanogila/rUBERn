@@ -1,7 +1,7 @@
 package logic;
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -9,13 +9,17 @@ import java.util.*;
 import GUI.Error;
 
 public class Accountant {
-private ArrayList<String> movimientos;
 private ClientBase base;
 private DriverBase driverBase;
+private String newLine;
+private File logFile;
+private BufferedWriter logger;
 public Accountant(ClientBase aBase, DriverBase aDriverBase) {
-movimientos = new ArrayList<>();
 base = aBase;
 driverBase = aDriverBase;
+newLine = System.getProperty("line.separator");
+logFile = new File("rUBERnLog.txt");
+ logger = null;
 }
 public String getTime() {
    DateTimeFormatter formatter =
@@ -31,13 +35,13 @@ public String getDate() {
 }
 public boolean logAddMoney(Person aPerson, double anAmount, String aDescription) {
 	double finalAmount = roundUp(anAmount*0.9);
-	String log = "Added money, date: "+getDate()+", time: "+getTime()+", name: "+aPerson.getName()+", credit card number: "+aPerson.getCardNumber()+", description: "+aDescription+", amount: "+finalAmount;
-	if(movimientos.add(log)) return true;
+	String log = newLine+"Added money, date: "+getDate()+", time: "+getTime()+", name: "+aPerson.getName()+", credit card number: "+aPerson.getCardNumber()+", description: "+aDescription+", amount: "+finalAmount;
+	if(writeLog(log)) return true;
 	else return false;
 }
 public boolean logRemoveMoney(Person aPerson, double anAmount, String aDescription) {
-	String log = "Charged money, date: "+getDate()+", time: "+getTime()+", name: "+aPerson.getName()+", credit card number: "+aPerson.getCardNumber()+", description: "+aDescription+", amount: -"+anAmount;
-	if(movimientos.add(log)) return true;
+	String log = newLine+"Charged money, date: "+getDate()+", time: "+getTime()+", name: "+aPerson.getName()+", credit card number: "+aPerson.getCardNumber()+", description: "+aDescription+", amount: -"+anAmount;
+	if(writeLog(log)) return true;
 	else return false;
 }
 public double imageCost(Trip aTrip) {
@@ -74,9 +78,35 @@ public boolean removeMoney(Driver aDriver, double amount) {
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.removeMoney(aDriver.getName(), theAmount);
 }
-private double roundUp(double value) {
+public double roundUp(double value) {
 	BigDecimal bd = new BigDecimal(value);
     bd = bd.setScale(2, RoundingMode.HALF_UP);
     return bd.doubleValue();
+}
+private boolean writeLog(String message) {
+	 try
+     {
+		 logger = new BufferedWriter(new FileWriter(logFile, true));
+         logger.write(message);
+         logger.close();
+         return true;
+     }
+     catch(Exception e)
+     {
+     }finally {
+    	 try {
+    		 logger.close();
+    	 }catch (Exception e) {
+    		 
+    	 }
+     }return false;
+	
+}
+public String getLogFileLocation() {
+	try {
+		return logFile.getCanonicalPath();
+	} catch (IOException e) {
+		return "log file not found";
+	}
 }
 }

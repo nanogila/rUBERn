@@ -97,8 +97,8 @@ public class Matrix {
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
-		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip")) {
-			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip");
+		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip")) {
+			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip");
 			return true;
 		}
 		}else {
@@ -118,5 +118,8 @@ public class Matrix {
 		new Error ("No drivers are available at this time");
 	return false;
 	}return false;
+	}
+	public String getLogFileLocation() {
+		return theAccountant.getLogFileLocation();
 	}
 }
