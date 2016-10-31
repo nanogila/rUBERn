@@ -13,11 +13,12 @@ public class MatrixTester {
 	Robot bot;
 	ClientBase aBase = new ClientBase();
 	DriverBase anotherBase = new DriverBase();
-	Fiat600 aCar = new Fiat600();
+	Car aCar = new Car("Fiat 600", 3, new QualityTag("low", 2));
 	Driver aDriver = new Driver("Maria", 23423, "holass", aCar);
 	User aUser = new User("Jose", 1231, "hola");
 	Thread ok = new Thread () {
 		  public void run () {
+				try { bot = new Robot(); } catch (AWTException e) {}
 			  try{Thread.sleep(50);}catch(InterruptedException e){}
 			  bot.keyPress(KeyEvent.VK_ENTER);
 				try{Thread.sleep(50);}catch(InterruptedException e){}
@@ -81,7 +82,6 @@ public class MatrixTester {
 	}
 	@Test
 	public void  checkAskForCarTest() {
-		try { bot = new Robot(); } catch (AWTException e) {}
 		Matrix theMatrix = new Matrix(aBase, anotherBase);
 		theMatrix.addUser(aUser);
 		theMatrix.addMoney(aUser, 234);

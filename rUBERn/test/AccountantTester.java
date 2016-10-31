@@ -3,13 +3,13 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import logic.*;
 public class AccountantTester {
-
+	Car aCar = new Car("Fiat 600", 3, new QualityTag("low", 2));
 	@Test
 	public void imageCostTest() {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
-		Fiat600 aCar = new Fiat600();
+
 		User aClient = new User("pablo", 233223, "holaaa");
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		aDriver.updateLocation(3323, 2323);
@@ -22,7 +22,7 @@ public class AccountantTester {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
-		Fiat600 aCar = new Fiat600();
+
 		User aClient = new User("pablo", 233223, "holaaa");
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		aDriver.updateLocation(3323, 2323);
@@ -45,7 +45,7 @@ public class AccountantTester {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
-		Fiat600 aCar = new Fiat600();
+
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);
@@ -56,7 +56,6 @@ public class AccountantTester {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
-		Fiat600 aCar = new Fiat600();
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);

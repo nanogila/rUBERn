@@ -9,19 +9,32 @@ import GUI.*;
 import GUI.Error;
 
 public class Matrix {
-	ClientBase base;
-	DriverBase driverBase;
-	Accountant theAccountant;
+	private ClientBase base;
+	private DriverBase driverBase;
+	private TagBase tagBase;
+	private Accountant theAccountant;
 	public Matrix (ClientBase database, DriverBase aDriverBase) {
 		driverBase = aDriverBase;
 		base = database;
 		theAccountant = new Accountant(base, driverBase);
+		tagBase = new TagBase();
+		
+tagBase.addTag(new QualityTag("VIP", 8));
+tagBase.addTag(new QualityTag("High", 6));
+tagBase.addTag(new QualityTag("Medium", 4));
+tagBase.addTag(new QualityTag("Low", 2));
 
 	}
 	public boolean addUser(User aUser) {
 
 		return base.addUser(aUser);
 
+	}
+	public String[] getTagNames() {
+		return tagBase.getTagNames();
+	}
+	public QualityTag getTag(String aTagName) {
+		return tagBase.getTag(aTagName);
 	}
 	public boolean addMoney(User aUser, double amount) {
 		return theAccountant.addMoney(aUser, amount);

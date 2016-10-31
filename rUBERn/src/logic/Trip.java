@@ -1,5 +1,4 @@
 package logic;
-
 public class Trip {
 	private Driver theDriver;
 	private User theClient;

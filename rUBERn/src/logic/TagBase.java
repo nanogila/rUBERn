@@ -50,6 +50,15 @@ public void seeTags() {
 		 }
 	 new UserListGUI(columns, data);
 }
+public String[] getTagNames() {
+	QualityTag[] arrayTags = new QualityTag[tags.size()];
+	 tags.toArray(arrayTags);
+	 String[] data = new String[tags.size()];
+	 for (int i=0; i<arrayTags.length; i++) {
+	 data[i] = arrayTags[i].getTag();
+		 }
+	 return data;
+}
 public boolean removeTag(QualityTag aTag) {
 	if(aTag.getTag().equals("")){
 		new Error("Tag name is empty");
@@ -64,7 +73,7 @@ public boolean removeTag(QualityTag aTag) {
 		return true;
 	}
 }
-public QualityTag getUser(String aTag) {
+public QualityTag getTag(String aTag) {
 	QualityTag[] arrayTags = new QualityTag[tags.size()];
 	 tags.toArray(arrayTags);
 	for (int i=0; i<arrayTags.length; i++) {

@@ -38,7 +38,9 @@ private JPasswordField userPassword;
 private JPasswordField userPassword2;
 private final Action action_1 = new Cancel();
 private int carModel;
-private JComboBox<String> comboBox;
+private JComboBox<String> carQuality;
+private JTextField carModelName;
+private JTextField carCapacity;
 	/**
 	 * Create the dialog.
 	 */
@@ -49,7 +51,7 @@ private JComboBox<String> comboBox;
 		setTitle("rUBERn - Group 3");
 		setResizable(false);
 		action = new AddAUser(theMatrix);
-		setBounds(100, 100, 395, 281);
+		setBounds(100, 100, 395, 660);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -68,6 +70,7 @@ private JComboBox<String> comboBox;
 		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userCard = new JTextField();
+		userCard.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -81,17 +84,30 @@ private JComboBox<String> comboBox;
 		
 		userPassword2 = new JPasswordField();
 		
-		JLabel lblCarModel = new JLabel("Car model:");
+		JLabel lblCarModel = new JLabel("Car category:");
 		lblCarModel.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCarModel.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
-		comboBox = new JComboBox<String>();
-		comboBox.addActionListener(new ActionListener() {
+		carQuality = new JComboBox<String>();
+		carQuality.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				carModel=comboBox.getSelectedIndex();
+				carModel=carQuality.getSelectedIndex();
 			}
 		});
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"Select a car model...", "Fiat 600", "Volkswagen Gol", "Renault Fluence","Hyundai H1"}));
+		carQuality.setModel(new DefaultComboBoxModel<String>(theMatrix.getTagNames()));
+		
+		carModelName = new JTextField();
+		
+		JLabel lblCarModel_1 = new JLabel("Car model:");
+		lblCarModel_1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCarModel_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		JLabel lblCarCapacity = new JLabel("Car capacity:");
+		lblCarCapacity.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblCarCapacity.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		
+		carCapacity = new JTextField();
+		carCapacity.setColumns(2);
 		GroupLayout gl_contentPanel = new GroupLayout(contentPanel);
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -119,10 +135,20 @@ private JComboBox<String> comboBox;
 					.addGap(4)
 					.addComponent(userPassword2, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGap(20)
+					.addGap(10)
+					.addComponent(lblCarModel_1, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+					.addGap(6)
+					.addComponent(carModelName, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(10)
+					.addComponent(lblCarCapacity, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(carCapacity, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(18)
 					.addComponent(lblCarModel, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
 					.addGap(4)
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+					.addComponent(carQuality, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -148,12 +174,25 @@ private JComboBox<String> comboBox;
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblConfirmPassword)
 						.addComponent(userPassword2, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
-					.addGap(6)
+					.addGap(11)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(lblCarModel_1))
+						.addComponent(carModelName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(15)
+							.addComponent(lblCarCapacity))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(14)
+							.addComponent(carCapacity, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(18)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addGap(1)
 							.addComponent(lblCarModel))
-						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(carQuality, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
@@ -186,20 +225,13 @@ private JComboBox<String> comboBox;
 		}
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Car aCar;
-				switch(carModel) {
-				case 1: aCar=new Fiat600();
-				break;
-				case 2: aCar=new VolkswagenGol();
-				break;
-				case 3: aCar=new RenaultFluence();
-				break;
-                    case 4: aCar = new HyundaiH1();
-                        break;
-				default: aCar=null;
-				break;
-				}
-					
+				String model = carModelName.getText().trim();
+				String rawCapacity = carCapacity.getText().trim();
+				if (rawCapacity.length() < 3 && rawCapacity.matches("[0-9]+")) {
+					int capacity = Integer.parseInt(rawCapacity); 
+				QualityTag qualitytag = theMatrix.getTag(theMatrix.getTagNames()[carModel]);
+				Car aCar = new Car(model, capacity, qualitytag);
+									
 				Integer cardNumber=0;
 				String card = userCard.getText().trim();
 				String name = userName.getText().trim();
@@ -224,6 +256,7 @@ private JComboBox<String> comboBox;
 				}else new Error("Please select a car");
 				}	else new Error("Invalid credit card number");
 				}
+			}else new Error("Please enter a valid capacity");
 			}catch(NullPointerException a) {
 				new Error("Unknown error");
 

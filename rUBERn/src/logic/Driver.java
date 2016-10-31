@@ -42,4 +42,7 @@ public class Driver extends Person {
     public boolean decideTrip(){
 return true;
     }
+    public int getCarQuality() {
+    	return theCar.getCarQuality();
+    }
 }

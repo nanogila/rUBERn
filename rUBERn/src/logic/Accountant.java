@@ -45,15 +45,14 @@ public boolean logRemoveMoney(Person aPerson, double anAmount, String aDescripti
 	else return false;
 }
 public double imageCost(Trip aTrip) {
-	Appraiser anAppraiser = new Appraiser();
-	double appraisal = anAppraiser.appraiseCar(aTrip.getDriver().getCar());
+	double appraisal = ((double)aTrip.getDriver().getCarQuality())/10;
 	double cost = roundUp((aTrip.getDistanceFromDriver()/500)*2/appraisal);
 	return cost;
 	
 }
 public double tripCost(Trip aTrip) {
 	double cost = 0;
-	cost =roundUp((aTrip.getDistance()/100)+15);
+	cost = roundUp((aTrip.getDistance()/100)+15);
 	return cost;
 }
 public boolean addMoney(User aUser, double amount) {

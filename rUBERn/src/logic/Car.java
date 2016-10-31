@@ -18,4 +18,7 @@ public class Car {
     public int getCapacity() {
     	return capacity;
     }
+    public int getCarQuality() {
+    	return qualityTag.getValue();
+    }
 }
