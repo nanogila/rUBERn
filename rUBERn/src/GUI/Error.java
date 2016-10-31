@@ -26,12 +26,12 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
-		setTitle("rUBERn - Group 3");
 		setAlwaysOnTop(true);
 		setResizable(false);
-		setBounds(100, 100, 264, 204);
-		setVisible(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		setModal(true);
+		setTitle("rUBERn - Group 3");
+		setBounds(100, 100, 264, 204);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -77,6 +77,7 @@ public class Error extends JDialog {
 			buttonPane.setLayout(gl_buttonPane);
 		}setLocationRelativeTo(null);
 		pack();
+		setVisible(true);
 	}
 	class OkButton extends AbstractAction {
 		public OkButton() {
