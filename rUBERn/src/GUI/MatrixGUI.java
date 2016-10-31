@@ -25,6 +25,7 @@ private Matrix theMatrix;
 	private final Action action_2 = new ChangeUserLocation();
 	private final Action action_3 = new SwingAction_1();
 	private final Action action_4 = new SwingAction_2();
+	private final Action action_5 = new SwingAction_3();
 	/**
 	 * Create the application.
 	 */
@@ -76,50 +77,51 @@ private Matrix theMatrix;
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setAction(action_4);
+		
+		JButton btnManageQualityTags = new JButton("Manage quality tags");
+		btnManageQualityTags.setAction(action_5);
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblChooseAnAction)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblChooseAnAction)
-								.addComponent(lblBienvenidoARubern, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnUpdateUserLocation, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-										.addComponent(btnAddUser, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-											.addGap(1))
-										.addGroup(groupLayout.createSequentialGroup()
-											.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-											.addPreferredGap(ComponentPlacement.RELATED)))))
-							.addGap(20))
+							.addComponent(btnAddUser, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton)
-							.addContainerGap(318, Short.MAX_VALUE))))
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnUpdateUserLocation, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
+							.addGap(6)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnManageQualityTags, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(button, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblBienvenidoARubern)
-					.addGap(28)
-					.addComponent(lblChooseAnAction)
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnAddUser)
-						.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+					.addComponent(lblChooseAnAction)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnAddUser)
+						.addComponent(seeUsers))
+					.addGap(11)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnUpdateUserLocation)
 						.addComponent(button))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(btnNewButton))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnNewButton)
+						.addComponent(btnManageQualityTags))
+					.addGap(35))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setLocationRelativeTo(null);
@@ -170,6 +172,14 @@ private Matrix theMatrix;
 		}
 		public void actionPerformed(ActionEvent e) {
 			new Error(theMatrix.getLogFileLocation());
+		}
+	}
+	private class SwingAction_3 extends AbstractAction {
+		public SwingAction_3() {
+			putValue(NAME, "Manage quality tags");
+			putValue(SHORT_DESCRIPTION, "Create, modify or delete quality tags and their value");
+		}
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 }

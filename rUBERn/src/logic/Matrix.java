@@ -102,9 +102,7 @@ public class Matrix {
 			return true;
 		}
 		}else {
-			//new Error ("The driver didn't accept");
 			blacklist.add(selectedTrip.getDriver());
-			//aca deberiamos eliminar a ese driver y correr de vuelta el metodo para que otro driver se gane el viaje
 			return askForCar(aUser, aDestination, people, blacklist);
 		}
 	}

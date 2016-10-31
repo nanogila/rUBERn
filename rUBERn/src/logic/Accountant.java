@@ -93,11 +93,11 @@ private boolean writeLog(String message) {
      }
      catch(Exception e)
      {
+    	 new Error("Error while writing to the log file");
      }finally {
     	 try {
     		 logger.close();
     	 }catch (Exception e) {
-    		 
     	 }
      }return false;
 	
