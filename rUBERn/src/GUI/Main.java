@@ -40,7 +40,7 @@ public class Main {
 			    	DriverBase baseDeChoferes = new DriverBase();
 			        ClientBase basededatos = new ClientBase();
 			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
-					new Main(theMatrix);
+					new Main(theMatrix);					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,6 +66,7 @@ public class Main {
 		frmRubern.setBounds(100, 100, 299, 160);
 		frmRubern.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmRubern.setVisible(true);
+		frmRubern.setLocationRelativeTo(null);
 		JLabel label = new JLabel("Welcome to rUBERn");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 16));
