@@ -1,10 +1,14 @@
 package logic;
 
-public abstract class Car {
+public class Car {
 	protected QualityTag qualityTag;
 	protected String model;
 	protected int capacity;
-	
+	public Car (String aModel, int aCapacity, QualityTag aQualityTag) {
+		qualityTag = aQualityTag;
+		model = aModel;
+		capacity = aCapacity;
+	}
     public String getModel() {
     	return model;
     }
