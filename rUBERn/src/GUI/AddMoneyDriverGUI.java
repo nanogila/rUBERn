@@ -36,8 +36,9 @@ private Matrix theMatrix;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 270, 204);
 		setVisible(true);
+		
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setBorder(new EmptyBorder(5, 5, 20, 20));
 		setContentPane(contentPane);
 		//pack();
 		JLabel lblAddSomeMoney = new JLabel("Add some money to your wallet");
@@ -58,36 +59,38 @@ private Matrix theMatrix;
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(25)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblAddSomeMoney)
-						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-							.addGroup(gl_contentPane.createSequentialGroup()
-								.addComponent(btnAdd)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(btnCancel))
-							.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-								.addComponent(lblAmountToAdd)
-								.addPreferredGap(ComponentPlacement.RELATED)
-								.addComponent(moneyAmount, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(191, Short.MAX_VALUE))
+					.addGap(10)
+					.addComponent(lblAddSomeMoney))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(34)
+					.addComponent(lblAmountToAdd)
+					.addGap(4)
+					.addComponent(moneyAmount, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(95)
+					.addComponent(btnAdd)
+					.addGap(10)
+					.addComponent(btnCancel))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
+					.addGap(11)
 					.addComponent(lblAddSomeMoney)
 					.addGap(47)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblAmountToAdd)
-						.addComponent(moneyAmount, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnCancel)
-						.addComponent(btnAdd))
-					.addGap(28))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(moneyAmount, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnAdd)
+						.addComponent(btnCancel)))
 		);
 		contentPane.setLayout(gl_contentPane);
+		setLocationRelativeTo(null);
+		pack();
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

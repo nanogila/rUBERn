@@ -73,10 +73,15 @@ public class Matrix {
 	public boolean checkDriverPassword(String aDriver, String aPassword) {
 		return driverBase.checkPassword(aDriver, aPassword);
 	}
-	public boolean askForCar(User aUser, long[] aDestination, int people){
+	public boolean askForCar(User aUser, long[] aDestination, int people) {
+		List<Driver> blacklist = new ArrayList<>(); 
+		return askForCar(aUser, aDestination, people, blacklist);
+	}
+	
+	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist){
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
-		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<5000){
+		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<5000 && !(blacklist.contains(aDriver))){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}
@@ -90,16 +95,17 @@ public class Matrix {
 	}
 	
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
-		boolean accepted = new YesOrNoGUI().showYesNoMessage("Driver accept the trip", "Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
+		boolean accepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip")) {
 			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), selectedTrip.getDistance()+" long trip");
 			return true;
 		}
 		}else {
-			new Error ("The driver didn't accept");
+			//new Error ("The driver didn't accept");
+			blacklist.add(selectedTrip.getDriver());
 			//aca deberiamos eliminar a ese driver y correr de vuelta el metodo para que otro driver se gane el viaje
-			return false;
+			return askForCar(aUser, aDestination, people, blacklist);
 		}
 	}
 	else {

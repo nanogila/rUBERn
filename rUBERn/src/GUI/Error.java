@@ -26,6 +26,7 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
+		setTitle("rUBERn - Group 3");
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(100, 100, 264, 204);
@@ -74,7 +75,8 @@ public class Error extends JDialog {
 						.addContainerGap())
 			);
 			buttonPane.setLayout(gl_buttonPane);
-		}pack();
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	class OkButton extends AbstractAction {
 		public OkButton() {

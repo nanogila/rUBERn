@@ -42,7 +42,7 @@ public class DriverLoginGUI extends JFrame {
 		setVisible(true);
 		setBounds(100, 100, 337, 214);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		
 		JLabel lblLogIn = new JLabel("Log in:");
@@ -64,42 +64,38 @@ public class DriverLoginGUI extends JFrame {
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblLogIn)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addGap(35)
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblDrivername, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(driverPassword)
-								.addComponent(driverName, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))))
-					.addContainerGap(16, Short.MAX_VALUE))
+					.addGap(10)
+					.addComponent(lblLogIn))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(45)
+					.addComponent(lblDrivername, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(driverName, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(55)
+					.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addComponent(driverPassword, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(11)
+					.addComponent(lblLogIn)
+					.addGap(19)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(lblLogIn))
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addGap(49)
-							.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-								.addComponent(driverName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblDrivername, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(driverPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 17, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(42, Short.MAX_VALUE))
+						.addComponent(lblDrivername, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)
+						.addComponent(driverName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(11)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblPassword)
+						.addComponent(driverPassword, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			buttonPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
@@ -114,7 +110,8 @@ public class DriverLoginGUI extends JFrame {
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	private class Close extends AbstractAction {
 		public Close() {

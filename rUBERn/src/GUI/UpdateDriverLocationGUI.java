@@ -42,9 +42,10 @@ public class UpdateDriverLocationGUI extends JFrame{
 		setVisible(true);
 		setBounds(100, 100, 321, 229);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		
+		setLocationRelativeTo(null);
+
 		JLabel lblUpdateDriverLocation = new JLabel("Update driver location:");
 		lblUpdateDriverLocation.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		
@@ -63,41 +64,44 @@ public class UpdateDriverLocationGUI extends JFrame{
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addGap(21)
-							.addComponent(lblUpdateDriverLocation))
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addContainerGap()
+					.addGap(21)
+					.addComponent(lblUpdateDriverLocation))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.TRAILING, false)
+						.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
+							.addComponent(newLocationX)
+							.addGap(18)
+							.addComponent(locationX))
+						.addGroup(Alignment.LEADING, gl_contentPanel.createSequentialGroup()
 							.addComponent(newLocationY)
 							.addGap(18)
-							.addComponent(locationY, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(newLocationX)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(35, Short.MAX_VALUE))
+							.addComponent(locationY, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE))))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGap(27)
 					.addComponent(lblUpdateDriverLocation)
-					.addGap(18)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(newLocationX)
-						.addComponent(locationX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(locationY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(newLocationY))
-					.addGap(24))
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(19)
+							.addComponent(newLocationX))
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(18)
+							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(11)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPanel.createSequentialGroup()
+							.addGap(1)
+							.addComponent(newLocationY))
+						.addComponent(locationY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
+			buttonPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
@@ -110,13 +114,14 @@ public class UpdateDriverLocationGUI extends JFrame{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						new DriverPostLogin(theMatrix, theDriver);
 						dispose();
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}		pack();
 	}
 	private class Ok extends AbstractAction {
 		public Ok() {

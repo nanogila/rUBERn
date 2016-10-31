@@ -40,7 +40,7 @@ public class LoginGUI extends JFrame {
 		theMatrix = aMatrix;
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setBounds(100, 100, 337, 214);
+		setBounds(100, 100, 331, 171);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -114,7 +114,8 @@ public class LoginGUI extends JFrame {
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	private class Close extends AbstractAction {
 		public Close() {

@@ -39,7 +39,7 @@ public class PostLogin extends JFrame {
 		theUser = aUser;
 		setBounds(100, 100, 499, 177);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		JLabel label = new JLabel("Welcome to rUBERn");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -60,38 +60,31 @@ public class PostLogin extends JFrame {
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-					.addGap(161))
+					.addGap(10)
+					.addComponent(label, GroupLayout.PREFERRED_SIZE, 209, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addComponent(btnUpdateLocation)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(6)
 					.addComponent(btnAskForCar)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGap(10)
 					.addComponent(btnLogOut)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(6)
+					.addComponent(btnNewButton))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(label)
 					.addGap(29)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnUpdateLocation)
-						.addComponent(btnLogOut)
 						.addComponent(btnAskForCar)
-						.addComponent(btnNewButton))
-					.addContainerGap(36, Short.MAX_VALUE))
+						.addComponent(btnLogOut)
+						.addComponent(btnNewButton)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-		}
+		setLocationRelativeTo(null);
 		pack();
 	}
 	private class UpdateLocation extends AbstractAction {

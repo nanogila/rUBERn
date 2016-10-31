@@ -168,7 +168,8 @@ public class ManageUserGUI extends JDialog {
 						.addContainerGap())
 			);
 			buttonPane.setLayout(gl_buttonPane);
-		}
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	private class Close extends AbstractAction {
 		public Close() {

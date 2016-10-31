@@ -111,6 +111,8 @@ private Matrix theMatrix;
 					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		frame.getContentPane().setLayout(groupLayout);
+		frame.setLocationRelativeTo(null);
+		frame.pack();
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {

@@ -43,10 +43,11 @@ public class UpdateUserLocationGUI extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);
-		setBounds(100, 100, 321, 229);
+		setBounds(100, 100, 368, 272);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		setLocationRelativeTo(null);
 		
 		JLabel lblUpdateUserLocation = new JLabel("Update user location:");
 		lblUpdateUserLocation.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -78,9 +79,9 @@ public class UpdateUserLocationGUI extends JFrame {
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(newLocationX)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGap(18)
 							.addComponent(locationX, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(35, Short.MAX_VALUE))
+					.addContainerGap(33, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
@@ -97,6 +98,7 @@ public class UpdateUserLocationGUI extends JFrame {
 						.addComponent(newLocationY))
 					.addGap(24))
 		);
+		
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
@@ -113,13 +115,14 @@ public class UpdateUserLocationGUI extends JFrame {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						if (theUser!=null) new PostLogin(theMatrix, theUser);
 						dispose();
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}pack();
 	}
 
 	public UpdateUserLocationGUI(Matrix aMatrix) {
@@ -133,6 +136,7 @@ public class UpdateUserLocationGUI extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		setLocationRelativeTo(null);
 		{
 			lblUsername = new JLabel("Username:");
 			lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -219,12 +223,13 @@ public class UpdateUserLocationGUI extends JFrame {
 					public void actionPerformed(ActionEvent e) {
 						if (theUser!=null) new PostLogin(theMatrix, theUser);
 						dispose();
+						
 					}
 				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
-			}
-		}
+			}pack();
+		}		
 	}
 	private class Ok extends AbstractAction {
 		public Ok() {

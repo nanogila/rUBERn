@@ -19,6 +19,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class DriverGUI extends JFrame {
 	private final JPanel contentPanel = new JPanel();
@@ -27,6 +28,7 @@ public class DriverGUI extends JFrame {
 	Matrix theMatrix;
 	private final Action action_1 = new SwingAction();
 	private final Action action_2 = new Login();
+	private JButton cancelButton;
 	/**
 	 * Create the dialog.
 	 */
@@ -35,7 +37,7 @@ public class DriverGUI extends JFrame {
 		setVisible(true);
 		setTitle("rUBERn - Group 3");
 		setResizable(false);
-		setBounds(100, 100, 230, 160);
+		setBounds(100, 100, 170, 132);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -52,41 +54,57 @@ public class DriverGUI extends JFrame {
 		gl_contentPanel.setHorizontalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
+					.addGap(10)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblChooseAnOption, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_contentPanel.createSequentialGroup()
 							.addComponent(btnRegister)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(257))
-						.addGroup(gl_contentPanel.createSequentialGroup()
-							.addComponent(lblChooseAnOption, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(273))))
+							.addGap(10)
+							.addComponent(btnLogin))))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
-					.addContainerGap()
+					.addGap(11)
 					.addComponent(lblChooseAnOption)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addGroup(gl_contentPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnLogin)
-						.addComponent(btnRegister))
-					.addContainerGap(24, Short.MAX_VALUE))
+					.addGap(11)
+					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnRegister)
+						.addComponent(btnLogin)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		{
 			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
+			buttonPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			{
-				JButton cancelButton = new JButton("Cancel");
+				cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent arg0) {
+					}
+				});
 				cancelButton.setAction(action);
 				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
 			}
+			GroupLayout gl_buttonPane = new GroupLayout(buttonPane);
+			gl_buttonPane.setHorizontalGroup(
+				gl_buttonPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_buttonPane.createSequentialGroup()
+						.addContainerGap(59, Short.MAX_VALUE)
+						.addComponent(cancelButton)
+						.addGap(40))
+			);
+			gl_buttonPane.setVerticalGroup(
+				gl_buttonPane.createParallelGroup(Alignment.TRAILING)
+					.addGroup(gl_buttonPane.createSequentialGroup()
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(cancelButton))
+			);
+			buttonPane.setLayout(gl_buttonPane);
+			setLocationRelativeTo(null);
+			pack();
 		}
-	}
+		}
 
 	private class CancelAction extends AbstractAction {
 		public CancelAction() {

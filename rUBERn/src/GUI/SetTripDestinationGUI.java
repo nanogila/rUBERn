@@ -136,7 +136,8 @@ public class SetTripDestinationGUI extends JFrame {
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	private class Ok extends AbstractAction {
 		public Ok() {

@@ -81,7 +81,8 @@ public class UserListGUI extends JDialog {
 						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 			);
 			buttonPane.setLayout(gl_buttonPane);
-		}
+		}setLocationRelativeTo(null);
+		pack();
 	}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
