@@ -16,33 +16,20 @@ public class MatrixTester {
 	Car aCar = new Car("Fiat 600", 3, new QualityTag("low", 2));
 	Driver aDriver = new Driver("Maria", 23423, "holass", aCar);
 	User aUser = new User("Jose", 1231, "hola");
-	Thread ok = new Thread () {
-		  public void run () {
-				try { bot = new Robot(); } catch (AWTException e) {}
-			  try{Thread.sleep(50);}catch(InterruptedException e){}
-			  bot.keyPress(KeyEvent.VK_ENTER);
-				try{Thread.sleep(50);}catch(InterruptedException e){}
-				bot.keyRelease(KeyEvent.VK_ENTER);
-		  }
-		};
-		Thread ok2 = new Thread () {
+		Thread ok = new Thread () {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {}
 				  try{Thread.sleep(50);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(50);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
-			  }
-			};
-			Thread ok3 = new Thread () {
-				  public void run () {
-						try { bot = new Robot(); } catch (AWTException e) {}
 					  try{Thread.sleep(50);}catch(InterruptedException e){}
 					  bot.keyPress(KeyEvent.VK_ENTER);
 						try{Thread.sleep(50);}catch(InterruptedException e){}
 						bot.keyRelease(KeyEvent.VK_ENTER);
-				  }
-				};
+						
+			  }
+			};
 	@Test
 	public void addMoneyTest() {
 		Matrix theMatrix = new Matrix(aBase, anotherBase);
@@ -118,12 +105,12 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		aDriver.goOnline();
 		long[] aDestination = {23, 3};
-		ok2.start();
+		ok.start();
 		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(result);
 		theMatrix.updateDriverLocation(5000, 32222, "Maria");
 		theMatrix.changeMaximumDriverDistance(3);
-		ok3.start();
+		//ok2.start();
 		boolean newResult = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(!newResult);
 	}
