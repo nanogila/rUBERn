@@ -19,13 +19,13 @@ public class MatrixTester {
 		Thread ok = new Thread () {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {}
-				  try{Thread.sleep(50);}catch(InterruptedException e){}
+				  try{Thread.sleep(5);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
-					try{Thread.sleep(50);}catch(InterruptedException e){}
+					try{Thread.sleep(5);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
-					  try{Thread.sleep(50);}catch(InterruptedException e){}
+					  try{Thread.sleep(5);}catch(InterruptedException e){}
 					  bot.keyPress(KeyEvent.VK_ENTER);
-						try{Thread.sleep(50);}catch(InterruptedException e){}
+						try{Thread.sleep(5);}catch(InterruptedException e){}
 						bot.keyRelease(KeyEvent.VK_ENTER);
 						
 			  }
@@ -110,7 +110,6 @@ public class MatrixTester {
 		assertTrue(result);
 		theMatrix.updateDriverLocation(5000, 32222, "Maria");
 		theMatrix.changeMaximumDriverDistance(3);
-		//ok2.start();
 		boolean newResult = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(!newResult);
 	}
