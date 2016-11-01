@@ -185,7 +185,7 @@ private Matrix theMatrix;
 			putValue(SHORT_DESCRIPTION, "See rUBERn's log file location");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new Error(theMatrix.getLogFileLocation());
+			new Error("Current log saving location is: "+theMatrix.getLogFileLocation());
 		}
 	}
 	private class SwingAction_3 extends AbstractAction {

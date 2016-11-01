@@ -132,11 +132,13 @@ tagBase.addTag(new QualityTag("Low", 2));
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
+			if(selectedTrip.getDriver().startTrip()) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip")) {
 			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip");
 			return true;
 		}
-		}else {
+		}
+			}else {
 			blacklist.add(selectedTrip.getDriver());
 			return askForCar(aUser, aDestination, people, blacklist);
 		}

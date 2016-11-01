@@ -1,5 +1,7 @@
 package logic;
 
+import GUI.YesOrNoGUI;
+
 public class Driver extends Person {
 
     private Car theCar;
@@ -39,8 +41,13 @@ public class Driver extends Person {
     public String getStatus() {
     	return status.toString();
     }
-    public boolean decideTrip(){
-return true;
+    public boolean startTrip(){
+    	status=Status.UNAVAILABLE;
+boolean tripSuccessful = new YesOrNoGUI().showYesNoMessage("Did the trip end "+getName()+" ?");
+    if (tripSuccessful) {
+    	goOnline();
+    	return true;
+    }else return startTrip();
     }
     public int getCarQuality() {
     	return theCar.getCarQuality();

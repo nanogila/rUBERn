@@ -23,11 +23,10 @@ public class MatrixTester {
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(5);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
-					  try{Thread.sleep(5);}catch(InterruptedException e){}
+					  try{Thread.sleep(50);}catch(InterruptedException e){}
 					  bot.keyPress(KeyEvent.VK_ENTER);
 						try{Thread.sleep(5);}catch(InterruptedException e){}
-						bot.keyRelease(KeyEvent.VK_ENTER);
-						
+						bot.keyRelease(KeyEvent.VK_ENTER);	
 			  }
 			};
 	@Test
