@@ -25,6 +25,24 @@ public class MatrixTester {
 				bot.keyRelease(KeyEvent.VK_ENTER);
 		  }
 		};
+		Thread ok2 = new Thread () {
+			  public void run () {
+					try { bot = new Robot(); } catch (AWTException e) {}
+				  try{Thread.sleep(50);}catch(InterruptedException e){}
+				  bot.keyPress(KeyEvent.VK_ENTER);
+					try{Thread.sleep(50);}catch(InterruptedException e){}
+					bot.keyRelease(KeyEvent.VK_ENTER);
+			  }
+			};
+			Thread ok3 = new Thread () {
+				  public void run () {
+						try { bot = new Robot(); } catch (AWTException e) {}
+					  try{Thread.sleep(50);}catch(InterruptedException e){}
+					  bot.keyPress(KeyEvent.VK_ENTER);
+						try{Thread.sleep(50);}catch(InterruptedException e){}
+						bot.keyRelease(KeyEvent.VK_ENTER);
+				  }
+				};
 	@Test
 	public void addMoneyTest() {
 		Matrix theMatrix = new Matrix(aBase, anotherBase);
@@ -91,5 +109,22 @@ public class MatrixTester {
 		ok.start();
 		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(result);
+	}
+	@Test
+	public void  checkChangeMaximumDistance() {
+		Matrix theMatrix = new Matrix(aBase, anotherBase);
+		theMatrix.addUser(aUser);
+		theMatrix.addMoney(aUser, 23444);
+		theMatrix.addDriver(aDriver);
+		aDriver.goOnline();
+		long[] aDestination = {23, 3};
+		ok2.start();
+		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
+		assertTrue(result);
+		theMatrix.updateDriverLocation(5000, 32222, "Maria");
+		theMatrix.changeMaximumDriverDistance(3);
+		ok3.start();
+		boolean newResult = theMatrix.askForCar(aUser, aDestination, 2);
+		assertTrue(!newResult);
 	}
 }

@@ -13,17 +13,26 @@ public class Matrix {
 	private DriverBase driverBase;
 	private TagBase tagBase;
 	private Accountant theAccountant;
+	private long maximumDistance;
 	public Matrix (ClientBase database, DriverBase aDriverBase) {
 		driverBase = aDriverBase;
 		base = database;
 		theAccountant = new Accountant(base, driverBase);
 		tagBase = new TagBase();
+		maximumDistance=5000;
 	}
 	public void addDefaultTags() {
 tagBase.addTag(new QualityTag("VIP", 8));
 tagBase.addTag(new QualityTag("High", 6));
 tagBase.addTag(new QualityTag("Medium", 4));
 tagBase.addTag(new QualityTag("Low", 2));
+	}
+	public void changeMaximumDriverDistance(long aDistance) {
+		aDistance = Math.abs(aDistance);
+		maximumDistance=aDistance;
+	}
+	public long getMaximumDriverDistance() {
+		return maximumDistance;
 	}
 	public boolean addTag(QualityTag aTag) {
 		return tagBase.addTag(aTag);
@@ -107,7 +116,7 @@ tagBase.addTag(new QualityTag("Low", 2));
 	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist){
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
-		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<5000 && !(blacklist.contains(aDriver))){
+		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<maximumDistance && !(blacklist.contains(aDriver))){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}
 	}

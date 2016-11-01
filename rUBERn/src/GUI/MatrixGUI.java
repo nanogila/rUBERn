@@ -80,9 +80,17 @@ private Matrix theMatrix;
 		
 		JButton btnManageQualityTags = new JButton("Manage quality tags");
 		btnManageQualityTags.setAction(action_5);
+		
+		JButton btnNewButton_1 = new JButton("Change default maximum driver distance");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new UpdateMaximumDriverDistanceGUI(theMatrix);
+				frame.dispose();
+			}
+		});
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -90,17 +98,21 @@ private Matrix theMatrix;
 						.addComponent(lblChooseAnAction)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(btnAddUser, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
-							.addComponent(seeUsers, GroupLayout.PREFERRED_SIZE, 217, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(seeUsers, GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(btnNewButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(btnUpdateUserLocation, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
 							.addGap(6)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(btnManageQualityTags, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(button, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 217, Short.MAX_VALUE)
+								.addComponent(btnManageQualityTags, GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))))
+					.addContainerGap())
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(114)
+					.addComponent(button, GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+					.addGap(113))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -114,14 +126,16 @@ private Matrix theMatrix;
 						.addComponent(btnAddUser)
 						.addComponent(seeUsers))
 					.addGap(11)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnUpdateUserLocation)
-						.addComponent(button))
+						.addComponent(btnNewButton_1))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnNewButton)
 						.addComponent(btnManageQualityTags))
-					.addGap(35))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(button)
+					.addGap(6))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 		frame.setLocationRelativeTo(null);
