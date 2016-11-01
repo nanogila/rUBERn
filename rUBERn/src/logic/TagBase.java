@@ -19,7 +19,7 @@ public boolean addTag (QualityTag aTag) {
 		return false;
 	}else {
 		tags.add(aTag);
-		new Error("Tag successfully added");
+		new Error("Tag "+aTag.getTag()+" successfully added");
 		return true;
 	}
 	

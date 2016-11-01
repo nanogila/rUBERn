@@ -41,7 +41,8 @@ public class Main {
 			        ClientBase basededatos = new ClientBase();
 			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
 			        new Main(theMatrix);
-			        theMatrix.addDefaultTags();
+			        boolean loadDefaultTags = new YesOrNoGUI().showYesNoMessage("Do you wish to load the default quality tags?");
+			        if (loadDefaultTags) theMatrix.addDefaultTags();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
