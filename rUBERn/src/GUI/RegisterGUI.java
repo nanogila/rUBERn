@@ -62,7 +62,7 @@ private final Action action_1 = new Cancel();
 		label_1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		
 		userCard = new JTextField();
-		
+		userCard.setDocument (new JTextFieldLimit(10));
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));

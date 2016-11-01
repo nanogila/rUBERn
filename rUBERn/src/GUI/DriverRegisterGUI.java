@@ -71,7 +71,7 @@ private JTextField carCapacity;
 		
 		userCard = new JTextField();
 		userCard.setColumns(10);
-		
+		userCard.setDocument (new JTextFieldLimit(10));
 		JLabel lblPassword = new JLabel("Password:");
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -247,13 +247,11 @@ private JTextField carCapacity;
 				}
 				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
 					cardNumber=	Integer.parseInt(card);
-					if (aCar!=null) {
 					Driver someone = new Driver(name, cardNumber, password, aCar);
 					if (theMatrix.addDriver(someone)) {
 						new DriverPostLogin(theMatrix, someone);
 						dispose();
-					}
-				}else new Error("Please select a car");
+				}
 				}	else new Error("Invalid credit card number");
 				}
 			}else new Error("Please enter a valid capacity");

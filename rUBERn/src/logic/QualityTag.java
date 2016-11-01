@@ -1,11 +1,12 @@
 package logic;
-
+import GUI.Error;
 public class QualityTag {
 private String tag;
 private int value;
 public QualityTag (String aTag, int aValue) {
 	tag = aTag;
-	value = aValue;
+	value = 0;
+	setValue(aValue);
 }
 public String getTag() {
 	return tag;
@@ -21,5 +22,8 @@ public boolean setValue(int aValue) {
 		new Error("Rating must be between 1 and 10");
 		return false;
 	}
+}
+public void setName(String aName) {
+	tag = aName;
 }
 }

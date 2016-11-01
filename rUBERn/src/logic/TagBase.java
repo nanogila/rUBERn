@@ -44,7 +44,7 @@ public void seeTags() {
 			 if(j==0) {
 	 data[i][j] = arrayTags[i].getTag();
 			 }else if (j==1){
-				 data[i][j] = arrayTags[i].getValue()*10;
+				 data[i][j] = arrayTags[i].getValue();
 			 }
 	 }
 		 }
@@ -83,6 +83,18 @@ public QualityTag getTag(String aTag) {
 	}
 	return null;
 }
-
-
+public boolean setQualityTagName(String aTagName, String aName) {
+	if(getTag(aTagName)!=null) {
+		getTag(aTagName).setName(aName);
+		return true;
+	}
+	else return false;
+}
+public boolean setQualityTagValue(String aTagName, int aValue) {
+	if(getTag(aTagName)!=null) {
+		return getTag(aTagName).setValue(aValue);
+		
+	}
+	else return false;
+}
 }

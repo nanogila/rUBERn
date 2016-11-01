@@ -18,12 +18,18 @@ public class Matrix {
 		base = database;
 		theAccountant = new Accountant(base, driverBase);
 		tagBase = new TagBase();
-		
+	}
+	public void addDefaultTags() {
 tagBase.addTag(new QualityTag("VIP", 8));
 tagBase.addTag(new QualityTag("High", 6));
 tagBase.addTag(new QualityTag("Medium", 4));
 tagBase.addTag(new QualityTag("Low", 2));
-
+	}
+	public boolean addTag(QualityTag aTag) {
+		return tagBase.addTag(aTag);
+	}
+	public void seeTags() {
+		tagBase.seeTags();
 	}
 	public boolean addUser(User aUser) {
 
@@ -36,6 +42,12 @@ tagBase.addTag(new QualityTag("Low", 2));
 	public QualityTag getTag(String aTagName) {
 		return tagBase.getTag(aTagName);
 	}
+	public boolean setTagName(String aTagName, String aName) {
+		return tagBase.setQualityTagName(aTagName, aName);
+				}
+	public boolean setTagValue(String aTagName, int aValue) {
+		return tagBase.setQualityTagValue(aTagName, aValue);
+				}
 	public boolean addMoney(User aUser, double amount) {
 		return theAccountant.addMoney(aUser, amount);
 	}
@@ -59,6 +71,7 @@ tagBase.addTag(new QualityTag("Low", 2));
 	public User getUser(String aName) {
 		return base.getUser(aName);
 	}
+	
 	public boolean updateUserLocation (long x, long y, String aName) {
 		return base.updateUserLocation(x, y, aName);
 	}

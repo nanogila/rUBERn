@@ -40,7 +40,8 @@ public class Main {
 			    	DriverBase baseDeChoferes = new DriverBase();
 			        ClientBase basededatos = new ClientBase();
 			        Matrix theMatrix = new Matrix(basededatos, baseDeChoferes);
-					new Main(theMatrix);					
+			        new Main(theMatrix);
+			        theMatrix.addDefaultTags();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

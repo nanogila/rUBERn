@@ -180,6 +180,8 @@ private Matrix theMatrix;
 			putValue(SHORT_DESCRIPTION, "Create, modify or delete quality tags and their value");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new ManageQualityTagsGUI(theMatrix);
+			frame.dispose();
 		}
 	}
 }

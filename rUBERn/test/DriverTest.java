@@ -77,4 +77,24 @@ public class DriverTest {
 		aDriver.removeMoney(40.5);
 		assertEquals(20.0, aDriver.getBalance(), 0.00001);
 	}
+	@Test
+	public void changedQualityTagValueTest() {
+		ClientBase aBase = new ClientBase();
+		DriverBase anotherBase = new DriverBase();
+		User aClient = new User("pablo", 233223, "holaaa");
+		QualityTag high = new QualityTag("high", 2);
+		Car Mercedes = new Car("Fiat 600", 3, high);
+		Driver aDriver = new Driver("mario", 23423, "holass", Mercedes);
+		Accountant anAccountant = new Accountant(aBase, anotherBase);
+		Matrix aMatrix=new Matrix(aBase, anotherBase);
+		aMatrix.addDriver(aDriver);
+		aMatrix.addUser(aClient);
+		aMatrix.addTag(high);
+		aMatrix.setTagValue("high", 8);
+		aDriver.updateLocation(3323, 2323);
+		long[] aDestination = {45, 43};
+		Trip aTrip = new Trip(aDriver, aClient, aDestination);
+		assertEquals(20.27, anAccountant.imageCost(aTrip), 0.01);
+	}
+	
 }
