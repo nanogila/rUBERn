@@ -94,6 +94,11 @@ private JTextField carCapacity;
 				carModel=carQuality.getSelectedIndex();
 			}
 		});
+		if(theMatrix.getTagNames().length==0) {
+			new Error("Please add some quality tags in order to register drivers");
+			new DriverGUI(theMatrix);
+			dispose();
+		}
 		carQuality.setModel(new DefaultComboBoxModel<String>(theMatrix.getTagNames()));
 		
 		carModelName = new JTextField();

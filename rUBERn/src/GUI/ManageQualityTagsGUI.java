@@ -42,7 +42,10 @@ public class ManageQualityTagsGUI extends JFrame {
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		
+		if(theMatrix.getTagNames().length==0) {
+			new ChangeQualityTagGUI(theMatrix, null);
+			dispose();
+		}else {
 		qualityTag = new JComboBox<String>();
 		qualityTag.setModel(new DefaultComboBoxModel<String>(theMatrix.getTagNames()));
 		qualityTag.setSelectedIndex(0);
@@ -131,7 +134,7 @@ public class ManageQualityTagsGUI extends JFrame {
 		}
 		setLocationRelativeTo(null);
 		pack();
-	}
+	}}
 	private class SwingAction extends AbstractAction {
 		public SwingAction() {
 			putValue(NAME, "Ok");
