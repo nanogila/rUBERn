@@ -60,7 +60,7 @@ public boolean addMoney(User aUser, double amount) {
 	return base.addMoney(aUser.getName(), theAmount);
 }
 public boolean addMoney(Driver aDriver, double amount) {
-	double theAmount = Math.abs(roundUp(amount));
+	double theAmount = Math.abs(roundUp(amount*0.9));
 	return driverBase.addMoney(aDriver.getName(), theAmount);
 }
 public boolean addMoney(Driver aDriver, double amount, String aDescription) {
