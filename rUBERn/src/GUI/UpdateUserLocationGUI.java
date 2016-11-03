@@ -32,11 +32,13 @@ public class UpdateUserLocationGUI extends JFrame {
 	private User theUser;
 	private JLabel lblUsername;
 	private JTextField userName;
+	boolean askingForTrip;
 	/**
 	 * Create the dialog.
 	 * @wbp.parser.constructor
 	 */
-	public UpdateUserLocationGUI(Matrix aMatrix, User aUser) {
+	public UpdateUserLocationGUI(Matrix aMatrix, User aUser, Boolean trip) {
+		askingForTrip = trip;
 		theUser=aUser;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");
@@ -254,7 +256,9 @@ public class UpdateUserLocationGUI extends JFrame {
 				aLocationX=	Long.parseLong(rawLocationX);
 				aLocationY=	Long.parseLong(rawLocationY);
 				if (theMatrix.updateUserLocation(aLocationX, aLocationY, name)) {
-					if (theUser!=null) new PostLogin(theMatrix, theUser);
+					if (theUser!=null) {
+						if (!askingForTrip)new PostLogin(theMatrix, theUser);
+					}
 					dispose();
 				}
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");

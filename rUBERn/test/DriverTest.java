@@ -61,21 +61,21 @@ public class DriverTest {
 	public void addMoneyTest() {
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.addMoney(20.0);
-		assertEquals(20.0, aDriver.getBalance(), 0.00001);
+		assertEquals(18.0, aDriver.getBalance(), 0.00001);
 	}
 	@Test
 	public void removeMoneyTest() {
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.addMoney(20.0);
 		aDriver.removeMoney(5.5);
-		assertEquals(14.5, aDriver.getBalance(), 0.00001);
+		assertEquals(12.5, aDriver.getBalance(), 0.00001);
 	}
 	@Test
 	public void removeMoneyFailTest() {
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.addMoney(20.0);
 		aDriver.removeMoney(40.5);
-		assertEquals(20.0, aDriver.getBalance(), 0.00001);
+		assertEquals(18.0, aDriver.getBalance(), 0.00001);
 	}
 	@Test
 	public void changedQualityTagValueTest() {

@@ -94,7 +94,7 @@ public class PostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Update your location");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new UpdateUserLocationGUI(theMatrix, theUser);
+			new UpdateUserLocationGUI(theMatrix, theUser, false);
 			dispose();
 		}
 	}
@@ -105,7 +105,7 @@ public class PostLogin extends JFrame {
 		}
 		public void actionPerformed(ActionEvent e) {
 			new SetTripDestinationGUI(theMatrix, theUser);
-			new UpdateUserLocationGUI(theMatrix, theUser);
+			new UpdateUserLocationGUI(theMatrix, theUser, true);
 			dispose();
 		}
 	}

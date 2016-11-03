@@ -57,7 +57,7 @@ boolean tripSuccessful = new YesOrNoGUI().showYesNoMessage("Did the trip end "+g
     }
     @Override
     public double addMoney(double someMoney) {
-    	return card.addMoney(someMoney*0.9);
+    	return card.addMoney(Accountant.roundUp(someMoney*0.9));
     }
     public double roundUp(double value) {
     	BigDecimal bd = new BigDecimal(value);
