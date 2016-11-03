@@ -13,8 +13,8 @@ public class CreditCard {
         cardNumber = aCardNumber;
         balance = 0.0;
     }
-    public void addMoney(double money){
-        balance += money;
+    public double addMoney(double money){
+        return balance += money;
     }
     public boolean removeMoney(double money){
         if (balance < money){

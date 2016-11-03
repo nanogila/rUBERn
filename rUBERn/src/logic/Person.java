@@ -34,11 +34,11 @@ public abstract class Person {
     public double getDistance(long [] aLocation){
         return location.getDistance(aLocation);
     }
-    public void addMoney(double someMoney) {
-    	card.addMoney(someMoney);
+    public double addMoney(double someMoney) {
+    	return card.addMoney(Accountant.roundUp(someMoney));
     }
     public boolean removeMoney(double someMoney) {
-    	return card.removeMoney(someMoney);
+    	return card.removeMoney(Accountant.roundUp(someMoney));
     }
     public double getBalance() {
     	return card.getBalance();

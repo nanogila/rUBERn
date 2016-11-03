@@ -34,7 +34,7 @@ public String getDate() {
    return date;
 }
 public boolean logAddMoney(Person aPerson, double anAmount, String aDescription) {
-	double finalAmount = roundUp(anAmount*0.9);
+	double finalAmount = roundUp(anAmount);
 	String log = newLine+"Added money, date: "+getDate()+", time: "+getTime()+", name: "+aPerson.getName()+", credit card number: "+aPerson.getCardNumber()+", description: "+aDescription+", amount: "+finalAmount;
 	if(writeLog(log)) return true;
 	else return false;
@@ -55,17 +55,17 @@ public double tripCost(Trip aTrip) {
 	cost = roundUp((aTrip.getDistance()/100)+15);
 	return cost;
 }
-public boolean addMoney(User aUser, double amount) {
+public double addMoney(User aUser, double amount) {
 	double theAmount = Math.abs(roundUp(amount));
 	return base.addMoney(aUser.getName(), theAmount);
 }
-public boolean addMoney(Driver aDriver, double amount) {
-	double theAmount = Math.abs(roundUp(amount*0.9));
+public double addMoney(Driver aDriver, double amount) {
+	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.addMoney(aDriver.getName(), theAmount);
 }
 public boolean addMoney(Driver aDriver, double amount, String aDescription) {
-	double theAmount = Math.abs(roundUp(amount));
-	if (logAddMoney(aDriver, theAmount, aDescription) && driverBase.addMoney(aDriver.getName(), theAmount)) return true;
+	double theAmount = driverBase.addMoney(aDriver.getName(), amount);
+	if (logAddMoney(aDriver, theAmount, aDescription)) return true;
 	else return false;
 }
 public boolean removeMoney(User aUser, double amount, String aDescription) {
@@ -77,7 +77,7 @@ public boolean removeMoney(Driver aDriver, double amount) {
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.removeMoney(aDriver.getName(), theAmount);
 }
-public double roundUp(double value) {
+public static double roundUp(double value) {
 	BigDecimal bd = new BigDecimal(value);
     bd = bd.setScale(2, RoundingMode.HALF_UP);
     return bd.doubleValue();

@@ -78,20 +78,20 @@ public User getUser(String aName) {
 	}
 	return null;
 }
-public boolean addMoney(String aName, double amount) {
+public double addMoney(String aName, double amount) {
 	if(aName.equals("")){
 		new Error("name is empty");
 		
-		return false;
+		return 0;
 	}else if (getUser(aName)==null) {
 		new Error(aName+" is not registered");
-		return false;
+		return 0;
 	}
 	else {
 		User aUser = getUser(aName);
-		aUser.addMoney(amount);
-		new Error ("Added $"+amount+" to "+aName+" successfully");
-		return true;
+		double addedMoney = aUser.addMoney(amount);
+		new Error ("Added $"+addedMoney+" to "+aName+" successfully");
+		return addedMoney;
 	}
 }
 public boolean removeMoney(String aName, double amount) {

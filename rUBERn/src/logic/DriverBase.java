@@ -73,20 +73,20 @@ public class DriverBase {
 			return true;
 		}
 	}
-	public boolean addMoney(String aName, double amount) {
+	public double addMoney(String aName, double amount) {
 		if(aName.equals("")){
 			new Error("name is empty");
 			
-			return false;
+			return 0;
 		}else if (getDriver(aName)==null) {
 			new Error(aName+" is not registered");
-			return false;
+			return 0;
 		}
 		else {
 			Driver aDriver = getDriver(aName);
-			aDriver.addMoney(amount);
-			new Error ("Added $"+amount+" to "+aName+" successfully");
-			return true;
+			double addedAmount = aDriver.addMoney(amount);
+			new Error ("Added $"+addedAmount+" to "+aName+" successfully");
+			return addedAmount;
 		}
 	}
 	public boolean removeMoney(String aName, double amount) {

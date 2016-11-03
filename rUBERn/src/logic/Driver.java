@@ -1,5 +1,8 @@
 package logic;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import GUI.YesOrNoGUI;
 
 public class Driver extends Person {
@@ -51,5 +54,14 @@ boolean tripSuccessful = new YesOrNoGUI().showYesNoMessage("Did the trip end "+g
     }
     public int getCarQuality() {
     	return theCar.getCarQuality();
+    }
+    @Override
+    public double addMoney(double someMoney) {
+    	return card.addMoney(someMoney*0.9);
+    }
+    public double roundUp(double value) {
+    	BigDecimal bd = new BigDecimal(value);
+        bd = bd.setScale(2, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }
