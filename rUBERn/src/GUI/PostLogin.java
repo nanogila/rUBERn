@@ -37,11 +37,11 @@ public class PostLogin extends JFrame {
 		setVisible(true);
 		theMatrix = aMatrix;
 		theUser = aUser;
-		setLocationRelativeTo(null);
 		setBounds(100, 100, 499, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		setLocationRelativeTo(null);
 		JLabel label = new JLabel("Welcome to rUBERn");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Times New Roman", Font.BOLD, 16));
