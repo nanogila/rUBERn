@@ -114,6 +114,7 @@ tagBase.addTag(new QualityTag("Low", 2));
 	}
 	
 	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist){
+if(!aUser.isTravelling()) {
 		List<Trip> possibleTrips = new ArrayList<>();
 	for(Driver aDriver : driverBase.getDriverList()){
 		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<maximumDistance && !(blacklist.contains(aDriver))){
@@ -132,9 +133,11 @@ tagBase.addTag(new QualityTag("Low", 2));
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
+			aUser.startTrip();
 			if(selectedTrip.getDriver().startTrip()) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip")) {
 			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip");
+			aUser.endTrip();
 			return true;
 		}
 		}
@@ -153,8 +156,14 @@ tagBase.addTag(new QualityTag("Low", 2));
 		new Error ("No drivers are available at this time");
 	return false;
 	}return false;
+	}else {
+		new Error("You are already on a car");
+		return false;
+	}
 	}
 	public String getLogFileLocation() {
 		return theAccountant.getLogFileLocation();
 	}
+	
+	
 }
