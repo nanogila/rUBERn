@@ -117,7 +117,7 @@ public class UpdateUserLocationGUI extends JFrame {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if (theUser!=null) new PostLogin(theMatrix, theUser);
+						if (theUser!=null && !askingForTrip) new PostLogin(theMatrix, theUser);
 						dispose();
 					}
 				});
@@ -128,6 +128,7 @@ public class UpdateUserLocationGUI extends JFrame {
 	}
 
 	public UpdateUserLocationGUI(Matrix aMatrix) {
+		askingForTrip=false;
 		theUser = null;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");
@@ -223,7 +224,9 @@ public class UpdateUserLocationGUI extends JFrame {
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if (theUser!=null) new PostLogin(theMatrix, theUser);
+						
+						if (theUser!=null && !askingForTrip) new PostLogin(theMatrix, theUser);
+					
 						dispose();
 						
 					}

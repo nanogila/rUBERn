@@ -85,7 +85,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			double addedAmount = aDriver.addMoney(amount);
-			new Error (aName+" now has $"+aDriver.getBalance()+"in his bank account");
+			new Error (aName+" now has $"+aDriver.getBalance()+" in his bank account");
 			return addedAmount;
 		}
 	}
@@ -101,7 +101,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			if(aDriver.removeMoney(amount)) {
-				new Error (aName+" now has $"+aDriver.getBalance()+"in his bank account");
+				new Error (aName+" now has $"+aDriver.getBalance()+" in his bank account");
 			return true;
 			}else return false;
 		}
