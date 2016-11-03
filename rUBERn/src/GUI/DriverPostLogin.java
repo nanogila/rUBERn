@@ -17,6 +17,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.event.ActionListener;
 
 public class DriverPostLogin extends JFrame {
 
@@ -24,7 +25,7 @@ public class DriverPostLogin extends JFrame {
 	private Matrix theMatrix;
 	private Driver theDriver;
 	private final Action updateLocation = new UpdateLocation();
-	private final Action goOnline = new GoOnline();
+	private final Action goOnline;
 	private final Action logOut = new LogOut();
 	private final Action action = new SwingAction();
 	/**
@@ -36,6 +37,7 @@ public class DriverPostLogin extends JFrame {
 		setVisible(true);
 		theMatrix = aMatrix;
 		theDriver = aDriver;
+		goOnline = new GoOnline(aDriver);
 		setBounds(100, 100, 404, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
@@ -48,8 +50,8 @@ public class DriverPostLogin extends JFrame {
 		JButton btnUpdateLocation = new JButton("Update location");
 		btnUpdateLocation.setAction(updateLocation);
 		
-		JButton btnAskForCar = new JButton("Go online");
-		btnAskForCar.setAction(goOnline);
+		JButton btnGoOnline = new JButton("Go online");
+		btnGoOnline.setAction(goOnline);
 		
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.setAction(logOut);
@@ -63,25 +65,30 @@ public class DriverPostLogin extends JFrame {
 					.addGap(10)
 					.addComponent(label, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE))
 				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(12)
 					.addComponent(btnUpdateLocation)
-					.addGap(6)
-					.addComponent(btnAskForCar)
-					.addGap(10)
-					.addComponent(btnLogOut)
-					.addGap(6)
+					.addGap(18)
 					.addComponent(btnNewButton))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addGap(12)
+					.addComponent(btnLogOut, GroupLayout.PREFERRED_SIZE, 277, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnGoOnline, GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))
 		);
 		gl_contentPanel.setVerticalGroup(
 			gl_contentPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPanel.createSequentialGroup()
 					.addGap(11)
 					.addComponent(label)
-					.addGap(29)
+					.addGap(35)
 					.addGroup(gl_contentPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnUpdateLocation)
-						.addComponent(btnAskForCar)
-						.addComponent(btnLogOut)
-						.addComponent(btnNewButton)))
+						.addComponent(btnNewButton))
+					.addGap(9)
+					.addComponent(btnGoOnline, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(btnLogOut))
 		);
 		contentPanel.setLayout(gl_contentPanel);
 		setLocationRelativeTo(null);
@@ -98,13 +105,39 @@ public class DriverPostLogin extends JFrame {
 		}
 	}
 	private class GoOnline extends AbstractAction {
-		public GoOnline() {
-			putValue(NAME, "Go online");
-			putValue(SHORT_DESCRIPTION, "Go online");
+		private Driver someDriver;
+		public GoOnline(Driver aDriver) {
+			someDriver = aDriver;
+			switch(someDriver.getStatus()) {
+			case "ONLINE": putValue(NAME, "End shift");
+			putValue(SHORT_DESCRIPTION, "End shift");
+			break;
+			case "OFFLINE": putValue(NAME, "Start shift");
+			putValue(SHORT_DESCRIPTION, "Start shift");
+			break;
+			default: putValue(NAME, "Unavailabe");
+			putValue(SHORT_DESCRIPTION, "can't do nothing because you are unavailable");
+			break;
+			}			
 		}
 		public void actionPerformed(ActionEvent e) {
-			if (theDriver.goOnline()) new Error("You are now online");
-		}
+			switch(someDriver.getStatus()) {
+			case "ONLINE": if (someDriver.goOffline()) {
+				putValue(NAME, "Start shift");
+				putValue(SHORT_DESCRIPTION, "Start shift");
+				new Error("You are now working");
+			}
+			break;
+			case "OFFLINE": if (someDriver.goOnline()) {
+				putValue(NAME, "End shift");
+				putValue(SHORT_DESCRIPTION, "End shift");
+				new Error("You are no longer working, have a nice day");
+			}
+			break;
+			default:
+			break;
+			}	
+			}
 	}
 	private class LogOut extends AbstractAction {
 		public LogOut() {
