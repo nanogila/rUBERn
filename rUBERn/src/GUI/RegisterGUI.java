@@ -169,7 +169,7 @@ private final Action action_1 = new Cancel();
 				if (name.equals("")) {
 					new Error("Name can't be empty");
 				}else if (!name.matches("[a-zA-Z0-9_-]+")) {
-					new Error("Username must contain at least one alphabetic letter");
+					new Error("Please enter only valid characters");
 				}else if(password.length()<5) {
 					new Error("Password must be 5 characters long");
 				}

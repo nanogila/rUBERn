@@ -52,6 +52,7 @@ private JTextField carCapacity;
 		setResizable(false);
 		action = new AddAUser(theMatrix);
 		setBounds(100, 100, 395, 660);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -218,7 +219,7 @@ private JTextField carCapacity;
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
-		}setLocationRelativeTo(null);
+		}
 		pack();
 	}
 	private class AddAUser extends AbstractAction {
@@ -246,18 +247,20 @@ private JTextField carCapacity;
 					new Error("Passwords don't match");
 				}else {
 					String password = rawUserPassword;
-				if (name.equals("")) new Error("Name can't be empty");
-				else if(password.length()<5) {
+				if (name.equals("")) {
+					new Error("Name can't be empty");
+				}else if (!name.matches("[a-zA-Z0-9_-]+")) {
+					new Error("Please enter only valid characters");
+				} else if(password.length()<5) {
 					new Error("Password must be 5 characters long");
-				}
-				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
+				} else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
 					cardNumber=	Integer.parseInt(card);
 					Driver someone = new Driver(name, cardNumber, password, aCar);
 					if (theMatrix.addDriver(someone)) {
 						new DriverPostLogin(theMatrix, someone);
 						dispose();
 				}
-				}	else new Error("Invalid credit card number");
+				}else new Error("Invalid credit card number");
 				}
 			}else new Error("Please enter a valid capacity");
 			}catch(NullPointerException a) {
