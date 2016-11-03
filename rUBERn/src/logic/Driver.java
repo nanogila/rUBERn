@@ -55,13 +55,5 @@ boolean tripSuccessful = new YesOrNoGUI().showYesNoMessage("Did the trip end "+g
     public int getCarQuality() {
     	return theCar.getCarQuality();
     }
-    @Override
-    public double addMoney(double someMoney) {
-    	return card.addMoney(Accountant.roundUp(someMoney*0.9));
-    }
-    public double roundUp(double value) {
-    	BigDecimal bd = new BigDecimal(value);
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
-    }
+
 }

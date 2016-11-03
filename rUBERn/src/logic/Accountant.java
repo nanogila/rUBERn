@@ -63,8 +63,8 @@ public double addMoney(Driver aDriver, double amount) {
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.addMoney(aDriver.getName(), theAmount);
 }
-public boolean addMoney(Driver aDriver, double amount, String aDescription) {
-	double theAmount = driverBase.addMoney(aDriver.getName(), amount);
+public boolean payDriver(Driver aDriver, double amount, String aDescription) {
+	double theAmount = driverBase.collectSalary(aDriver.getName(), amount);
 	if (logAddMoney(aDriver, theAmount, aDescription)) return true;
 	else return false;
 }

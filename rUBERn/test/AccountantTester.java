@@ -50,7 +50,7 @@ public class AccountantTester {
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);
-		assertEquals(69.3, aDriver.getBalance(), 0.001);
+		assertEquals(77, aDriver.getBalance(), 0.001);
 	}
 	@Test
 	public void removeMoneyFromDriverTest() {
@@ -61,7 +61,18 @@ public class AccountantTester {
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);
 		anAccountant.removeMoney(aDriver, 10);
-		assertEquals(59.3, aDriver.getBalance(), 0.001);
+		assertEquals(67, aDriver.getBalance(), 0.001);
+	}
+	@Test
+	public void DriverCollectMoneyFromTripTest() {
+		ClientBase aBase = new ClientBase();
+		DriverBase anotherBase = new DriverBase();
+		Accountant anAccountant = new Accountant(aBase, anotherBase);
+		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
+		anotherBase.addDriver(aDriver);
+		anAccountant.addMoney(aDriver, 77);
+		anAccountant.payDriver(aDriver, 10, "testing the method");
+		assertEquals(86, aDriver.getBalance(), 0.001);
 	}
 	@Test
 	public void removeMoneyTest() {

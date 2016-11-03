@@ -14,7 +14,8 @@ public class CreditCard {
         balance = 0.0;
     }
     public double addMoney(double money){
-        return balance += money;
+        balance += money;
+        return money;
     }
     public boolean removeMoney(double money){
         if (balance < money){

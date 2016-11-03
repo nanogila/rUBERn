@@ -136,7 +136,7 @@ if(!aUser.isTravelling()) {
 			aUser.startTrip();
 			if(selectedTrip.getDriver().startTrip()) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip")) {
-			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip");
+			theAccountant.payDriver(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip");
 			aUser.endTrip();
 			return true;
 		}

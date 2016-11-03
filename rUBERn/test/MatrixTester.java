@@ -38,7 +38,7 @@ public class MatrixTester {
 		Matrix theMatrix = new Matrix(aBase, anotherBase);
 		theMatrix.addDriver(aDriver);
 		theMatrix.addMoney(aDriver, 10);
-		assertEquals(9, aDriver.getBalance(), 0.00001);
+		assertEquals(10, aDriver.getBalance(), 0.00001);
 	}
 	@Test
 	public void removeMoneyTest() {
@@ -46,7 +46,7 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		theMatrix.addMoney(aDriver, 20);
 		theMatrix.removeMoney(aDriver, 10);
-		assertEquals(8, aDriver.getBalance(), 0.00001);
+		assertEquals(10, aDriver.getBalance(), 0.00001);
 	}
 	@Test
 	public void removeMoneyFailTest() {
@@ -54,7 +54,7 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		theMatrix.addMoney(aDriver, 20);
 		theMatrix.removeMoney(aDriver, 30);
-		assertEquals(18, aDriver.getBalance(), 0.01);
+		assertEquals(20, aDriver.getBalance(), 0.01);
 	}
 	@Test
 	public void getUserTest() {

@@ -85,7 +85,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			double addedAmount = aDriver.addMoney(amount);
-			new Error ("Added $"+addedAmount+" to "+aName+" successfully");
+			new Error (aName+" now has $"+aDriver.getBalance()+"in his bank account");
 			return addedAmount;
 		}
 	}
@@ -101,7 +101,7 @@ public class DriverBase {
 		else {
 			Driver aDriver = getDriver(aName);
 			if(aDriver.removeMoney(amount)) {
-			new Error ("$"+amount+" debited from "+aName+" successfully");
+				new Error (aName+" now has $"+aDriver.getBalance()+"in his bank account");
 			return true;
 			}else return false;
 		}
@@ -153,5 +153,8 @@ public class DriverBase {
 	}
 	public List<Driver> getDriverList(){
 		return drivers;
+	}
+	public double collectSalary(String name, double amount) {
+		return addMoney(name, amount*0.9);
 	}
 }
