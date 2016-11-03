@@ -86,8 +86,8 @@ public class DriverPostLogin extends JFrame {
 						.addComponent(btnUpdateLocation)
 						.addComponent(btnNewButton))
 					.addGap(9)
-					.addComponent(btnGoOnline, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
+					.addComponent(btnGoOnline, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(btnLogOut))
 		);
 		contentPanel.setLayout(gl_contentPanel);
@@ -125,13 +125,13 @@ public class DriverPostLogin extends JFrame {
 			case "ONLINE": if (someDriver.goOffline()) {
 				putValue(NAME, "Start shift");
 				putValue(SHORT_DESCRIPTION, "Start shift");
-				new Error("You are now working");
+				new Error("You are no longer working, have a nice day");
 			}
 			break;
 			case "OFFLINE": if (someDriver.goOnline()) {
 				putValue(NAME, "End shift");
 				putValue(SHORT_DESCRIPTION, "End shift");
-				new Error("You are no longer working, have a nice day");
+				new Error("You are now working");
 			}
 			break;
 			default:
