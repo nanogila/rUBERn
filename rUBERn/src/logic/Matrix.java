@@ -116,7 +116,7 @@ tagBase.addTag(new QualityTag("Low", 2));
 	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist){
 if(!aUser.isTravelling()) {
 		List<Trip> possibleTrips = new ArrayList<>();
-	for(Driver aDriver : driverBase.getDriverList()){
+		for(Driver aDriver : driverBase.getDriverList()){
 		if(aDriver.isAvailable() && aDriver.getCar().getCapacity()>=people && aDriver.getDistance(aUser)<maximumDistance && !(blacklist.contains(aDriver))){
 			possibleTrips.add(new Trip(aDriver, aUser , aDestination));
 		}

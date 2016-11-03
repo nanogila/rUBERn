@@ -37,6 +37,7 @@ public class PostLogin extends JFrame {
 		setVisible(true);
 		theMatrix = aMatrix;
 		theUser = aUser;
+		setLocationRelativeTo(null);
 		setBounds(100, 100, 499, 177);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 10, 10));
@@ -84,7 +85,7 @@ public class PostLogin extends JFrame {
 						.addComponent(btnNewButton)))
 		);
 		contentPanel.setLayout(gl_contentPanel);
-		setLocationRelativeTo(null);
+
 		pack();
 	}
 	private class UpdateLocation extends AbstractAction {
@@ -103,6 +104,7 @@ public class PostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Ask for a car");
 		}
 		public void actionPerformed(ActionEvent e) {
+			new UpdateUserLocationGUI(theMatrix, theUser);
 			new SetTripDestinationGUI(theMatrix, theUser);
 			dispose();
 		}
