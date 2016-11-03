@@ -61,7 +61,7 @@ public class AccountantTester {
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);
 		anAccountant.removeMoney(aDriver, 10);
-		assertEquals(67, aDriver.getBalance(), 0.001);
+		assertEquals(59.3, aDriver.getBalance(), 0.001);
 	}
 	@Test
 	public void removeMoneyTest() {
