@@ -166,8 +166,11 @@ private final Action action_1 = new Cancel();
 					new Error("Passwords don't match");
 				}else {
 					String password = rawUserPassword;
-				if (name.equals("")) new Error("Name can't be empty");
-				else if(password.length()<5) {
+				if (name.equals("")) {
+					new Error("Name can't be empty");
+				}else if (!name.matches("[a-zA-Z0-9_-]+")) {
+					new Error("Username must contain at least one alphabetic letter");
+				}else if(password.length()<5) {
 					new Error("Password must be 5 characters long");
 				}
 				else if (card.length() < 11 && card.length() > 2 && card.matches("[0-9]+")) {
