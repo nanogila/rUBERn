@@ -104,8 +104,8 @@ public class PostLogin extends JFrame {
 			putValue(SHORT_DESCRIPTION, "Ask for a car");
 		}
 		public void actionPerformed(ActionEvent e) {
-			new UpdateUserLocationGUI(theMatrix, theUser);
 			new SetTripDestinationGUI(theMatrix, theUser);
+			new UpdateUserLocationGUI(theMatrix, theUser);
 			dispose();
 		}
 	}
