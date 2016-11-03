@@ -50,7 +50,7 @@ public class AccountantTester {
 		Driver aDriver = new Driver("mario", 23423, "holass", aCar);
 		anotherBase.addDriver(aDriver);
 		anAccountant.addMoney(aDriver, 77);
-		assertEquals(77, aDriver.getBalance(), 0.001);
+		assertEquals(69.3, aDriver.getBalance(), 0.001);
 	}
 	@Test
 	public void removeMoneyFromDriverTest() {
