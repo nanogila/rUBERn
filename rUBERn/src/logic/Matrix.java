@@ -57,10 +57,10 @@ tagBase.addTag(new QualityTag("Low", 2));
 	public boolean setTagValue(String aTagName, int aValue) {
 		return tagBase.setQualityTagValue(aTagName, aValue);
 				}
-	public boolean addMoney(User aUser, double amount) {
+	public double addMoney(User aUser, double amount) {
 		return theAccountant.addMoney(aUser, amount);
 	}
-	public boolean addMoney (Driver aDriver, double amount) {
+	public double addMoney (Driver aDriver, double amount) {
 		return theAccountant.addMoney(aDriver, amount);
 	}
 	public boolean removeMoney(User aUser, double amount, String aDescription) {
@@ -135,8 +135,8 @@ if(!aUser.isTravelling()) {
 		if (accepted) {
 			aUser.startTrip();
 			if(selectedTrip.getDriver().startTrip()) {
-		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip")) {
-			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), theAccountant.roundUp(selectedTrip.getDistance())+" long trip");
+		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip")) {
+			theAccountant.addMoney(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip");
 			aUser.endTrip();
 			return true;
 		}
