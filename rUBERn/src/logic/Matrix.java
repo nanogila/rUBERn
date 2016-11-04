@@ -10,6 +10,7 @@ import GUI.Error;
 import exceptions.AlreadyRegisteredException;
 import exceptions.EmptyFieldException;
 import exceptions.InvalidRatingException;
+import exceptions.InvalidTripException;
 import exceptions.ItemNotFoundException;
 import exceptions.NotEnoughMoneyException;
 
@@ -113,12 +114,12 @@ tagBase.addTag(new QualityTag("Low", 2));
 	public boolean checkDriverPassword(String aDriver, String aPassword) throws EmptyFieldException {
 		return driverBase.checkPassword(aDriver, aPassword);
 	}
-	public boolean askForCar(User aUser, long[] aDestination, int people) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
+	public boolean askForCar(User aUser, long[] aDestination, int people) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException, InvalidTripException {
 		List<Driver> blacklist = new ArrayList<>(); 
 		return askForCar(aUser, aDestination, people, blacklist);
 	}
 	
-	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException{
+	private boolean askForCar(User aUser, long[] aDestination, int people, List<Driver> blacklist) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException, InvalidTripException{
 if(!aUser.isTravelling()) {
 		List<Trip> possibleTrips = new ArrayList<>();
 		for(Driver aDriver : driverBase.getDriverList()){

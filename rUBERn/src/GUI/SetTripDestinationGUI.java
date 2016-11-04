@@ -21,6 +21,7 @@ import javax.swing.border.EmptyBorder;
 import logic.*;
 import GUI.Error;
 import exceptions.EmptyFieldException;
+import exceptions.InvalidTripException;
 import exceptions.ItemNotFoundException;
 import exceptions.NotEnoughMoneyException;
 
@@ -181,7 +182,10 @@ new Error ("Not enough money");
 			e1.printStackTrace();
 		} catch (EmptyFieldException e1) {
 			new Error(e1+" can't be empty");
-		}catch(Exception a) {
+		}catch(InvalidTripException e1) {
+			new Error(e1.getMessage());
+		}
+			catch(Exception a) {
 			new Error("Unknown error");
 		} 
 		}
