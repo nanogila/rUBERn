@@ -144,7 +144,11 @@ if(!aUser.isTravelling()) {
 			aUser.startTrip();
 			if(selectedTrip.getDriver().startTrip()) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip")) {
-			theAccountant.payDriver(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip");
+			double salary = theAccountant.payDriver(selectedTrip.getDriver(), theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip");
+			new Error ("$"+theAccountant.tripCost(selectedTrip)+" debited from "+aUser.getName()+"'s bank account successfully");
+			new Error (aUser.getName()+" now has $"+aUser.getBalance()+" in his bank account");
+			new Error ("$"+salary+" added to "+selectedTrip.getDriver().getName()+"'s bank account successfully");
+			new Error (selectedTrip.getDriver().getName()+" now has $"+selectedTrip.getDriver().getBalance()+" in his bank account");
 			aUser.endTrip();
 			return true;
 		}

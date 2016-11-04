@@ -66,10 +66,10 @@ public double addMoney(Driver aDriver, double amount) throws ItemNotFoundExcepti
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.addMoney(aDriver.getName(), theAmount);
 }
-public boolean payDriver(Driver aDriver, double amount, String aDescription) throws ItemNotFoundException, EmptyFieldException {
+public double payDriver(Driver aDriver, double amount, String aDescription) throws ItemNotFoundException, EmptyFieldException {
 	double theAmount = driverBase.collectSalary(aDriver.getName(), amount);
-	if (logAddMoney(aDriver, theAmount, aDescription)) return true;
-	else return false;
+	logAddMoney(aDriver, theAmount, aDescription);
+	return theAmount;
 }
 public boolean removeMoney(User aUser, double amount, String aDescription) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 	double theAmount = Math.abs(roundUp(amount));
