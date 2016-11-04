@@ -5,22 +5,23 @@ import java.util.List;
 
 import GUI.*;
 import GUI.Error;
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 
 public class DriverBase {
 	private List<Driver> drivers;
 	public DriverBase() {
 		drivers= new ArrayList<Driver>();
 	}
-	public boolean addDriver (Driver aDriver) {
+	public boolean addDriver (Driver aDriver) throws AlreadyRegisteredException, EmptyFieldException {
 		if (checkName(aDriver)) {
-			new Error(aDriver.getName()+" is already registered");
-			return false;
+			throw new AlreadyRegisteredException(aDriver.getName());
 		}else if(aDriver.getName().equals("")){
-			new Error("name is empty");
-			return false;
+			throw new EmptyFieldException("name");
 		}else {
 			drivers.add(aDriver);
-			new Error("Driver successfully added");
 			return true;
 		}
 		
@@ -59,54 +60,28 @@ public class DriverBase {
 			 }
 		 new UserListGUI(columns, data);
 	}
-	public boolean removeDriver(Driver aDriver) {
+	public boolean removeDriver(Driver aDriver) throws ItemNotFoundException, EmptyFieldException {
 		if(aDriver.getName().equals("")){
-			new Error("name is empty");
-			
-			return false;
+			throw new EmptyFieldException("name");
 		}else if (!checkName(aDriver)) {
-			new Error(aDriver.getName()+" is not registered");
-			return false;
+			throw new ItemNotFoundException(aDriver.getName());
 		}else {
 			drivers.remove(aDriver);
-			new Error("Driver successfully removed");
 			return true;
 		}
 	}
-	public double addMoney(String aName, double amount) {
-		if(aName.equals("")){
-			new Error("name is empty");
-			
-			return 0;
-		}else if (getDriver(aName)==null) {
-			new Error(aName+" is not registered");
-			return 0;
-		}
-		else {
+	public double addMoney(String aName, double amount) throws ItemNotFoundException, EmptyFieldException {
 			Driver aDriver = getDriver(aName);
-			double addedAmount = aDriver.addMoney(amount);
-			new Error (aName+" now has $"+aDriver.getBalance()+" in his bank account");
-			return addedAmount;
-		}
+			return aDriver.addMoney(amount);
 	}
-	public boolean removeMoney(String aName, double amount) {
-		if(aName.equals("")){
-			new Error("name is empty");
-			
-			return false;
-		}else if (getDriver(aName)==null) {
-			new Error(aName+" is not registered");
-			return false;
-		}
-		else {
+	public boolean removeMoney(String aName, double amount) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 			Driver aDriver = getDriver(aName);
 			if(aDriver.removeMoney(amount)) {
-				new Error (aName+" now has $"+aDriver.getBalance()+" in his bank account");
-			return true;
+				return true;
 			}else return false;
-		}
 	}
-	public Driver getDriver(String aName) {
+	public Driver getDriver(String aName) throws ItemNotFoundException, EmptyFieldException {
+if (aName.equals("")) throw new EmptyFieldException("name");
 		Driver[] arrayDrivers = new Driver[drivers.size()];
 		 drivers.toArray(arrayDrivers);
 		for (int i=0; i<arrayDrivers.length; i++) {
@@ -114,36 +89,23 @@ public class DriverBase {
 			return arrayDrivers[i];
 		}
 		}
-		return null;
+		throw new ItemNotFoundException(aName);
 	}
-	public boolean updateDriverLocation (long X, long Y, String aName){
-		if(aName.equals("")){
-			new Error("name is empty");
-			
-			return false;
-		}else if (getDriver(aName)==null) {
-			new Error(aName+" is not registered");
-			return false;
-		}
-		else {
+	public boolean updateDriverLocation (long X, long Y, String aName) throws ItemNotFoundException, EmptyFieldException{
 			Driver aDriver = getDriver(aName);
 			aDriver.updateLocation(X, Y);
 			new Error("Location successfully updated");
 			return true;
-		}
 	}
-	public boolean checkPassword(String aDriver , String aPassword){
-		if(aDriver.equals("")){
-			new Error("Name can't be empty");
-			return false;
-		}
-		Driver theDriver = getDriver(aDriver);
-		if(theDriver== null){
-			return false;
+	public boolean checkPassword(String aDriver , String aPassword) throws EmptyFieldException{
+		Driver theDriver;
+		try {
+			theDriver = getDriver(aDriver);
+		} catch (EmptyFieldException | ItemNotFoundException e) {
+return false;
 		}
 		if(aPassword.equals("")){
-			new Error("Password can't be empty");
-			return false;
+			throw new EmptyFieldException("password");
 		}
 		else if(aPassword.equals(theDriver.getPassword())){
 			return true;
@@ -154,7 +116,7 @@ public class DriverBase {
 	public List<Driver> getDriverList(){
 		return drivers;
 	}
-	public double collectSalary(String name, double amount) {
+	public double collectSalary(String name, double amount) throws ItemNotFoundException, EmptyFieldException {
 		return addMoney(name, amount*0.9);
 	}
 }

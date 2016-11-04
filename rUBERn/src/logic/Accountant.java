@@ -7,6 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import GUI.Error;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 
 public class Accountant {
 private ClientBase base;
@@ -55,25 +58,25 @@ public double tripCost(Trip aTrip) {
 	cost = roundUp((aTrip.getDistance()/100)+15);
 	return cost;
 }
-public double addMoney(User aUser, double amount) {
+public double addMoney(User aUser, double amount) throws EmptyFieldException, ItemNotFoundException {
 	double theAmount = Math.abs(roundUp(amount));
 	return base.addMoney(aUser.getName(), theAmount);
 }
-public double addMoney(Driver aDriver, double amount) {
+public double addMoney(Driver aDriver, double amount) throws ItemNotFoundException, EmptyFieldException {
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.addMoney(aDriver.getName(), theAmount);
 }
-public boolean payDriver(Driver aDriver, double amount, String aDescription) {
+public boolean payDriver(Driver aDriver, double amount, String aDescription) throws ItemNotFoundException, EmptyFieldException {
 	double theAmount = driverBase.collectSalary(aDriver.getName(), amount);
 	if (logAddMoney(aDriver, theAmount, aDescription)) return true;
 	else return false;
 }
-public boolean removeMoney(User aUser, double amount, String aDescription) {
+public boolean removeMoney(User aUser, double amount, String aDescription) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 	double theAmount = Math.abs(roundUp(amount));
 	if (logRemoveMoney(aUser, theAmount, aDescription) && base.removeMoney(aUser.getName(), theAmount)) return true;
 	else return false;
 	}
-public boolean removeMoney(Driver aDriver, double amount) {
+public boolean removeMoney(Driver aDriver, double amount) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 	double theAmount = Math.abs(roundUp(amount));
 	return driverBase.removeMoney(aDriver.getName(), theAmount);
 }
@@ -105,7 +108,7 @@ public String getLogFileLocation() {
 	try {
 		return logFile.getCanonicalPath();
 	} catch (IOException e) {
-		return "log file not found";
+		return "Log file not found";
 	}
 }
 }

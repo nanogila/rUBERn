@@ -11,6 +11,10 @@ import javax.swing.border.EmptyBorder;
 
 import logic.*;
 import GUI.Error;
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.InvalidRatingException;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
@@ -161,22 +165,24 @@ private final Action action = new SwingAction();
 					}else new Error("Please enter a valid value");
 					
 				}else {
-					if(!rawName.equals("")) {
 						if(rawValue.length() < 3 && rawValue.matches("[0-9]+")) {
 							value = Integer.parseInt(rawValue);
-							if (value<11 && value>0) {
 						theMatrix.addTag(new QualityTag(rawName, value));
+						new Error("Tag "+rawName+" successfully added");
 						new ManageQualityTagsGUI(theMatrix);
 						frame.dispose();
-						}else new Error("Rating must be between 1 and 10");
 					}else new Error("Please enter a valid value");
-					}else new Error("Name can't be empty");
-					
 				}
 			}
-			catch(NullPointerException ouch){
+			catch (InvalidRatingException e1) {
+				new Error("Rating must be between 1 and 10");
+			} catch (AlreadyRegisteredException e1) {
+				new Error(e1.getMessage()+" is already registered");
+			} catch (EmptyFieldException e1) {
+				new Error("Tag name is empty");
+			}			catch(Exception ouch){
 				new Error("Unknown error");
-			}
+			} 
 				
 			}
 		}

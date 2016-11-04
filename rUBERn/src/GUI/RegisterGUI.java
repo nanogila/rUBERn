@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
 import logic.Matrix;
 import logic.User;
 
@@ -166,9 +168,7 @@ private final Action action_1 = new Cancel();
 					new Error("Passwords don't match");
 				}else {
 					String password = rawUserPassword;
-				if (name.equals("")) {
-					new Error("Name can't be empty");
-				}else if (!name.matches("[a-zA-Z0-9_-]+")) {
+					if (!name.matches("[a-zA-Z0-9_-]+")) {
 					new Error("Please enter only valid characters");
 				}else if(password.length()<5) {
 					new Error("Password must be 5 characters long");
@@ -185,6 +185,10 @@ private final Action action_1 = new Cancel();
 			}catch(NullPointerException a) {
 				new Error("Name or credit card number are empty");
 
+			} catch (EmptyFieldException e1) {
+				new Error(e1+" can't be empty");
+			} catch (AlreadyRegisteredException e1) {
+				new Error(e1+" is already registered");
 			}
 			}
 

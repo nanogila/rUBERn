@@ -1,5 +1,7 @@
 package logic;
 
+import exceptions.NotEnoughMoneyException;
+
 /**
  * Created by admin on 21/10/2016.
  */
@@ -37,7 +39,7 @@ public abstract class Person {
     public double addMoney(double someMoney) {
     	return card.addMoney(Accountant.roundUp(someMoney));
     }
-    public boolean removeMoney(double someMoney) {
+    public boolean removeMoney(double someMoney) throws NotEnoughMoneyException {
     	return card.removeMoney(Accountant.roundUp(someMoney));
     }
     public double getBalance() {

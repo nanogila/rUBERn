@@ -4,22 +4,21 @@ import java.util.*;
 
 import GUI.Error;
 import GUI.UserListGUI;
+import exceptions.*;
 
 public class ClientBase {
 private List<User> users;
 public ClientBase() {
 	users= new ArrayList<User>();
 }
-public boolean addUser (User aUser) {
+public boolean addUser (User aUser) throws AlreadyRegisteredException, EmptyFieldException {
 	if (checkName(aUser)) {
-		new Error(aUser.getName()+" is already registered");
-		return false;
+		throw new AlreadyRegisteredException(aUser.getName());
 	}else if(aUser.getName().equals("")){
-		new Error("name is empty");
-		return false;
-	}else {
+		throw new EmptyFieldException("name");
+	}
+	else {
 		users.add(aUser);
-		new Error("User successfully added");
 		return true;
 	}
 	
@@ -54,21 +53,18 @@ public void seeUsers() {
 		 }
 	 new UserListGUI(columns, data);
 }
-public boolean removeUser(User aUser) {
+public boolean removeUser(User aUser) throws EmptyFieldException, ItemNotFoundException{
 	if(aUser.getName().equals("")){
-		new Error("name is empty");
-		
-		return false;
+		throw new EmptyFieldException("name");
 	}else if (!checkName(aUser)) {
-		new Error(aUser.getName()+" is not registered");
-		return false;
+		throw new ItemNotFoundException(aUser.getName());
 	}else {
 		users.remove(aUser);
-		new Error("User successfully removed");
 		return true;
 	}
 }
-public User getUser(String aName) {
+public User getUser(String aName)  throws ItemNotFoundException, EmptyFieldException{
+	if (aName.equals("")) throw new EmptyFieldException("name");
 	User[] arrayUsers = new User[users.size()];
 	 users.toArray(arrayUsers);
 	for (int i=0; i<arrayUsers.length; i++) {
@@ -76,69 +72,34 @@ public User getUser(String aName) {
 		return arrayUsers[i];
 	}
 	}
-	return null;
+	throw new ItemNotFoundException(aName);
 }
-public double addMoney(String aName, double amount) {
-	if(aName.equals("")){
-		new Error("name is empty");
-		
-		return 0;
-	}else if (getUser(aName)==null) {
-		new Error(aName+" is not registered");
-		return 0;
-	}
-	else {
+public double addMoney(String aName, double amount) throws EmptyFieldException, ItemNotFoundException{
 		User aUser = getUser(aName);
-		double addedMoney = aUser.addMoney(amount);
-		new Error (aName+" now has $"+aUser.getBalance()+" in his bank account");
-		return addedMoney;
-	}
+		return aUser.addMoney(amount);
 }
-public boolean removeMoney(String aName, double amount) {
-	if(aName.equals("")){
-		new Error("name is empty");
-		
-		return false;
-	}else if (getUser(aName)==null) {
-		new Error(aName+" is not registered");
-		return false;
-	}
-	else {
+public boolean removeMoney(String aName, double amount) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 		User aUser = getUser(aName);
 		if(aUser.removeMoney(amount)) {
 			new Error (aName+" now has $"+aUser.getBalance()+" in his bank account");
 		return true;
 		}else return false;
-	}
 }
-public boolean updateUserLocation (long X, long Y, String aName){
-	if(aName.equals("")){
-		new Error("name is empty");
-		
-		return false;
-	}else if (getUser(aName)==null) {
-		new Error(aName+" is not registered");
-		return false;
-	}
-	else {
+public boolean updateUserLocation (long X, long Y, String aName) throws ItemNotFoundException, EmptyFieldException{
 		User aUser = getUser(aName);
 		aUser.updateLocation(X, Y);
 		new Error("Location successfully updated");
 		return true;
-	}
 }
-public boolean checkPassword(String aUser , String aPassword){
-	if(aUser.equals("")){
-		new Error("Name can't be empty");
-		return false;
-	}
-	User theUser = getUser(aUser);
-	if(theUser== null){
+public boolean checkPassword(String aUser , String aPassword) throws EmptyFieldException{
+	User theUser;
+	try {
+		theUser = getUser(aUser);
+	} catch (EmptyFieldException | ItemNotFoundException e) {
 		return false;
 	}
 	if(aPassword.equals("")){
-		new Error("Password can't be empty");
-		return false;
+		throw new EmptyFieldException("password");
 	}
 	else if(aPassword.equals(theUser.getPassword())){
 		return true;

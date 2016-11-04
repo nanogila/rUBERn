@@ -1,6 +1,10 @@
 import org.junit.*;
 import org.junit.rules.*;
 
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import logic.*;
 
 import static org.junit.Assert.*;
@@ -12,7 +16,7 @@ public class ClientBaseTester {
 	@Rule
 	public ExpectedException exception = ExpectedException.none();
     @Test
-    public void addUserTester(){
+    public void addUserTester() throws EmptyFieldException{
     	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos, baseDeChoferes);
@@ -21,7 +25,8 @@ public class ClientBaseTester {
         
     }
     @Test
-    public void addUserFailTester(){
+    public void addUserFailTester() throws EmptyFieldException{
+    	exception.expect(EmptyFieldException.class);
     	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos, baseDeChoferes);
@@ -30,18 +35,20 @@ public class ClientBaseTester {
         assertTrue(result);
     }
     @Test
-    public void removeUserTester(){
+    public void removeUserTester() throws EmptyFieldException, ItemNotFoundException{
+    	exception.expect(ItemNotFoundException.class);
     	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos, baseDeChoferes);
         User Tomas = new User("Tomas" , 12345, "hola");
         sistema.addUser(Tomas);
         sistema.removeUser(Tomas);
-        assertNull(sistema.getUser(Tomas.getName()));
+        sistema.getUser(Tomas.getName());
 
     }
     @Test
-    public void removeUserFailTester(){
+    public void removeUserFailTester() throws EmptyFieldException, ItemNotFoundException{
+    	exception.expect(ItemNotFoundException.class);
     	DriverBase baseDeChoferes = new DriverBase();
         ClientBase basededatos = new ClientBase();
         Matrix sistema = new Matrix(basededatos, baseDeChoferes);
@@ -53,7 +60,7 @@ public class ClientBaseTester {
 
     }
     @Test
-    public void testCheckPassword(){
+    public void testCheckPassword() throws EmptyFieldException{
         ClientBase basededatos = new ClientBase();
         DriverBase baseDeChoferes = new DriverBase();
         Matrix sistema = new Matrix(basededatos,baseDeChoferes);

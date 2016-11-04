@@ -19,6 +19,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
 import logic.Matrix;
 import logic.Driver;
 import logic.Driver;
@@ -136,7 +138,6 @@ public class UpdateDriverLocationGUI extends JFrame{
 			String rawLocationY = locationY.getText().trim();
 			String name;
 			name = theDriver.getName();
-			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");
 			if (rawLocationX.length() >0 && rawLocationY.length() > 0 && rawLocationX.length() < 11 && rawLocationX.matches("[0-9]+") && rawLocationY.length() < 11 && rawLocationY.matches("[0-9]+")) {
@@ -150,7 +151,11 @@ public class UpdateDriverLocationGUI extends JFrame{
 				}
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");
 			 if(!rawLocationY.matches("[0-9]+")&&!rawLocationY.equals("")) new Error("Location Y field can't contain letters");}
-		}catch(NullPointerException a) {
+		} catch (ItemNotFoundException e1) {
+			new Error(e1+" is not registered");
+		} catch (EmptyFieldException e1) {
+			new Error(e1+" can't be empty");
+		}catch(Exception ouch) {
 			new Error("Unknown error");
 		}
 		}

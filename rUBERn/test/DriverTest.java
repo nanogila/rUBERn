@@ -1,11 +1,20 @@
 import static org.junit.Assert.*;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
+import exceptions.AlreadyRegisteredException;
+import exceptions.InvalidRatingException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import logic.*;
 
 public class DriverTest {
 	Car fiat = new Car("Fiat 600", 3, new QualityTag("low", 2));
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
+	
 	@Test
 	public void carTest() {
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
@@ -64,21 +73,21 @@ public class DriverTest {
 		assertEquals(20.0, aDriver.getBalance(), 0.00001);
 	}
 	@Test
-	public void removeMoneyTest() {
+	public void removeMoneyTest() throws NotEnoughMoneyException {
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.addMoney(20.0);
 		aDriver.removeMoney(5.5);
 		assertEquals(14.5, aDriver.getBalance(), 0.00001);
 	}
 	@Test
-	public void removeMoneyFailTest() {
+	public void removeMoneyFailTest() throws NotEnoughMoneyException {
+		exception.expect(NotEnoughMoneyException.class);
 		Driver aDriver = new Driver("Mario", 123213, "password", fiat);
 		aDriver.addMoney(20.0);
 		aDriver.removeMoney(40.5);
-		assertEquals(20.0, aDriver.getBalance(), 0.00001);
 	}
 	@Test
-	public void changedQualityTagValueTest() {
+	public void changedQualityTagValueTest() throws AlreadyRegisteredException, ItemNotFoundException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		User aClient = new User("pablo", 233223, "holaaa");

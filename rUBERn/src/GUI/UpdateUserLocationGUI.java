@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.ItemNotFoundException;
 import logic.*;
 
 import java.awt.event.ActionListener;
@@ -266,7 +267,9 @@ public class UpdateUserLocationGUI extends JFrame {
 				}
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");
 			 if(!rawLocationY.matches("[0-9]+")&&!rawLocationY.equals("")) new Error("Location Y field can't contain letters");}
-		}catch(NullPointerException a) {
+		} catch (ItemNotFoundException e1) {
+			new Error(e1+" is not registered");
+		}catch(Exception a) {
 			new Error("Unknown error");
 		}
 		}

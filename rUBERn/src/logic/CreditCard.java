@@ -1,5 +1,6 @@
 package logic;
 import GUI.Error;
+import exceptions.*;
 /**
  * Created by tomasvarela on 10/21/16.
  */
@@ -17,10 +18,9 @@ public class CreditCard {
         balance += money;
         return money;
     }
-    public boolean removeMoney(double money){
+    public boolean removeMoney(double money) throws NotEnoughMoneyException{
         if (balance < money){
-            new Error("Not enough money");
-            return false;
+            throw new NotEnoughMoneyException();
         }
         else{
             balance -= money;

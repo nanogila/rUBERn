@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.ItemNotFoundException;
 import logic.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -106,13 +107,16 @@ private Matrix theMatrix;
 				if (money > 0) {
 					theMatrix.addMoney(theDriver, money);
 						new DriverPostLogin(theMatrix, theDriver);
+						new Error (theDriver.getName()+" now has $"+theDriver.getBalance()+" in his bank account");
 						dispose();
 					}
 				}
 				else new Error ("Invalid money amount");
-			}catch(NullPointerException ouch) {
+			}catch (ItemNotFoundException e1) {
+				new Error(e1+" is not registered");
+			}catch(Exception ouch) {
 				new Error("Unknown error");
-			}
+			} 
 			}
 	}
 	private class SwingAction_1 extends AbstractAction {

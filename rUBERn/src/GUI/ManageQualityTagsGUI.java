@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 
 import logic.*;
 import GUI.Error;
+import exceptions.ItemNotFoundException;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -144,7 +146,11 @@ public class ManageQualityTagsGUI extends JFrame {
 			if(boxNewTag.isSelected()) {
 				new ChangeQualityTagGUI(theMatrix, null);
 			}else {
-				new ChangeQualityTagGUI(theMatrix, theMatrix.getTag(theMatrix.getTagNames()[qualityTag.getSelectedIndex()]));
+				try {
+					new ChangeQualityTagGUI(theMatrix, theMatrix.getTag(theMatrix.getTagNames()[qualityTag.getSelectedIndex()]));
+				} catch (ItemNotFoundException e1) {
+					new Error(e1+" is not registered");
+				}
 			}dispose();
 		}
 	}

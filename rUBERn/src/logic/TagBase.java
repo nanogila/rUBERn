@@ -4,22 +4,20 @@ import java.util.*;
 
 import GUI.Error;
 import GUI.UserListGUI;
+import exceptions.*;
 
 public class TagBase {
 private List<QualityTag> tags;
 public TagBase() {
 	tags= new ArrayList<>();
 }
-public boolean addTag (QualityTag aTag) {
+public boolean addTag (QualityTag aTag) throws AlreadyRegisteredException, EmptyFieldException {
 	if (checkTag(aTag)) {
-		new Error(aTag.getTag()+" is already registered");
-		return false;
+		throw new AlreadyRegisteredException(aTag.getTag());
 	}else if(aTag.getTag().equals("")){
-		new Error("Tag name is empty");
-		return false;
+		throw new EmptyFieldException("tag name");
 	}else {
 		tags.add(aTag);
-		new Error("Tag "+aTag.getTag()+" successfully added");
 		return true;
 	}
 	
@@ -59,21 +57,17 @@ public String[] getTagNames() {
 		 }
 	 return data;
 }
-public boolean removeTag(QualityTag aTag) {
+public boolean removeTag(QualityTag aTag) throws EmptyFieldException, ItemNotFoundException{
 	if(aTag.getTag().equals("")){
-		new Error("Tag name is empty");
-		
-		return false;
+		throw new EmptyFieldException("tag name");
 	}else if (!checkTag(aTag)) {
-		new Error(aTag.getTag()+" is not registered");
-		return false;
+		throw new ItemNotFoundException(aTag.getTag());
 	}else {
 		tags.remove(aTag);
-		new Error("Tag successfully removed");
 		return true;
 	}
 }
-public QualityTag getTag(String aTag) {
+public QualityTag getTag(String aTag) throws ItemNotFoundException {
 	QualityTag[] arrayTags = new QualityTag[tags.size()];
 	 tags.toArray(arrayTags);
 	for (int i=0; i<arrayTags.length; i++) {
@@ -81,20 +75,13 @@ public QualityTag getTag(String aTag) {
 		return arrayTags[i];
 	}
 	}
-	return null;
+	throw new ItemNotFoundException(aTag);
 }
-public boolean setQualityTagName(String aTagName, String aName) {
-	if(getTag(aTagName)!=null) {
+public boolean setQualityTagName(String aTagName, String aName) throws ItemNotFoundException {
 		getTag(aTagName).setName(aName);
 		return true;
-	}
-	else return false;
 }
-public boolean setQualityTagValue(String aTagName, int aValue) {
-	if(getTag(aTagName)!=null) {
+public boolean setQualityTagValue(String aTagName, int aValue) throws InvalidRatingException, ItemNotFoundException {
 		return getTag(aTagName).setValue(aValue);
-		
-	}
-	else return false;
 }
 }

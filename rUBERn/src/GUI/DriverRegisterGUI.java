@@ -8,6 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
 import logic.*;
 
 import javax.swing.GroupLayout;
@@ -263,10 +266,16 @@ private JTextField carCapacity;
 				}else new Error("Invalid credit card number");
 				}
 			}else new Error("Please enter a valid capacity");
-			}catch(NullPointerException a) {
+			}catch (ItemNotFoundException e1) {
+				new Error(e1+" is not registered");
+			} catch (AlreadyRegisteredException e1) {
+				new Error(e1+" is already registered");
+			} catch (EmptyFieldException e1) {
+				new Error(e1+" can't be empty");
+			}catch(Exception a) {
 				new Error("Unknown error");
 
-			}
+			} 
 			}
 
 		

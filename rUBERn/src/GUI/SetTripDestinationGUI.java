@@ -20,6 +20,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import logic.*;
 import GUI.Error;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
+
 import javax.swing.SwingConstants;
 
 public class SetTripDestinationGUI extends JFrame {
@@ -154,7 +158,6 @@ public class SetTripDestinationGUI extends JFrame {
 			String rawPeople = people.getText().trim();
 			String name;
 			name = theUser.getName();
-			if (name.equals("")) new Error("Name can't be empty");
 			if (rawLocationX.equals("")) new Error("Location X field can't be empty");
 			if (rawLocationY.equals("")) new Error("Location Y field can't be empty");
 			if (rawPeople.equals("")) new Error("Location Y field can't be empty");
@@ -171,9 +174,16 @@ public class SetTripDestinationGUI extends JFrame {
 				}
 			}else {if(!rawLocationX.matches("[0-9]+")&&!rawLocationX.equals("")) new Error("Location X field can't contain letters");
 			 if(!rawLocationY.matches("[0-9]+")&&!rawLocationY.equals("")) new Error("Location Y field can't contain letters");}
-		}catch(NullPointerException a) {
+		}catch (NotEnoughMoneyException e1) {
+new Error ("Not enough money");
+		} catch (ItemNotFoundException e1) {
+			new Error(e1+" is not registered");
+			e1.printStackTrace();
+		} catch (EmptyFieldException e1) {
+			new Error(e1+" can't be empty");
+		}catch(Exception a) {
 			new Error("Unknown error");
-		}
+		} 
 		}
 		}
 }

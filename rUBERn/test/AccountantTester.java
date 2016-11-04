@@ -1,10 +1,18 @@
 import static org.junit.Assert.*;
 
-
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+import exceptions.NotEnoughMoneyException;
 import logic.*;
 public class AccountantTester {
 	Car aCar = new Car("Fiat 600", 3, new QualityTag("low", 2));
+	@Rule
+	public ExpectedException exception = ExpectedException.none();
 	@Test
 	public void imageCostTest() {
 		ClientBase aBase = new ClientBase();
@@ -32,7 +40,7 @@ public class AccountantTester {
 		assertEquals(77.24, anAccountant.tripCost(aTrip), 0.001);
 	}
 	@Test
-	public void addMoneyTest() {
+	public void addMoneyTest() throws EmptyFieldException, AlreadyRegisteredException, ItemNotFoundException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
@@ -42,7 +50,7 @@ public class AccountantTester {
 		assertEquals(77, aClient.getBalance(), 0.001);
 	}
 	@Test
-	public void addMoneyToDriverTest() {
+	public void addMoneyToDriverTest() throws EmptyFieldException, AlreadyRegisteredException, ItemNotFoundException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
@@ -53,7 +61,7 @@ public class AccountantTester {
 		assertEquals(77, aDriver.getBalance(), 0.001);
 	}
 	@Test
-	public void removeMoneyFromDriverTest() {
+	public void removeMoneyFromDriverTest() throws NotEnoughMoneyException, EmptyFieldException, AlreadyRegisteredException, ItemNotFoundException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
@@ -64,7 +72,7 @@ public class AccountantTester {
 		assertEquals(67, aDriver.getBalance(), 0.001);
 	}
 	@Test
-	public void DriverCollectMoneyFromTripTest() {
+	public void DriverCollectMoneyFromTripTest() throws EmptyFieldException, ItemNotFoundException, AlreadyRegisteredException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);
@@ -75,7 +83,7 @@ public class AccountantTester {
 		assertEquals(86, aDriver.getBalance(), 0.001);
 	}
 	@Test
-	public void removeMoneyTest() {
+	public void removeMoneyTest() throws NotEnoughMoneyException, EmptyFieldException, ItemNotFoundException, AlreadyRegisteredException {
 		ClientBase aBase = new ClientBase();
 		DriverBase anotherBase = new DriverBase();
 		Accountant anAccountant = new Accountant(aBase, anotherBase);

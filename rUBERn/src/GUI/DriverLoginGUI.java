@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GUI.Error;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
 import logic.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -142,10 +144,16 @@ public class DriverLoginGUI extends JFrame {
 						dispose();
 				}else new Error("Invalid driver name or password");
 					
-			}catch(NullPointerException a) {
+			}catch (EmptyFieldException e1) {
+				new Error(e1+" can't be empty");
+				e1.printStackTrace();
+			} catch (ItemNotFoundException e1) {
+				new Error(e1+"is not registered");
+				e1.printStackTrace();
+			}catch(Exception a) {
 				new Error("Unknown error");
 
-			}
+			} 
 		}
 	}
 }

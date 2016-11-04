@@ -5,6 +5,11 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import exceptions.AlreadyRegisteredException;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.GroupLayout;
@@ -204,16 +209,20 @@ public class ManageUserGUI extends JDialog {
 				}else new Error("Invalid credit card number");
 				}else if (removeUser.isSelected()) {
 					String name = userName.getText().trim();
-					if (name.equals("")) new NullPointerException();
-					if (theMatrix.getUser(name)!=null) {
+					theMatrix.getUser(name);
 					User someone = theMatrix.getUser(name);
 					if(theMatrix.removeUser(someone)) dispose(); 
 					
-				}else new Error(name+" is not registered");
 					}
 			}catch(NullPointerException a) {
 				new Error("Name or credit card number are empty");
 
+			} catch (EmptyFieldException e1) {
+				new Error(e1+" is empty");
+			} catch (AlreadyRegisteredException e1) {
+				e1.printStackTrace();
+			} catch (ItemNotFoundException e1) {
+				new Error(e1+" is not registered");
 			}
 			}
 

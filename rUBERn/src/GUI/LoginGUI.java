@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import GUI.Error;
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
 import logic.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -136,8 +138,7 @@ public class LoginGUI extends JFrame {
 			try {
 				String name = userName.getText().trim();
 				String password=String.valueOf(userPassword.getPassword()).trim();
-				if (name.equals("")) new Error("Name can't be empty");
-				else if(password.length()<5) {
+				if(password.length()<5) {
 					new Error("Password must be 5 characters long");
 				}
 				else if (theMatrix.checkPassword(name, password)) {
@@ -146,10 +147,14 @@ public class LoginGUI extends JFrame {
 						dispose();
 				}else new Error("Invalid username or password");
 					
-			}catch(NullPointerException a) {
+			}catch (ItemNotFoundException e1) {
+				new Error(e1+" is not registered");
+			} catch (EmptyFieldException e1) {
+				new Error(e1+" can't be empty");
+			}catch(Exception a) {
 				new Error("Unknown error");
 
-			}
+			} 
 		}
 	}
 }

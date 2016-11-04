@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import exceptions.EmptyFieldException;
+import exceptions.ItemNotFoundException;
 import logic.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -105,13 +107,20 @@ private Matrix theMatrix;
 					theMatrix.addMoney(theUser, money);
 					
 						new PostLogin(theMatrix, theUser);
+						new Error (theUser.getName()+" now has $"+theUser.getBalance()+" in his bank account");
 						dispose();
 				}
 				else new Error ("Invalid money amount");
 		}else new Error ("Invalid money amount");
-			}catch(NullPointerException ouch) {
-				new Error("Unknown error");
+			}catch (EmptyFieldException e1) {
+				new Error(e1+" can't be empty");
+				e1.printStackTrace();
+			} catch (ItemNotFoundException e1) {
+				new Error(e1+" is not registered");
 			}
+			catch(Exception ouch) {
+				new Error("Unknown error");
+			} 
 			}
 	}
 	private class SwingAction_1 extends AbstractAction {
