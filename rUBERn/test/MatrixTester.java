@@ -27,7 +27,7 @@ public class MatrixTester {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {e.printStackTrace();}
 				  for (int i = 0; i<16; i++) {
-					  try{Thread.sleep(100);}catch(InterruptedException e){}
+					  try{Thread.sleep(1000);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(50);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
