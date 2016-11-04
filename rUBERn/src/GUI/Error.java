@@ -29,7 +29,7 @@ public class Error extends JDialog {
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		//setModal(true);
+		setModal(true);
 		setTitle("rUBERn - Group 3");
 		setBounds(100, 100, 264, 204);
 		getContentPane().setLayout(new BorderLayout());
