@@ -37,11 +37,9 @@ private Matrix theMatrix;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 270, 204);
 		setVisible(true);
-		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 20, 20));
 		setContentPane(contentPane);
-		//pack();
 		JLabel lblAddSomeMoney = new JLabel("Add some money to your wallet");
 		lblAddSomeMoney.setFont(new Font("Times New Roman", Font.BOLD, 16));
 		
