@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
@@ -26,8 +27,8 @@ public class UpdateMaximumDriverDistanceGUI extends JFrame {
 		private final Action action = new SwingAction();
 		private final Action action_1 = new SwingAction_1();
 	public UpdateMaximumDriverDistanceGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateMaximumDriverDistanceGUI.class.getResource("/Uber-icon2.png")));
 			setResizable(false);
-
 			theMatrix = aMatrix;
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 270, 204);

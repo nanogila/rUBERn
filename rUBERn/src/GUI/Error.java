@@ -10,6 +10,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
@@ -26,6 +28,7 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Error.class.getResource("/Uber-icon2.png")));
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

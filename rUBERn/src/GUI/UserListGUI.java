@@ -1,6 +1,8 @@
 package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Toolkit;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -25,6 +27,7 @@ public class UserListGUI extends JDialog {
 	 * Create the dialog.
 	 */
 	public UserListGUI(String[] columnNames, Object[][] data) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UserListGUI.class.getResource("/Uber-icon2.png")));
 		setVisible(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());

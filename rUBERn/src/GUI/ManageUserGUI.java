@@ -12,6 +12,8 @@ import exceptions.ItemNotFoundException;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -52,7 +54,7 @@ public class ManageUserGUI extends JDialog {
 	 */
 	public ManageUserGUI(Matrix aMatrix) {
 		setTitle("rUBERn - Grupo 3");
-		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ManageUserGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		action_1  = new AddAUser(theMatrix);
 		setVisible(true);

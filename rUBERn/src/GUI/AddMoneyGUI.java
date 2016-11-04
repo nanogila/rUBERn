@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import javax.swing.Action;
+import java.awt.Toolkit;
 
 public class AddMoneyGUI extends JFrame {
 private User theUser;
@@ -32,6 +33,7 @@ private Matrix theMatrix;
 	 * Create the frame.
 	 */
 	public AddMoneyGUI(Matrix aMatrix, User aUser) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(AddMoneyGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		theUser = aUser;
 		theMatrix = aMatrix;

@@ -22,6 +22,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import java.awt.Toolkit;
 
 public class UpdateUserLocationGUI extends JFrame {
 
@@ -39,6 +40,7 @@ public class UpdateUserLocationGUI extends JFrame {
 	 * @wbp.parser.constructor
 	 */
 	public UpdateUserLocationGUI(Matrix aMatrix, User aUser, Boolean trip) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateUserLocationGUI.class.getResource("/Uber-icon2.png")));
 		askingForTrip = trip;
 		theUser=aUser;
 		theMatrix = aMatrix;
@@ -129,6 +131,7 @@ public class UpdateUserLocationGUI extends JFrame {
 	}
 
 	public UpdateUserLocationGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateUserLocationGUI.class.getResource("/Uber-icon2.png")));
 		askingForTrip=false;
 		theUser = null;
 		theMatrix = aMatrix;

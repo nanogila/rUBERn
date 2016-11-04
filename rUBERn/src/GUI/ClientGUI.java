@@ -12,6 +12,8 @@ import logic.*;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -32,6 +34,7 @@ public class ClientGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public ClientGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ClientGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		setVisible(true);
 		setTitle("rUBERn - Group 3");

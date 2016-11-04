@@ -12,6 +12,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -63,6 +65,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frmRubern = new JFrame();
+		frmRubern.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Uber-icon2.png")));
 		frmRubern.setResizable(false);
 		frmRubern.setTitle("rUBERn - Group 3");
 		frmRubern.setBounds(100, 100, 299, 160);

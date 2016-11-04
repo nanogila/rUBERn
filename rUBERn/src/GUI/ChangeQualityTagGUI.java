@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -41,7 +42,9 @@ private final Action action = new SwingAction();
 		theMatrix = aMatrix;
 		tag = aTag;
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ChangeQualityTagGUI.class.getResource("/Uber-icon2.png")));
         frame.setAlwaysOnTop(true);
+        
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		frame.setTitle("rUBERn - Group 3");

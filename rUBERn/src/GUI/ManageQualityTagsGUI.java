@@ -15,6 +15,8 @@ import exceptions.ItemNotFoundException;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -37,6 +39,7 @@ public class ManageQualityTagsGUI extends JFrame {
 	private JCheckBox boxNewTag;
 	private JComboBox<String> qualityTag;
 	public ManageQualityTagsGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ManageQualityTagsGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		newTag = false;
 		setBounds(100, 100, 450, 300);

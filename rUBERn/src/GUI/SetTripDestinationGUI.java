@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -42,6 +43,7 @@ public class SetTripDestinationGUI extends JFrame {
 	 * @wbp.parser.constructor
 	 */
 	public SetTripDestinationGUI(Matrix aMatrix, User aUser) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(SetTripDestinationGUI.class.getResource("/Uber-icon2.png")));
 		theUser=aUser;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");

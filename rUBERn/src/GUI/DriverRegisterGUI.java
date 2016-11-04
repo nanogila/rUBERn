@@ -17,6 +17,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
@@ -48,6 +50,7 @@ private JTextField carCapacity;
 	 * Create the dialog.
 	 */
 	public DriverRegisterGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverRegisterGUI.class.getResource("/Uber-icon2.png")));
 		setVisible(true);
 		theMatrix = aMatrix;
 		carModel = 0;

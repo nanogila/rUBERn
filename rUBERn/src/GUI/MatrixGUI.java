@@ -16,6 +16,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Action;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import java.awt.Toolkit;
 
 public class MatrixGUI {
 private Matrix theMatrix;
@@ -40,7 +41,7 @@ private Matrix theMatrix;
 	private void initialize() {
 		frame = new JFrame();
 		frame.setVisible(true);
-		//Main.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		frame.setResizable(false);
 		frame.setTitle("rUBERn - Group 3");
 		frame.setBounds(100, 100, 423, 242);

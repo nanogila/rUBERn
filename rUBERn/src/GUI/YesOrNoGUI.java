@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 
 public class YesOrNoGUI {
 
@@ -28,6 +29,7 @@ public class YesOrNoGUI {
             content.add(label);
 
             JDialog dialog = new JDialog();
+    		dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(YesOrNoGUI.class.getResource("/Uber-icon2.png")));
             dialog.setAlwaysOnTop(true);
             dialog.setResizable(false);
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

@@ -12,6 +12,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.SwingConstants;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
@@ -31,6 +33,7 @@ public class PostLogin extends JFrame {
 	 * Create the dialog.
 	 */
 	public PostLogin(Matrix aMatrix, User aUser) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(PostLogin.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

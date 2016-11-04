@@ -17,6 +17,8 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.AbstractAction;
@@ -37,6 +39,7 @@ public class DriverLoginGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public DriverLoginGUI(Matrix aMatrix) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverLoginGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		theMatrix = aMatrix;

@@ -3,6 +3,7 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -36,6 +37,7 @@ public class UpdateDriverLocationGUI extends JFrame{
 	private JLabel lblDrivername;
 	private JTextField driverName;
 	public UpdateDriverLocationGUI(Matrix aMatrix, Driver aDriver) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateDriverLocationGUI.class.getResource("/Uber-icon2.png")));
 		theDriver=aDriver;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");
