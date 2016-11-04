@@ -94,7 +94,6 @@ if (aName.equals("")) throw new EmptyFieldException("name");
 	public boolean updateDriverLocation (long X, long Y, String aName) throws ItemNotFoundException, EmptyFieldException{
 			Driver aDriver = getDriver(aName);
 			aDriver.updateLocation(X, Y);
-			new Error("Location successfully updated");
 			return true;
 	}
 	public boolean checkPassword(String aDriver , String aPassword) throws EmptyFieldException{

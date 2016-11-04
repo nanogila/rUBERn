@@ -81,14 +81,12 @@ public double addMoney(String aName, double amount) throws EmptyFieldException, 
 public boolean removeMoney(String aName, double amount) throws NotEnoughMoneyException, ItemNotFoundException, EmptyFieldException {
 		User aUser = getUser(aName);
 		if(aUser.removeMoney(amount)) {
-			new Error (aName+" now has $"+aUser.getBalance()+" in his bank account");
 		return true;
 		}else return false;
 }
 public boolean updateUserLocation (long X, long Y, String aName) throws ItemNotFoundException, EmptyFieldException{
 		User aUser = getUser(aName);
 		aUser.updateLocation(X, Y);
-		new Error("Location successfully updated");
 		return true;
 }
 public boolean checkPassword(String aUser , String aPassword) throws EmptyFieldException{

@@ -261,7 +261,10 @@ public class UpdateUserLocationGUI extends JFrame {
 				aLocationY=	Long.parseLong(rawLocationY);
 				if (theMatrix.updateUserLocation(aLocationX, aLocationY, name)) {
 					if (theUser!=null) {
-						if (!askingForTrip)new PostLogin(theMatrix, theUser);
+						if (!askingForTrip) {
+							new PostLogin(theMatrix, theUser);
+							new Error("Location successfully updated");
+						}
 					}
 					dispose();
 				}

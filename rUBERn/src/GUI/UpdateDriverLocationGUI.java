@@ -146,6 +146,7 @@ public class UpdateDriverLocationGUI extends JFrame{
 				aLocationX=	Long.parseLong(rawLocationX);
 				aLocationY=	Long.parseLong(rawLocationY);
 				if (theMatrix.updateDriverLocation(aLocationX, aLocationY, name)) {
+					new Error("Location successfully updated");
 					if (theDriver!=null) new DriverPostLogin(theMatrix, theDriver);
 					dispose();
 				}
