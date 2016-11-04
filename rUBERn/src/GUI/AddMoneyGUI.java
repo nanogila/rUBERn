@@ -49,7 +49,7 @@ private Matrix theMatrix;
 		
 		moneyAmount = new JTextField();
 		moneyAmount.setColumns(10);
-		
+		moneyAmount.setDocument (new JTextFieldLimit(7));
 		JButton btnAdd = new JButton("Add");
 		btnAdd.setAction(action);
 		
