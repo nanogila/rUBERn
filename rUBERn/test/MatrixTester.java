@@ -1,3 +1,5 @@
+
+
 import static org.junit.Assert.*;
 
 import java.awt.AWTException;
@@ -24,7 +26,7 @@ public class MatrixTester {
 		Thread ok = new Thread () {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {}
-				  for (int i = 0; i<10; i++) {
+				  for (int i = 0; i<16; i++) {
 					  try{Thread.sleep(500);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(10);}catch(InterruptedException e){}
@@ -88,7 +90,7 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		aDriver.goOnline();
 		long[] aDestination = {23, 3};
-		ok.start();
+		//ok.start();
 		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(result);
 	}
