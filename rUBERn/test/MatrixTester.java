@@ -25,9 +25,9 @@ public class MatrixTester {
 	Matrix theMatrix = new Matrix(aBase, anotherBase);
 		Thread ok = new Thread () {
 			  public void run () {
-					try { bot = new Robot(); } catch (AWTException e) {}
+					try { bot = new Robot(); } catch (AWTException e) {e.printStackTrace();}
 				  for (int i = 0; i<16; i++) {
-					  try{Thread.sleep(500);}catch(InterruptedException e){}
+					  try{Thread.sleep(300);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(10);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
@@ -90,7 +90,7 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		aDriver.goOnline();
 		long[] aDestination = {23, 3};
-		//ok.start();
+		ok.start();
 		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(result);
 	}
