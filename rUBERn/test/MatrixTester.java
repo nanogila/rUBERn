@@ -24,15 +24,15 @@ public class MatrixTester {
 		Thread ok = new Thread () {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {}
-				  try{Thread.sleep(100);}catch(InterruptedException e){}
+				  try{Thread.sleep(500);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
 					try{Thread.sleep(10);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
-					  try{Thread.sleep(200);}catch(InterruptedException e){}
+					  try{Thread.sleep(500);}catch(InterruptedException e){}
 					  bot.keyPress(KeyEvent.VK_ENTER);
 						try{Thread.sleep(10);}catch(InterruptedException e){}
 						bot.keyRelease(KeyEvent.VK_ENTER);	
-						  try{Thread.sleep(200);}catch(InterruptedException e){}
+						  try{Thread.sleep(500);}catch(InterruptedException e){}
 						  bot.keyPress(KeyEvent.VK_ENTER);
 							try{Thread.sleep(10);}catch(InterruptedException e){}
 							bot.keyRelease(KeyEvent.VK_ENTER);	
