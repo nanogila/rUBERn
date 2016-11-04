@@ -138,6 +138,8 @@ if(!aUser.isTravelling()) {
 	if (aUser.getBalance()>=theAccountant.tripCost(selectedTrip)) {
 		boolean accepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getDriver().getName()+" ?");
 		if (accepted) {
+			boolean clientAccepted = new YesOrNoGUI().showYesNoMessage("Do you wish to accept the trip "+selectedTrip.getClient().getName()+" ? the driver has a "+selectedTrip.getDriver().getCarModel());
+			if(clientAccepted) {
 			aUser.startTrip();
 			if(selectedTrip.getDriver().startTrip()) {
 		if (removeMoney(aUser, theAccountant.tripCost(selectedTrip), Accountant.roundUp(selectedTrip.getDistance())+" long trip")) {
@@ -151,6 +153,7 @@ if(!aUser.isTravelling()) {
 			return askForCar(aUser, aDestination, people, blacklist);
 		}
 	}
+		}
 	else {
 		new Error ("Not enough money");
 			return false;

@@ -20,4 +20,7 @@ public Double getDistance() {
 public Driver getDriver() {
 	return theDriver;
 }
+public User getClient() {
+	return theClient;
+}
 }
