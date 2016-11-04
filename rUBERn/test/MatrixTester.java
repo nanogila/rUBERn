@@ -94,7 +94,7 @@ public class MatrixTester {
 		boolean result = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(result);
 	}
-	@Test
+	/*@Test
 	public void  checkChangeMaximumDistance() throws ItemNotFoundException, NotEnoughMoneyException {
 		theMatrix.addUser(aUser);
 		theMatrix.addMoney(aUser, 23444);
@@ -108,5 +108,5 @@ public class MatrixTester {
 		theMatrix.changeMaximumDriverDistance(3);
 		boolean newResult = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(!newResult);
-	}
+	}*/
 }
