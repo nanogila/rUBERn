@@ -37,7 +37,7 @@ public class UpdateDriverLocationGUI extends JFrame{
 	private JLabel lblDrivername;
 	private JTextField driverName;
 	public UpdateDriverLocationGUI(Matrix aMatrix, Driver aDriver) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateDriverLocationGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateDriverLocationGUI.class.getResource("/Uber-icon2.png")));
 		theDriver=aDriver;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");

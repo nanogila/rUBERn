@@ -27,7 +27,7 @@ public class UpdateMaximumDriverDistanceGUI extends JFrame {
 		private final Action action = new SwingAction();
 		private final Action action_1 = new SwingAction_1();
 	public UpdateMaximumDriverDistanceGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateMaximumDriverDistanceGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateMaximumDriverDistanceGUI.class.getResource("/Uber-icon2.png")));
 			setResizable(false);
 			theMatrix = aMatrix;
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

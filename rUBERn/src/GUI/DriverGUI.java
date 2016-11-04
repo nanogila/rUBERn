@@ -35,7 +35,7 @@ public class DriverGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public DriverGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(DriverGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		setVisible(true);
 		setTitle("rUBERn - Group 3");

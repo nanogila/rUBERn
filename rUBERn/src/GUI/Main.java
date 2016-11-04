@@ -65,7 +65,7 @@ public class Main {
 	 */
 	private void initialize() {
 		frmRubern = new JFrame();
-		frmRubern.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Uber-icon2.png")));
+		//frmRubern.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/Uber-icon2.png")));
 		frmRubern.setResizable(false);
 		frmRubern.setTitle("rUBERn - Group 3");
 		frmRubern.setBounds(100, 100, 299, 160);

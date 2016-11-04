@@ -41,7 +41,7 @@ private final Action action_1 = new Cancel();
 	 * Create the dialog.
 	 */
 	public RegisterGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(RegisterGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(RegisterGUI.class.getResource("/Uber-icon2.png")));
 		setVisible(true);
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Group 3");

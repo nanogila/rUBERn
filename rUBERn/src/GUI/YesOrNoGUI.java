@@ -29,7 +29,7 @@ public class YesOrNoGUI {
             content.add(label);
 
             JDialog dialog = new JDialog();
-    		dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(YesOrNoGUI.class.getResource("/Uber-icon2.png")));
+    		//dialog.setIconImage(Toolkit.getDefaultToolkit().getImage(YesOrNoGUI.class.getResource("/Uber-icon2.png")));
             dialog.setAlwaysOnTop(true);
             dialog.setResizable(false);
             dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

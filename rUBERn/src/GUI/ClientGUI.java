@@ -34,7 +34,7 @@ public class ClientGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public ClientGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ClientGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(ClientGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		setVisible(true);
 		setTitle("rUBERn - Group 3");

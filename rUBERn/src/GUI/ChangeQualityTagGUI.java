@@ -42,7 +42,7 @@ private final Action action = new SwingAction();
 		theMatrix = aMatrix;
 		tag = aTag;
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ChangeQualityTagGUI.class.getResource("/Uber-icon2.png")));
+		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ChangeQualityTagGUI.class.getResource("/Uber-icon2.png")));
         frame.setAlwaysOnTop(true);
         
         frame.setResizable(false);

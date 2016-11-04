@@ -43,7 +43,7 @@ public class SetTripDestinationGUI extends JFrame {
 	 * @wbp.parser.constructor
 	 */
 	public SetTripDestinationGUI(Matrix aMatrix, User aUser) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(SetTripDestinationGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(SetTripDestinationGUI.class.getResource("/Uber-icon2.png")));
 		theUser=aUser;
 		theMatrix = aMatrix;
 		setTitle("rUBERn - Grupo 3");

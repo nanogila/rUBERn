@@ -28,7 +28,7 @@ public class Error extends JDialog {
 	 * Create the dialog.
 	 */
 	public Error(String errMessage) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(Error.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(Error.class.getResource("/Uber-icon2.png")));
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

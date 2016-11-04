@@ -39,7 +39,7 @@ public class LoginGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public LoginGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(LoginGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		theMatrix = aMatrix;

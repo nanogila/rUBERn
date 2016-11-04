@@ -41,7 +41,7 @@ private Matrix theMatrix;
 	private void initialize() {
 		frame = new JFrame();
 		frame.setVisible(true);
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
+		//frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MatrixGUI.class.getResource("/Uber-icon2.png")));
 		frame.setResizable(false);
 		frame.setTitle("rUBERn - Group 3");
 		frame.setBounds(100, 100, 423, 242);

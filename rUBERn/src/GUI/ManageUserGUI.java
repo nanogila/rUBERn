@@ -54,7 +54,7 @@ public class ManageUserGUI extends JDialog {
 	 */
 	public ManageUserGUI(Matrix aMatrix) {
 		setTitle("rUBERn - Grupo 3");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ManageUserGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(ManageUserGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		action_1  = new AddAUser(theMatrix);
 		setVisible(true);

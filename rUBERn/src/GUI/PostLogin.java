@@ -33,7 +33,7 @@ public class PostLogin extends JFrame {
 	 * Create the dialog.
 	 */
 	public PostLogin(Matrix aMatrix, User aUser) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(PostLogin.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(PostLogin.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

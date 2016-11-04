@@ -33,7 +33,7 @@ private Matrix theMatrix;
 	 * Create the frame.
 	 */
 	public AddMoneyGUI(Matrix aMatrix, User aUser) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(AddMoneyGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(AddMoneyGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		theUser = aUser;
 		theMatrix = aMatrix;

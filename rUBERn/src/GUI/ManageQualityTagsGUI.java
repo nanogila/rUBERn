@@ -39,7 +39,7 @@ public class ManageQualityTagsGUI extends JFrame {
 	private JCheckBox boxNewTag;
 	private JComboBox<String> qualityTag;
 	public ManageQualityTagsGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(ManageQualityTagsGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(ManageQualityTagsGUI.class.getResource("/Uber-icon2.png")));
 		theMatrix = aMatrix;
 		newTag = false;
 		setBounds(100, 100, 450, 300);

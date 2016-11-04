@@ -50,7 +50,7 @@ private JTextField carCapacity;
 	 * Create the dialog.
 	 */
 	public DriverRegisterGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverRegisterGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(DriverRegisterGUI.class.getResource("/Uber-icon2.png")));
 		setVisible(true);
 		theMatrix = aMatrix;
 		carModel = 0;

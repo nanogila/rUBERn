@@ -34,7 +34,7 @@ public class DriverPostLogin extends JFrame {
 	 * Create the dialog.
 	 */
 	public DriverPostLogin(Matrix aMatrix, Driver aDriver) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverPostLogin.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(DriverPostLogin.class.getResource("/Uber-icon2.png")));
 		setTitle("rUBERn - Group 3");
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setVisible(true);

@@ -32,7 +32,7 @@ private Matrix theMatrix;
 	 * Create the frame.
 	 */
 	public AddMoneyDriverGUI(Matrix aMatrix, Driver aDriver) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(AddMoneyDriverGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(AddMoneyDriverGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		theDriver = aDriver;
 		theMatrix = aMatrix;

@@ -39,7 +39,7 @@ public class DriverLoginGUI extends JFrame {
 	 * Create the dialog.
 	 */
 	public DriverLoginGUI(Matrix aMatrix) {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(DriverLoginGUI.class.getResource("/Uber-icon2.png")));
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(DriverLoginGUI.class.getResource("/Uber-icon2.png")));
 		setResizable(false);
 		setTitle("rUBERn - Group 3");
 		theMatrix = aMatrix;
