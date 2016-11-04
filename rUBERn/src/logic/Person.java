@@ -43,6 +43,6 @@ public abstract class Person {
     	return card.removeMoney(Accountant.roundUp(someMoney));
     }
     public double getBalance() {
-    	return card.getBalance();
+    	return Accountant.roundUp(card.getBalance());
     }
 }
