@@ -27,9 +27,9 @@ public class MatrixTester {
 			  public void run () {
 					try { bot = new Robot(); } catch (AWTException e) {e.printStackTrace();}
 				  for (int i = 0; i<16; i++) {
-					  try{Thread.sleep(300);}catch(InterruptedException e){}
+					  try{Thread.sleep(100);}catch(InterruptedException e){}
 				  bot.keyPress(KeyEvent.VK_ENTER);
-					try{Thread.sleep(10);}catch(InterruptedException e){}
+					try{Thread.sleep(50);}catch(InterruptedException e){}
 					bot.keyRelease(KeyEvent.VK_ENTER);
 			  }
 			  }
@@ -83,7 +83,7 @@ public class MatrixTester {
 		theMatrix.addDriver(aDriver);
 		assertTrue(theMatrix.checkDriverPassword(aDriver.getName(), "holass"));
 	}
-	/*@Test
+	@Test
 	public void  checkAskForCarTest() throws NotEnoughMoneyException, ItemNotFoundException {
 		theMatrix.addUser(aUser);
 		theMatrix.addMoney(aUser, 234);
@@ -108,5 +108,5 @@ public class MatrixTester {
 		theMatrix.changeMaximumDriverDistance(3);
 		boolean newResult = theMatrix.askForCar(aUser, aDestination, 2);
 		assertTrue(!newResult);
-	}*/
+	}
 }
